@@ -1,0 +1,13 @@
+[user]
+	name = ryochack
+	email = ryochack@gmail.com
+[core]
+	autocrlf = input
+	safecrlf = true
+	pager = lv -c
+[color]
+	ui = auto
+[alias]
+	hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
