@@ -34,16 +34,17 @@ endif
 
 
 "===== Color Config =====
+" solarized設定に記述しているため、ここは無効化
 " Syntax Highlight を有効
-syntax enable
+"syntax enable
 " 256色を有効に
-set t_Co=256
-" Colorscheme設定は上書き防止で初めの方で設定する
-if isdirectory(expand('~/.vim/bundle/vim-colors-solarized'))
-	colorscheme solarized
-endif
-" 背景を設定
-set background=dark
+"set t_Co=256
+"" Colorscheme設定は上書き防止で初めの方で設定する
+"if isdirectory(expand('~/.vim/bundle/vim-colors-solarized'))
+"	colorscheme solarized
+"endif
+"" 背景を設定
+"set background=dark
 "highlight Pmenu ctermbg=lightcyan
 "highlight PmenuSel ctermbg=green
 "highlight PmenuSbar ctermbg=darkgrey
@@ -118,11 +119,11 @@ set showmode
 " listの表示設定有効
 set list
 " Tabや行末を表示
-set listchars=tab:>\ ,trail:-,extends:@,eol:<
+set listchars=tab:^\ ,trail:-,extends:@,eol:<
 " Tabと空白の色設定
-highlight SpecialKey cterm=NONE ctermfg=Black ctermbg=NONE guifg=Brown guibg=bg
+"highlight SpecialKey cterm=NONE ctermfg=Black ctermbg=NONE guifg=Brown guibg=bg
 " 行末の色設定
-highlight NonText cterm=NONE ctermfg=Black ctermbg=NONE guifg=Brown guibg=bg
+"highlight NonText cterm=NONE ctermfg=Black ctermbg=NONE guifg=Brown guibg=bg
 " 行番号を表示
 set number
 highlight LineNr ctermfg=DarkGray
@@ -132,7 +133,7 @@ set showmatch
 "set cursorcolumn
 " カレント行ハイライト
 set cursorline
-highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE gui=underline guifg=NONE guibg=NONE
 " カレントウィンドウのみに罫線を引く
 augroup cch
     autocmd! cch
