@@ -208,8 +208,23 @@ alias -s sh=lv
 alias -s txt=lv
 alias -s xml=lv
 
-alias ls="ls -F --color=auto"
-#alias ls="ls -G"
+case "${OSTYPE}" in
+	freebsd*|darwin*)
+		alias ls="ls -F -G"
+		;;
+	linux*)
+		alias ls="ls -F --color=auto"
+		;;
+esac
+
+case "${OSTYPE}" in
+	darwin*)
+		# MacVim内包のvim7.3を参照する
+		# Symlinkで駄目な理由は-> https://github.com/altercation/solarized/issues/60
+		alias vim="/usr/local/Cellar/macvim/7.3-63/MacVim.app/Contents/MacOS/Vim"
+		;;
+esac
+
 alias la="ls -A"
 alias ll="ls -alF"
 alias rm="rm -i"
