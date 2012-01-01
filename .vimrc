@@ -13,8 +13,8 @@ set nocompatible
 
 
 "===== Plugin管理 =====
-" Vundle(Plugin)設定
-if isdirectory(expand('~/.vim/bundle/vundle'))
+" Bundle(Plugin)設定
+if isdirectory(expand('~/.vim/bundle'))
 	if filereadable(expand('~/.vim/source/bundles.vim'))
 		source ~/.vim/source/bundles.vim
 	endif

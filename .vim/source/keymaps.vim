@@ -120,7 +120,7 @@ lnoremap <C-e> <End>
 " ----- Plugins -------------------------
 
 "# [ eregex.vim ] {{{
-if isdirectory(expand('~/.vim/bundle/eregex.vim'))
+if isdirectory(expand('~/.vim/bundle/automatic/eregex.vim'))
 	"# Rubyなどの正規表現で検索
 	nnoremap <silent> ,/ :<C-u>M/
 	nnoremap <silent> ,? :<C-u>M?
@@ -129,14 +129,14 @@ endif
 
 "# [ taglist.vim ] {{{
 " Outline表示
-if isdirectory(expand('~/.vim/bundle/taglist.vim'))
+if isdirectory(expand('~/.vim/bundle/automatic/taglist.vim'))
 	nnoremap <F4> :<C-u>Tlist<CR>
 endif
 " }}}
 
 "# [ gtags.vim ] {{{
 " GNU Global カーソル下の使用箇所検索
-if isdirectory(expand('~/.vim/bundle/gtags.vim'))
+if isdirectory(expand('~/.vim/bundle/automatic/gtags.vim'))
 	nnoremap <F5> :<C-u>Gtags <C-r><C-w><CR>
 	nnoremap <F6> :<C-u>Gtags -r <C-r><C-w><CR>
 endif
@@ -144,7 +144,7 @@ endif
 
 "# [ neocomplcache.vim ] {{{
 " スニペット展開を実行する
-if isdirectory(expand('~/.vim/bundle/neocomplcache'))
+if isdirectory(expand('~/.vim/bundle/automatic/neocomplcache'))
 	imap <C-TAB> <Plug>(neocomplcache_snippets_expand)
 	smap <C-TAB> <Plug>(neocomplcache_snippets_expand)
 endif
@@ -152,7 +152,7 @@ endif
 
 " [ visualstar.vim ] {{{
 "# 検索した後に移動しない設定
-if isdirectory(expand('~/.vim/bundle/visualstar.vim'))
+if isdirectory(expand('~/.vim/bundle/automatic/visualstar.vim'))
 	map *  <Plug>(visualstar-*)N
 	map #  <Plug>(visualstar-#)N
 	map g* <Plug>(visualstar-g*)N
@@ -162,7 +162,7 @@ endif
 
 " [ quickhl.vim ] {{{
 "# Keywordのハイライト
-if isdirectory(expand('~/.vim/bundle/vim-quickhl'))
+if isdirectory(expand('~/.vim/bundle/automatic/vim-quickhl'))
 	nmap <Space>m <Plug>(quickhl-toggle)
 	xmap <Space>m <Plug>(quickhl-toggle)
 	nmap <Space>M <Plug>(quickhl-reset)
@@ -174,7 +174,7 @@ endif
 
 " [ unite.vim ] {{{
 " Unite.vim {{{
-if isdirectory(expand('~/.vim/bundle/unite.vim'))
+if isdirectory(expand('~/.vim/bundle/automatic/unite.vim'))
 	nnoremap [unite] <Nop>
 	nmap     ,u [unite]
 	nnoremap <silent> [unite]*  :<C-u>Unite source -buffer-name=sources<CR>
@@ -202,7 +202,7 @@ endif
 
 " [ Fugitive.vim ] {{{
 " fugitive.vim {{{
-if isdirectory(expand('~/.vim/bundle/vim-fugitive'))
+if isdirectory(expand('~/.vim/bundle/automatic/vim-fugitive'))
 	nnoremap [git] <Nop>
 	nmap     ,g [git]
 	nnoremap <silent> [git]s :<C-u>Gstatus<CR>
