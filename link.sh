@@ -5,5 +5,6 @@ ln -is ~/.dotfiles/.vimrc ~/.vimrc
 ln -is ~/.dotfiles/.gvimrc ~/.gvimrc
 ln -is ~/.dotfiles/.vim ~/.vim
 ln -is ~/.dotfiles/.gitconfig ~/.gitconfig
+ln -is ~/.dotfiles/.gitignore ~/.gitignore
 ln -is ~/.dotfiles/.tmux.conf ~/.tmux.conf
 
