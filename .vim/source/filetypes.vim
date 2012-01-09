@@ -12,7 +12,7 @@ autocmd FileType cc,cpp,h set dictionary+=~/.vim/dict/cpp.dict
 
 
 " [ GO ]  {{{
-set rtp+=$GOROOT/misc/vim
+"set rtp+=$GOROOT/misc/vim
 " }}}
 
 

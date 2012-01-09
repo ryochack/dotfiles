@@ -14,7 +14,7 @@
 filetype plugin indent off
 
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim
+	set runtimepath+=~/.vim/bundle/automatic/neobundle.vim
 	call neobundle#rc(expand('~/.vim/bundle/automatic'))
 endif
 
@@ -115,8 +115,16 @@ endif
 "# [ surround ]
 NeoBundle 'git://github.com/tpope/vim-surround.git'
 
-"# [ vim-fugitive ]
+"# [ vim-fugitive ]    # VimからGitを使う
 NeoBundle 'git://github.com/tpope/vim-fugitive.git'
+
+"# [ Gist ]    # VimからGistを使う
+NeoBundle 'git://github.com/mattn/gist-vim.git'
+if isdirectory(expand('~/.vim/bundle/automatic/gist-vim'))
+	if filereadable(expand('~/.vim/source/conf_gist.vim'))
+		source ~/.vim/source/conf_gist.vim
+	endif
+endif
 
 "# [ BlockDiff ]
 NeoBundle 'git://github.com/vim-scripts/BlockDiff.git'
@@ -175,7 +183,7 @@ if isdirectory(expand('~/.vim/bundle/automatic/grep.vim'))
 	endif
 endif
 
-"# [ gtags ]
+"# [ gtags ]    # GNU Global
 NeoBundle 'git://github.com/vim-scripts/gtags.vim.git'
 if isdirectory(expand('~/.vim/bundle/automatic/gtags.vim'))
 	if filereadable(expand('~/.vim/source/conf_gtags.vim'))
@@ -186,7 +194,7 @@ endif
 "# [ DirDiff ]    # "diff"必要
 NeoBundle 'git://github.com/vim-scripts/DirDiff.vim.git'
 
-"# [ visualstar ]    # VisualMode選択Textを検索
+"# [ visualstar ]    # VisualMode選択されているTextを検索
 NeoBundle 'git://github.com/thinca/vim-visualstar.git'
 if isdirectory(expand('~/.vim/bundle/automatic/vim-visualstar.vim'))
 	if filereadable(expand('~/.vim/source/conf_visualstar.vim'))
@@ -202,13 +210,24 @@ if isdirectory(expand('~/.vim/bundle/automatic/vim-colors-solarized'))
 	endif
 endif
 
-"# [ YankRing ]
+"# [ YankRing ]    # Yank履歴を使用する
 NeoBundle 'git://github.com/vim-scripts/YankRing.vim.git'
 if isdirectory(expand('~/.vim/bundle/automatic/YankRing.vim'))
 	if filereadable(expand('~/.vim/source/conf_yankring.vim'))
 		source ~/.vim/source/conf_yankring.vim
 	endif
 endif
+
+"# [ ctrlp.vim ]    # 正規表現を使ったファイル検索など
+NeoBundle 'git://github.com/kien/ctrlp.vim.git'
+if isdirectory(expand('~/.vim/bundle/automatic/ctrlp.vim'))
+	if filereadable(expand('~/.vim/source/conf_ctrlp.vim'))
+		source ~/.vim/source/conf_ctrlp.vim
+	endif
+endif
+
+"# [ learn-vimscript ]    # VimScript文法ヘルプ :help learn-vimscript
+NeoBundle 'git://github.com/mattn/learn-vimscript.git'
 
 "----- www.vim.org Plugins -----
 
