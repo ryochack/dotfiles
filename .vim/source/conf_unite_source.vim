@@ -32,3 +32,7 @@ let g:unite_launch_apps = [
   \ 'git pull',
   \ 'git push']
 
+
+"--- unite-ack ---
+let g:unite_source_ack_command = "ack"
+

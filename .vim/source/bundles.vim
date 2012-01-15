@@ -43,6 +43,11 @@ endif
 "# [ vimproc ]
 NeoBundle 'git://github.com/Shougo/vimproc.git'
 "$ make -f make_gcc.mak    # <- how to build
+if isdirectory(expand('~/.vim/bundle/automatic/vimproc'))
+	if filereadable(expand('~/.vim/source/conf_vimproc.vim'))
+		source ~/.vim/source/conf_vimproc.vim
+	endif
+endif
 
 "# [ unite ]
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
@@ -68,6 +73,8 @@ NeoBundle 'git://github.com/thinca/vim-unite-history.git'
 NeoBundle 'git://github.com/sgur/unite-qf.git'
 "# [ unite-launch ]
 NeoBundle 'git://github.com/ujihisa/unite-launch.git'
+"# [ unite-ack ]
+NeoBundle 'git://github.com/t9md/vim-unite-ack.git'
 if isdirectory(expand('~/.vim/bundle/automatic/unite.vim'))
 	if filereadable(expand('~/.vim/source/conf_unite_source.vim'))
 		source ~/.vim/source/conf_unite_source.vim
@@ -177,11 +184,9 @@ endif
 
 "# [ grep ]
 NeoBundle 'git://github.com/vim-scripts/grep.vim.git'
-if isdirectory(expand('~/.vim/bundle/automatic/grep.vim'))
-	if filereadable(expand('~/.vim/source/conf_grep.vim'))
-		source ~/.vim/source/conf_grep.vim
-	endif
-endif
+
+"# [ ack ]
+NeoBundle 'git://github.com/mileszs/ack.vim.git'
 
 "# [ gtags ]    # GNU Global
 NeoBundle 'git://github.com/vim-scripts/gtags.vim.git'
@@ -196,11 +201,6 @@ NeoBundle 'git://github.com/vim-scripts/DirDiff.vim.git'
 
 "# [ visualstar ]    # VisualMode選択されているTextを検索
 NeoBundle 'git://github.com/thinca/vim-visualstar.git'
-if isdirectory(expand('~/.vim/bundle/automatic/vim-visualstar.vim'))
-	if filereadable(expand('~/.vim/source/conf_visualstar.vim'))
-		source ~/.vim/source/conf_visualstar.vim
-	endif
-endif
 
 "# [ colorscheme:solarized ]
 NeoBundle 'git://github.com/altercation/vim-colors-solarized.git'

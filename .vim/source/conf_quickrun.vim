@@ -14,9 +14,9 @@ let g:quickrun_config = {
 \}
 
 "# GOのコンパイル・リンク・実行まで一気に行う
-"let g:quickrun_config = {
-"\   'go': { 'command': '8g',
-"\           'exec': ['8g %s', '8l -o %s:p:r %s:p:r.8', '%s:p:r %a', 'rm -f %s:p:r']
-"\    }
-"\}
+let g:quickrun_config = {
+\   'go': { 'command': '8g',
+\           'exec': ['8g %s', '8l -o %s:p:r %s:p:r.8', '%s:p:r %a', 'rm -f %s:p:r']
+\    }
+\}
 

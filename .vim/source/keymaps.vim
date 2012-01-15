@@ -68,10 +68,10 @@ noremap <silent> <C-F12> :<C-u>tabn<CR>
 
 " ----- Insert Mode ( imap ) ----------------------
 " {{{
-inoremap <C-j> <DOWN>
-inoremap <C-k> <UP>
-inoremap <C-h> <LEFT>
-inoremap <C-l> <RIGHT>
+"inoremap <C-j> <DOWN>
+"inoremap <C-k> <UP>
+"inoremap <C-h> <LEFT>
+"inoremap <C-l> <RIGHT>
 inoremap <S-TAB> <C-i>
 " Remap the tab key to select action with InsertTabWrapper
 inoremap <TAB> <C-r>=InsertTabWrapper()<CR>
@@ -143,10 +143,15 @@ endif
 " }}}
 
 "# [ neocomplcache.vim ] {{{
-" スニペット展開を実行する
 if isdirectory(expand('~/.vim/bundle/automatic/neocomplcache'))
-	imap <C-TAB> <Plug>(neocomplcache_snippets_expand)
-	smap <C-TAB> <Plug>(neocomplcache_snippets_expand)
+	nnoremap [neocomplcache] <Nop>
+	nmap     ,c [neocomplcache]
+	"スニペットファイルを編集する
+	nnoremap <Space>s :NeoComplCacheEditSnippets<CR>
+	" スニペット展開を実行する
+	imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+	smap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-o>D"
+	inoremap <expr><C-g> neocomplcache#undo_completion()
 endif
 " }}}
 
@@ -193,6 +198,7 @@ if isdirectory(expand('~/.vim/bundle/automatic/unite.vim'))
 	nnoremap <silent> [unite]'  :<C-u>Unite mark -buffer-name=mark<CR>
 	nnoremap <silent> [unite]m  :<C-u>Unite bookmark -buffer-name=bookmark<CR>
 	nnoremap <silent> [unite]M  :<C-u>UniteBookmarkAdd<CR>
+	nnoremap <silent> [unite]a  :<C-u>Unite ack -buffer-name=ack -no-quit<CR>
 	nnoremap <silent> [unite]g  :<C-u>Unite grep -buffer-name=grep -no-quit<CR>
 	nnoremap <silent> [unite]j  :<C-u>Unite jump -buffer-name=jumps<CR>
 	nnoremap <silent> [unite]q  :<C-u>Unite qf -buffer-name=quickfix -no-quit<CR>

@@ -289,12 +289,12 @@ set autoread
 " 補完動作設定
 set wildmode=list:longest
 " 補完候補の検索場所
-set complete=.,i
+set complete=.,b,u,i,k,t
 "set complete=.,w,b,u,k,t,i
 " 挿入モード補完設定
 set completeopt=menu,menuone,preview
 " ポップアップMENUの最大高さ設定
-set pumheight=10
+set pumheight=15
 " プレビューウィンドウの最大高さ設定
 "set previewheight=12
 " 補完候補表示を有効
