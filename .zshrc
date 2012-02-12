@@ -221,7 +221,7 @@ case "${OSTYPE}" in
 	darwin*)
 		# MacVim内包のvim7.3を参照する
 		# Symlinkで駄目な理由は-> https://github.com/altercation/solarized/issues/60
-		alias vim="/usr/local/Cellar/macvim/7.3-63/MacVim.app/Contents/MacOS/Vim"
+		alias vim="/usr/local/Cellar/macvim/7.3-64/MacVim.app/Contents/MacOS/Vim"
 		;;
 esac
 

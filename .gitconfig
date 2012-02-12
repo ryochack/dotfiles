@@ -5,6 +5,8 @@
 	autocrlf = input
 	safecrlf = true
 	pager = lv -c
+	editor = vim
+	quotepath = false
 [color]
 	ui = auto
 [alias]

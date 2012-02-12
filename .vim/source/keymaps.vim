@@ -63,6 +63,11 @@ noremap <C-e> <End>
 " Tab移動
 noremap <silent> <C-F11> :<C-u>tabp<CR>
 noremap <silent> <C-F12> :<C-u>tabn<CR>
+" 関数の頭/お尻にジャンプ
+"nnoremap ]] /^{\\|^\<.*{<CR>
+"nnoremap ][ /^}\\|^\<.*}<CR>
+"nnoremap [[ ?^{\\|^\<.*{<CR>
+"nnoremap [] ?^}\\|^\<.*}<CR>
 " }}}
 
 
@@ -122,8 +127,8 @@ lnoremap <C-e> <End>
 "# [ eregex.vim ] {{{
 if isdirectory(expand('~/.vim/bundle/automatic/eregex.vim'))
 	"# Rubyなどの正規表現で検索
-	nnoremap <silent> ,/ :<C-u>M/
-	nnoremap <silent> ,? :<C-u>M?
+	nnoremap ,/ :<C-u>M/
+	nnoremap ,? :<C-u>M?
 endif
 " }}}
 

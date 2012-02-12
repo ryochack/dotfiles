@@ -121,9 +121,9 @@ set list
 " Tabや行末を表示
 set listchars=tab:^\ ,trail:-,extends:@,eol:<
 " Tabと空白の色設定
-"highlight SpecialKey cterm=NONE ctermfg=Black ctermbg=NONE guifg=Brown guibg=bg
+highlight SpecialKey cterm=NONE ctermfg=DarkRed ctermbg=NONE guifg=Brown guibg=bg
 " 行末の色設定
-"highlight NonText cterm=NONE ctermfg=Black ctermbg=NONE guifg=Brown guibg=bg
+highlight NonText cterm=NONE ctermfg=DarkRed ctermbg=NONE guifg=Brown guibg=bg
 " 行番号を表示
 set number
 highlight LineNr ctermfg=DarkGray

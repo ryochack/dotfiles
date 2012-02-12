@@ -229,6 +229,9 @@ endif
 "# [ learn-vimscript ]    # VimScript文法ヘルプ :help learn-vimscript
 NeoBundle 'git://github.com/mattn/learn-vimscript.git'
 
+"# [ vim-powerline ]    # リッチなステータスラインにする
+NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
+
 "----- www.vim.org Plugins -----
 
 
