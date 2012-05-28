@@ -1,0 +1,47 @@
+"**********************************************************
+"     インデント設定 Indent
+"**********************************************************
+" 新しい行を挿入時に自動インデント
+set autoindent
+" 新しい行を挿入時に高度な自動インデント
+set smartindent
+
+" 高度なTab挿入
+set smarttab
+" Tabの幅
+set tabstop=4
+" インデント幅
+set shiftwidth=4
+" softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
+set softtabstop=0
+" TabをSpaceで置き換えない
+set noexpandtab
+
+"if has("autocmd")
+"	"ファイルタイプの検索を有効にする
+"	filetype plugin on
+"	"そのファイルタイプにあわせたインデントを利用する
+"	filetype indent on
+"	" これらのftではインデントを無効に
+"	"autocmd FileType php filetype indent off
+"
+"	autocmd FileType c          setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType cpp        setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType go         setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType css        setlocal sw=2 sts=2 ts=2 et
+"	autocmd FileType diff       setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
+"	autocmd FileType java       setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
+"	autocmd FileType php        setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType python     setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType ruby       setlocal sw=2 sts=2 ts=2 et
+"	autocmd FileType sh         setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType vb         setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType vim        setlocal sw=2 sts=2 ts=2 et
+"	autocmd FileType xhtml      setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType xml        setlocal sw=4 sts=4 ts=4 et
+"	autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
+"endif
+
