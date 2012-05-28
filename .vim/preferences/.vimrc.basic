@@ -28,14 +28,14 @@ set showcmd
 " 現在のモードを表示
 set showmode
 " viminfoファイル設定
-set viminfo='50,<1000,s100,/100,n~/.vim/viminfo
+set viminfo='50,<1000,s100,/100,n~/.vim/temp/viminfo
 " モードライン無効
 set modelines=0
 
 " クリップモード設定
 " - unnamed:    無名レジスタに入るデータを*レジスタに入れる(ClipBoard共有)
 "               unnamedをsetすると、BlockDiffが動作しなくなるので、とりあえずOFF
-" - autoselect: VisualModeで選択したテキストがクリップボードに入るようにする(CUI版のみ) 
+" - autoselect: VisualModeで選択したテキストがクリップボードに入るようにする(CUI版のみ)
 set clipboard+=autoselect
 
 " マウスを使用できるようにする
