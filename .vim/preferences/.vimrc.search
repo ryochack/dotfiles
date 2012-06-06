@@ -15,7 +15,7 @@ set hlsearch
 nmap <ESC><ESC> :<C-u>nohlsearch<CR>
 
 " カーソル下のキーワードをヘルプでひく
-nnoremap <C-i> :<C-u>help<Space><C-r><C-w><CR>
+nnoremap <C-h> :<C-u>help<Space><C-r><C-w><CR>
 
 " --- grep ---
 " 外部grep設定
