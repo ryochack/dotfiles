@@ -134,7 +134,7 @@ endif
 
 
 " Web {{{
-	" webapi : vim Interface to Web API
+	" webapi : vim Interface to Web API (gistで必要)
 	NeoBundleLazy 'git://github.com/mattn/webapi-vim.git'
 	" open-browser : カーソル下のURLを開くor単語を検索エンジンで検索
 	NeoBundleLazy 'git://github.com/tyru/open-browser.vim.git'
@@ -161,7 +161,7 @@ endif
 	" vimdoc-ja : vim日本語ドキュメント
 	NeoBundle 'git://github.com/vim-jp/vimdoc-ja.git'
 	" powerline : リッチなステータスラインにする
-	NeoBundleLazy 'git://github.com/Lokaltog/vim-powerline.git'
+	NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 	" learn-vimscript : VimScript文法ヘルプ :help learn-vimscript
 	NeoBundleLazy 'git://github.com/mattn/learn-vimscript.git'
 	" junkfile : 一時ファイル作成
