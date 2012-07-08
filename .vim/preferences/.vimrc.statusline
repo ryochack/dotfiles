@@ -1,6 +1,8 @@
 "**********************************************************
 "     ステータスライン StatusLine
 "**********************************************************
+" plugin設定でPowerline有効にしている
+
 " 常にステータスライン表示
 set laststatus=2
 " ステータスライン表示設定
@@ -34,11 +36,6 @@ endfunction
 "set statusline=\ %-f%-5(\ %r%m\ %)%=%{GetEFstatus()}\ %(%4c,\ %4l/%4L\ %)
 " ステータスライン色設定
 "highlight StatusLine ctermfg=white ctermbg=red
-
-" Powerline設定
-let g:Powerline_symbols='fancy'
-set t_Co=256
-set encoding=utf-8
 
 " コマンドをステータスラインに表示
 set showcmd

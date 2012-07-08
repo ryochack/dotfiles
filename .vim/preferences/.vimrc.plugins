@@ -249,6 +249,14 @@ let g:ctrlp_cache_dir = $HOME.'/.vim/temp/.ctrlp_cache'
 
 
 "========================================
+"    Powerline
+"----------------------------------------
+let g:Powerline_symbols='fancy'
+set t_Co=256
+set encoding=utf-8
+
+
+"========================================
 "    colorscheme:solarized
 "----------------------------------------
 let g:solarized_termcolors=256

@@ -6,6 +6,16 @@ mapclear!
 "vim機能を有効にする
 set nocompatible
 
+"vim-plugin開発用(設定を全てキャンセル)
+let s:test_vimrc_name=getcwd().'/.vimrc.test'
+if filereadable(s:test_vimrc_name)
+	source `=s:test_vimrc_name`
+endif
+if exists("g:loaded_vim_plugin_test_vimrc")
+	source ~/.vim/preferences/.vimrc.tiny
+	finish
+endif
+
 "Bundle管理されているpluginを読み込む
 source ~/.vim/preferences/.vimrc.bundle
 "Plugin設定
@@ -37,4 +47,6 @@ source ~/.vim/preferences/.vimrc.edit
 source ~/.vim/preferences/.vimrc.encode
 "その他
 source ~/.vim/preferences/.vimrc.misc
+
+
 
