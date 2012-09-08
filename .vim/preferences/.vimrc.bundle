@@ -31,7 +31,7 @@ endif
 	" toggle : true/false, yes/no などを切り替える
 	NeoBundle 'git://github.com/taku-o/vim-toggle.git'
 	" sequence : 連番を振るのを楽にする
-	NeoBundleLazy 'git://github.com/kurkale6ka/vim-sequence.git'
+	NeoBundle 'git://github.com/kurkale6ka/vim-sequence.git'
 
 	" operator-user : 簡単にoperatorを定義できるようにする
 	NeoBundle 'git://github.com/kana/vim-operator-user.git'
@@ -66,6 +66,9 @@ endif
 	NeoBundle 'git://github.com/thinca/vim-textobj-between.git'
 	" textobj-wiw : wordの中の単語をtext-object化
 	NeoBundle 'git://github.com/h1mesuke/textobj-wiw.git'
+
+	" fitpaste : 整形して貼り付け
+	NeoBundle 'git://github.com/ryochack/fitpaste-vim.git'
 " }}}
 
 
@@ -123,7 +126,7 @@ endif
 	" vimfiler : 高機能ファイラ
 	NeoBundle 'git://github.com/Shougo/vimfiler.git'
 	" DirDiff : ディレクトリの差分を表示。"diff"必要
-	NeoBundleLazy 'git://github.com/vim-scripts/DirDiff.vim.git'
+	NeoBundle 'git://github.com/vim-scripts/DirDiff.vim.git'
 " }}}
 
 
@@ -162,8 +165,6 @@ endif
 	NeoBundle 'git://github.com/vim-jp/vimdoc-ja.git'
 	" powerline : リッチなステータスラインにする
 	NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
-	" learn-vimscript : VimScript文法ヘルプ :help learn-vimscript
-	NeoBundleLazy 'git://github.com/mattn/learn-vimscript.git'
 	" junkfile : 一時ファイル作成
 	NeoBundle 'junkfile', {'type':'nosync','base':'~/.vim/bundle'}
 " }}}
@@ -194,6 +195,8 @@ endif
 	NeoBundle 'git://github.com/ujihisa/quicklearn.git'
 	" unite-build : 非同期でmakeし、ビルド結果をUnite化
 	NeoBundle 'git://github.com/Shougo/unite-build.git'
+	" unite-scriptnames : 読み込んだプラグインをUniteから探す
+	NeoBundle 'git://github.com/zhaocai/unite-scriptnames.git'
 " }}}
 
 
@@ -220,7 +223,8 @@ endif
 	autocmd FileType python NeoBundleSource pytest.vim
 	" golang : Go言語のシンタックス・インデントを適用
 	NeoBundle 'golang', {'type':'nosync','base':'~/.vim/bundle'}
-	autocmd FileType go NeoBundleSource golang
+	"NeoBundleLazy 'golang', {'type':'nosync','base':'~/.vim/bundle'}
+	"autocmd FileType go NeoBundleSource golang
 " }}}
 
 
@@ -230,16 +234,35 @@ endif
 " }}}
 
 
-" Debug {{{
+" Development {{{
+	" learn-vimscript : VimScript文法ヘルプ :help learn-vimscript
+	NeoBundleLazy 'git://github.com/mattn/learn-vimscript.git'
 	" headlights : 読み込んだプラグイン毎のコマンドやキーマップ定義をMENU表示
 	NeoBundleLazy 'git://github.com/vim-scripts/Headlights.git'
-	" unite-scriptnames : 読み込んだプラグインをUniteから探す
-	NeoBundleLazy 'git://github.com/zhaocai/unite-scriptnames.git'
 	" editvar : vimの変数を編集
 	NeoBundleLazy 'git://github.com/thinca/vim-editvar.git'
 	" prettyprint : vimの変数を整形して出力。editvar用
 	NeoBundleLazy 'git://github.com/thinca/vim-prettyprint.git'
+	" batch-source : 指定した範囲のVimScriptのコードを実行する
+	NeoBundleLazy 'git://github.com/taku-o/vim-batch-source.git'
+	" benchvimrc : vimrcのどこが重いのかを調べる
+	" (vim --startuptime foo ではスクリプトファイル単位で読み込み時間を調べられる)
+	NeoBundleLazy "git://github.com/mattn/benchvimrc-vim.git"
+	" restart : vimを再起動
+	NeoBundleLazy "git://github.com/tyru/restart.vim.git"
 " }}}
+
+
+function! LoadLazyPluginUtility()
+	silent NeoBundleSource learn-vimscript
+	silent NeoBundleSource Headlights
+	silent NeoBundleSource vim-editvar
+	silent NeoBundleSource vim-prettyprint
+	silent NeoBundleSource vim-batch-source
+	silent NeoBundleSource benchvimrc-vim
+	silent NeoBundleSource restart.vim
+endfunction
+command! LoadLazyPluginUtility :call LoadLazyPluginUtility()
 
 
 filetype plugin indent on
