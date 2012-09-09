@@ -197,6 +197,8 @@ endif
 	NeoBundle 'git://github.com/Shougo/unite-build.git'
 	" unite-scriptnames : 読み込んだプラグインをUniteから探す
 	NeoBundle 'git://github.com/zhaocai/unite-scriptnames.git'
+	" unite-svn : 読み込んだプラグインをUniteから探す
+	NeoBundle 'git://github.com/kmnk/vim-unite-svn.git'
 " }}}
 
 
