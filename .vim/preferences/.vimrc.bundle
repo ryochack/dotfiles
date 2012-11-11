@@ -78,8 +78,8 @@ let g:neobundle_default_git_protocol='git'
 " Complement {{{
 	" neocomplcache : 補完プラグイン
 	NeoBundle 'Shougo/neocomplcache.git'
-	" neocomplcache-snippets-complete : neocomplcacheのスニペット補完
-	NeoBundle 'Shougo/neocomplcache-snippets-complete.git'
+	" neosnippet : スニペット補完
+	NeoBundle 'Shougo/neosnippet.git'
 " }}}
 
 
