@@ -149,7 +149,14 @@ let g:neobundle_default_git_protocol='git'
 
 " Utility {{{
 	" vimproc : vimから非同期実行
-	NeoBundle 'Shougo/vimproc.git'
+	NeoBundle 'Shougo/vimproc.git', {
+	      \ 'build' : {
+	      \     'windows' : 'make -f make_mingw32.mak',
+	      \     'cygwin' : 'make -f make_cygwin.mak',
+	      \     'mac' : 'make -f make_mac.mak',
+	      \     'unix' : 'make -f make_unix.mak',
+	      \    },
+	      \ }
 	" quickrun : 編集中のファイルを簡単に実行
 	NeoBundle 'thinca/vim-quickrun.git'
 	" ref : リファレンスをvimで見る
