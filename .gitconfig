@@ -15,3 +15,5 @@
 	dump = cat-file -p
 [github]
 	user = ryochack
+[push]
+	default = simple
