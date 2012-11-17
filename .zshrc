@@ -174,12 +174,13 @@ unsetopt extended_glob          # 拡張グラブを無効にする
 setopt prompt_subst             # PROMPT内で変数展開
 autoload -Uz colors; colors     # PROMPTのカラー表示有効
 case ${UID} in
-0)  # rootだと強調表示 
+0)  # rootだと強調表示
 PROMPT="
 %B%{$fg[green]%}%~%{$reset_color%}
 [%n@%M]$%b "
 PROMPT2="%B%_>%b "
 SPROMPT="%B%r is correct? [n,y,a,e]:%b "
+RPROMPT="%B%{$fg[cyan]%}%D %*%{$reset_color%}%b"
 ;;
 *)
 PROMPT="
@@ -187,6 +188,7 @@ PROMPT="
 [%n@%M]$ "
 PROMPT2="%_> "
 SPROMPT="%r is correct? [n,y,a,e]: "
+RPROMPT="%{$fg[cyan]%}%D %*%{$reset_color%}"
 ;;
 esac
 
@@ -242,7 +244,6 @@ alias -g V="| vim -"
 alias -g R="| vim -R -"
 
 alias browser=chromium-browser
-
 
 # === w3mでALC検索 ===
 function alc() {
