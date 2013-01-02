@@ -89,7 +89,7 @@ let g:neobundle_default_git_protocol='git'
 	" gtags : GNU Globalを使って関数の定義・使用箇所にジャンプ
 	NeoBundle 'vim-scripts/gtags.vim.git'
 	" BlockDiff : 選択部分の比較
-	NeoBundle 'vim-scripts/BlockDiff.git'
+	NeoBundle 'ryochack/BlockDiff.git'
 	" quickhl : 複数ハイライト
 	NeoBundle 't9md/vim-quickhl.git'
 " }}}
