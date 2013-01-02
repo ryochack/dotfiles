@@ -80,6 +80,8 @@ let g:neobundle_default_git_protocol='git'
 	NeoBundle 'Shougo/neocomplcache.git'
 	" neosnippet : スニペット補完
 	NeoBundle 'Shougo/neosnippet.git'
+	" snipmate-snippets : スニペット集
+	NeoBundle 'honza/snipmate-snippets'
 " }}}
 
 

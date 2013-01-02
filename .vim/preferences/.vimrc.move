@@ -21,12 +21,6 @@ noremap <C-e> <End>
 lnoremap <C-a> <Home>
 lnoremap <C-e> <End>
 
-" インサートモードでもhjklで移動
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-
 " ()[]までの選択を効率的にする
 vnoremap ( t(
 vnoremap ) t)
