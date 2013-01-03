@@ -1,0 +1,4 @@
+[ RSense ]
+Read rsense/doc/manual.ja.txt
+
+

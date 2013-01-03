@@ -304,3 +304,29 @@ vmap <silent> [fitpaste]a <Plug>(fitpaste-append)
 vmap <silent> [fitpaste]p <Plug>(fitpaste-replace)
 
 
+"========================================
+"    rsense
+"----------------------------------------
+let g:rsenseUseOmniFunc = 1
+let g:rsenseHome = expand('~/.vim/opt/rsense-0.3')
+
+function! SetUpRubySetting()
+	setlocal completefunc=RSenseCompleteFunction
+	nmap <buffer>tj :RSenseJumpToDefinition<CR>
+	nmap <buffer>tk :RSenseWhereIs<CR>
+	nmap <buffer>td :RSenseTypeHelp<CR>
+endfunction
+autocmd FileType ruby,eruby,ruby.rspec call SetUpRubySetting()
+
+" rubyの設定
+if !exists('g:neocomplcache_omni_functions')
+	let g:neocomplcache_omni_functions = {}
+endif
+let g:neocomplcache_omni_functions.ruby = 'RSenseCompleteFunction'
+
+" Enable heavy omni completion.
+if !exists('g:neocomplcache_omni_patterns')
+	let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+

@@ -209,7 +209,7 @@ let g:neobundle_default_git_protocol='git'
 	NeoBundle 'Shougo/unite-build.git'
 	" unite-scriptnames : 読み込んだプラグインをUniteから探す
 	NeoBundle 'zhaocai/unite-scriptnames.git'
-	" unite-svn : 読み込んだプラグインをUniteから探す
+	" unite-svn : UniteからSVNを使う
 	NeoBundle 'kmnk/vim-unite-svn.git'
 " }}}
 
@@ -239,6 +239,9 @@ let g:neobundle_default_git_protocol='git'
 	NeoBundle 'golang', {'type':'nosync','base':'~/.vim/bundle'}
 	"NeoBundleLazy 'golang', {'type':'nosync','base':'~/.vim/bundle'}
 	"autocmd FileType go NeoBundleSource golang
+	" rsense : Rubyに特化したomni補完
+	NeoBundleLazy 'taichouchou2/vim-rsense'
+	autocmd FileType ruby NeoBundleSource vim-rsense
 " }}}
 
 
