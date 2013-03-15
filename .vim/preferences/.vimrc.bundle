@@ -117,7 +117,9 @@ let g:neobundle_default_git_protocol='git'
 	" grep : 外部grep使用
 	NeoBundle 'vim-scripts/grep.vim.git'
 	" ack : ackを使って検索。:Ack [options] {pattern} [{directory}]
-	NeoBundle 'mileszs/ack.vim.git'
+	"NeoBundle 'mileszs/ack.vim.git'
+	" ag : agを使って検索。:Ag [options] {pattern} [{directory}]
+	NeoBundle 'rking/ag.vim.git'
 	" cmigemo : Migemo検索ができるようにする
 	NeoBundle 'cmigemo', {'type':'nosync','base':'~/.vim/bundle'}
 " }}}
@@ -216,7 +218,7 @@ let g:neobundle_default_git_protocol='git'
 
 " CtrlP {{{
 	" ctrlp : 正規表現を使ったファイル検索など
-	NeoBundleLazy 'kien/ctrlp.vim.git'
+	NeoBundle 'kien/ctrlp.vim.git'
 " }}}
 
 

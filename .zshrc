@@ -235,11 +235,13 @@ alias mv="mv -i"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias tmux='tmux -2'
 
 # Global Alias
 alias -g L="| lv"
 alias -g H="| head"
 alias -g T="| tail"
+alias -g G="| ag"
 alias -g V="| vim -"
 alias -g R="| vim -R -"
 
