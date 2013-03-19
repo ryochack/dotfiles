@@ -43,6 +43,8 @@ source ~/.vim/preferences/.vimrc.move
 source ~/.vim/preferences/.vimrc.colors
 "編集関連
 source ~/.vim/preferences/.vimrc.edit
+"ファイルタイプ読み込み設定
+source ~/.vim/preferences/.vimrc.filetype
 "Encoding関連
 source ~/.vim/preferences/.vimrc.encode
 "その他
