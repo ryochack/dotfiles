@@ -239,8 +239,10 @@ let g:neobundle_default_git_protocol='git'
 	autocmd FileType python NeoBundleSource pytest.vim
 	" golang : Go言語のシンタックス・インデントを適用
 	NeoBundle 'golang', {'type':'nosync','base':'~/.vim/bundle'}
-	"NeoBundleLazy 'golang', {'type':'nosync','base':'~/.vim/bundle'}
 	"autocmd FileType go NeoBundleSource golang
+	" golang : Go言語補完 <C-X><C-O>で展開
+	NeoBundle 'gocomp', {'type':'nosync','base':'~/.vim/bundle'}
+	"autocmd FileType go NeoBundleSource gocomp
 	" rsense : Rubyに特化したomni補完
 	NeoBundleLazy 'taichouchou2/vim-rsense'
 	autocmd FileType ruby NeoBundleSource vim-rsense
