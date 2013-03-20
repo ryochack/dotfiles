@@ -4,6 +4,7 @@
 "========================================
 "    eregex
 "----------------------------------------
+let g:eregex_default_enable=0
 nnoremap ,/ :<C-u>M/
 nnoremap ,? :<C-u>M?
 
