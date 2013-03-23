@@ -1,16 +1,10 @@
 "**********************************************************
 "     その他設定 Misc
 "**********************************************************
-" quickfixウィンドウではq/ESCで閉じる
+" QuickFixをq/ESCで閉じる
 autocmd FileType qf nnoremap <buffer> q :ccl<CR>
 autocmd FileType qf nnoremap <buffer> <ESC> :ccl<CR>
 
-" QuickFix表示時に編集可能にする(Enterで飛べるようにする)
-command! CC :cclose
-function! COpenCustom()
-	copen
-	set modifiable
-	set nowrap
-endfunction
-command! CO :call COpenCustom()
+" QuickFixリストからEnterで飛ぶ
+autocmd FileType qf nnoremap <buffer> <CR> :.cc<CR>
 

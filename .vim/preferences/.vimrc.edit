@@ -18,7 +18,6 @@ autocmd BufWritePre * :%s/\s\+$//ge
 " 保存時にtabをスペースに変換する
 "autocmd BufWritePre * :%s/\t/  /ge
 
-
 " 無名レジスタのコピー・ペースト
 noremap gy "*y
 noremap gp "*p
@@ -35,4 +34,16 @@ vnoremap > >gv
 
 " カレントディレクトリまでのパスを取得
 cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
+
+" 保存時に対象ディレクトリが存在しなければ作成する
+augroup AutoMkdir
+  autocmd!
+  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+  function! s:auto_mkdir(dir, force)
+    if !isdirectory(a:dir) && (a:force ||
+    \    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
+      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+  endfunction
+augroup END
 
