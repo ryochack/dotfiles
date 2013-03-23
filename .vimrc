@@ -12,42 +12,21 @@ if filereadable(s:test_vimrc_name)
 	source `=s:test_vimrc_name`
 endif
 if exists("g:loaded_vim_plugin_test_vimrc")
-	source ~/.vim/preferences/.vimrc.tiny
+	source ~/.vim/preferences/tiny.vimrc
 	finish
 endif
 
 "Bundle管理されているpluginを読み込む
-source ~/.vim/preferences/.vimrc.bundle
+source ~/.vim/preferences/bundle.vimrc
 "Plugin設定
-source ~/.vim/preferences/.vimrc.plugins
+source ~/.vim/preferences/plugin.vimrc
 
 "基本設定
-source ~/.vim/preferences/.vimrc.basic
-"StatusLine設定
-source ~/.vim/preferences/.vimrc.statusline
-"Indent設定
-source ~/.vim/preferences/.vimrc.indent
-"折り畳み設定
-source ~/.vim/preferences/.vimrc.fold
-"表示関連
-source ~/.vim/preferences/.vimrc.appearance
-"補完関連
-source ~/.vim/preferences/.vimrc.complement
-"Tags関連
-source ~/.vim/preferences/.vimrc.tags
-"検索関連
-source ~/.vim/preferences/.vimrc.search
-"移動関連
-source ~/.vim/preferences/.vimrc.move
-"色関連
-source ~/.vim/preferences/.vimrc.colors
+source ~/.vim/preferences/general.vimrc
 "編集関連
-source ~/.vim/preferences/.vimrc.edit
-"ファイルタイプ読み込み設定
-source ~/.vim/preferences/.vimrc.filetype
-"Encoding関連
-source ~/.vim/preferences/.vimrc.encode
-"その他
-source ~/.vim/preferences/.vimrc.misc
-
+source ~/.vim/preferences/edit.vimrc
+"ファイル設定
+source ~/.vim/preferences/file.vimrc
+"表示設定
+source ~/.vim/preferences/appearance.vimrc
 
