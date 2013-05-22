@@ -1,5 +1,4 @@
-﻿
-" Cursor形状の設定
+﻿" Cursor形状の設定
 set guicursor=n-v:block,i:ver20
 " VisualModeで選択したテキストがクリップボードに入るようにする
 set guioptions+=a
@@ -19,6 +18,9 @@ highlight NonText cterm=NONE ctermfg=DarkRed ctermbg=NONE guifg=Brown guibg=bg
 highlight LineNr ctermfg=DarkGray
 " カレント行の色設定。下線のみを引く。
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE gui=underline guifg=NONE guibg=NONE
+
+" フォント設定
+set guifont=Consolas:h10,Lucida_Console:h10:w5 guifontwide=MS_Gothic:h9
 
 " メニューの文字化け対策
 source $VIMRUNTIME/delmenu.vim
