@@ -246,6 +246,9 @@ let g:neobundle_default_git_protocol='git'
 	" rsense : Rubyに特化したomni補完
 	NeoBundleLazy 'taichouchou2/vim-rsense'
 	autocmd FileType ruby NeoBundleSource vim-rsense
+	" verilog
+	NeoBundleLazy 'vim-scripts/verilog.vim.git'
+	autocmd FileType verilog NeoBundleSource verilog.vim
 " }}}
 
 

@@ -107,6 +107,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
 	\ 'ruby'    : $HOME.'/.vim/dict/ruby.dict',
 	\ 'scheme'  : $HOME.'/.vim/dict/scheme.dict',
 	\ 'python'  : $HOME.'/.vim/dict/python.dict',
+	\ 'verilog' : $HOME.'/.vim/dict/verilog.dict',
 	\ 'vim'     : $HOME.'/.vim/dict/vim.dict'
 	\ }
 

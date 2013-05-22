@@ -130,6 +130,7 @@ set noexpandtab
 "	autocmd FileType sql        setlocal sw=4 sts=4 ts=4 et
 "	autocmd FileType vb         setlocal sw=4 sts=4 ts=4 et
 "	autocmd FileType vim        setlocal sw=2 sts=2 ts=2 et
+"	autocmd FileType verilog    setlocal sw=2 sts=2 ts=2 et
 "	autocmd FileType xhtml      setlocal sw=4 sts=4 ts=4 et
 "	autocmd FileType xml        setlocal sw=4 sts=4 ts=4 et
 "	autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et

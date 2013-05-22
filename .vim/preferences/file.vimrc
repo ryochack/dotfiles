@@ -2,6 +2,7 @@
 "     ファイルタイプ読み込み設定 filetype
 "**********************************************************
 autocmd BufNewFile,BufRead *.go set filetype=go
+autocmd BufNewFile,BufRead *.v  set filetype=verilog
 
 
 "**********************************************************
