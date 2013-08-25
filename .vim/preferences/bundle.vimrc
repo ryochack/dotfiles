@@ -27,14 +27,14 @@ let g:neobundle_default_git_protocol='git'
 	NeoBundle 'godlygeek/tabular.git'
 	" YankRing : Yank履歴を使用する
 	NeoBundle 'vim-scripts/YankRing.vim.git'
-	" textmanip : 選択したテキストブロックを直感的に移動・複製する
-	NeoBundle 't9md/vim-textmanip.git'
 	" gundo : undo履歴を便利に追えるようにする
 	NeoBundle 'sjl/gundo.vim.git'
-	" toggle : true/false, yes/no などを切り替える
-	NeoBundle 'taku-o/vim-toggle.git'
 	" sequence : 連番を振るのを楽にする
 	NeoBundle 'kurkale6ka/vim-sequence.git'
+	" surround : テキストオブジェクトに対する括弧編集
+	NeoBundle 'tpope/vim-surround.git'
+	" commentary : コメントアウト (gc[c])
+	NeoBundle 'tpope/vim-commentary.git'
 
 	" operator-user : 簡単にoperatorを定義できるようにする
 	NeoBundle 'kana/vim-operator-user.git'
@@ -45,8 +45,6 @@ let g:neobundle_default_git_protocol='git'
 	" operator-camelize : 選択範囲をCamelCaseやsnake_caseに変換する
 	NeoBundle 'tyru/operator-camelize.vim.git'
 
-	" surround : テキストオブジェクトに対する括弧編集
-	NeoBundle 'tpope/vim-surround.git'
 	" textobj-user : 簡単にテキストオブジェクトを作れる
 	NeoBundle 'kana/vim-textobj-user.git'
 	" textobj-indent : インデントされたものをtext-object化
@@ -106,6 +104,8 @@ let g:neobundle_default_git_protocol='git'
 	NeoBundle 'kana/vim-smartword.git'
 	" wokmarks : markの拡張。自動でmarkを振る,移動,リスト表示,削除を行う
 	NeoBundle 'vim-scripts/wokmarks.vim.git'
+	" poslist : <C-o>,<C-i>拡張。同じ行内での移動に対応
+	NeoBundle 'thinca/vim-poslist.git'
 " }}}
 
 
@@ -177,8 +177,9 @@ let g:neobundle_default_git_protocol='git'
 	NeoBundle 'thinca/vim-openbuf.git'
 	" vimdoc-ja : vim日本語ドキュメント
 	NeoBundle 'vim-jp/vimdoc-ja.git'
-	" powerline : リッチなステータスラインにする
-	NeoBundle 'Lokaltog/vim-powerline.git'
+	" lightline : リッチなステータスラインにする
+	NeoBundle 'itchyny/lightline.vim.git'
+
 	" junkfile : 一時ファイル作成
 	NeoBundle 'junkfile', {'type':'nosync','base':'~/.vim/bundle'}
 " }}}
@@ -240,9 +241,12 @@ let g:neobundle_default_git_protocol='git'
 	" golang : Go言語のシンタックス・インデントを適用
 	NeoBundleLazy 'golang', {'type':'nosync','base':'~/.vim/bundle'}
 	autocmd FileType go NeoBundleSource golang
-	" golang : Go言語補完 <C-X><C-O>で展開
-	NeoBundleLazy 'gocomp', {'type':'nosync','base':'~/.vim/bundle'}
-	autocmd FileType go NeoBundleSource gocomp
+	" golint : Go言語のLint
+	NeoBundleLazy 'golint', {'type':'nosync','base':'~/.vim/bundle'}
+	autocmd FileType go NeoBundleSource golint
+	" gocode : Go言語補完 <C-X><C-O>で展開
+	NeoBundleLazy 'gocode', {'type':'nosync','base':'~/.vim/bundle'}
+	autocmd FileType go NeoBundleSource gocode
 	" rsense : Rubyに特化したomni補完
 	NeoBundleLazy 'taichouchou2/vim-rsense'
 	autocmd FileType ruby NeoBundleSource vim-rsense

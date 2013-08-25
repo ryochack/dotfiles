@@ -1,6 +1,19 @@
 "**********************************************************
 "     プラグイン設定 Plugins
 "**********************************************************
+
+"========================================
+"    operator
+"----------------------------------------
+"# replace
+map _ <Plug>(operator-replace)
+"# camelize
+map <Space>c <Plug>(operator-camelize)
+map <Space>C <Plug>(operator-decamelize)
+"# sort
+map <Space>s <Plug>(operator-sort)
+
+
 "========================================
 "    eregex
 "----------------------------------------
@@ -32,6 +45,19 @@ let g:yankring_history_file='vim_yankring_hist'
 
 
 "========================================
+"    sequence
+"----------------------------------------
+vnoremap [seq] <Nop>
+vmap     ,s [seq]
+"# 連番をふる
+vmap <silent> [seq]u <plug>SequenceV_Increment
+vmap <silent> [seq]d <plug>SequenceV_Decrement
+"# 値を足す
+vmap <silent> [seq]a <plug>SequenceAdd
+vmap <silent> [seq]s <plug>SequenceSubtract
+
+
+"========================================
 "    bufexplorer
 "----------------------------------------
 "# Helpを常に表示
@@ -41,7 +67,7 @@ let bufExplorerDetailedHelp=1
 "========================================
 "    DumbBuf
 "----------------------------------------
-"<Leader>b<Space>でBufferList
+"# <Leader>b<Space>でBufferList
 let dumbbuf_hotkey = '<Leader>b<Space>'
 let dumbbuf_mappings = {
 	\ 'n': {
@@ -262,6 +288,14 @@ highlight EasyMotionTarget ctermbg=none ctermfg=green
 
 
 "========================================
+"    poslist
+"----------------------------------------
+let g:poslist_histsize=200
+nmap <C-o> <Plug>(poslist-prev-pos)
+nmap <C-i> <Plug>(poslist-next-pos)
+
+
+"========================================
 "    ctrlp
 "----------------------------------------
 let g:ctrlp_map='<C-x>'
@@ -270,9 +304,11 @@ let g:ctrlp_cache_dir = $HOME.'/.vim/temp/.ctrlp_cache'
 
 
 "========================================
-"    Powerline
+"    lightline
 "----------------------------------------
-let g:Powerline_symbols='fancy'
+let g:lightline = {
+	\ 'colorscheme': 'wombat',
+	\ }
 set t_Co=256
 set encoding=utf-8
 
