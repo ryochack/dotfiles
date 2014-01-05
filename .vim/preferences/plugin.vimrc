@@ -15,75 +15,30 @@ map <Space>s <Plug>(operator-sort)
 
 
 "========================================
-"    eregex
+"    yankround
 "----------------------------------------
-let g:eregex_default_enable=0
-nnoremap ,/ :<C-u>M/
-nnoremap ,? :<C-u>M?
-
-
-"========================================
-"    yankring
-"----------------------------------------
-"# Yankの履歴を管理
-"# 再起動後も履歴を保持
 set viminfo+=!
-"# YankRing有効
-let g:yankring_enabled=1
-let g:yankring_max_history=20
-let g:yankring_max_display=20
-"# 重複した履歴は追加しない
-let g:yankring_ignore_duplicate=1
-"# ClipBoardをモニタリングする
-let g:yankring_clipboard_monitor=1
-"# '.'を置き換えない
-let g:yankring_map_dot=0
-"# yankring_historyファイルの場所
-let g:yankring_history_dir=$HOME.'/.vim/temp'
-"# yankring_historyファイルの名前
-let g:yankring_history_file='vim_yankring_hist'
+let g:yankround_dir = $HOME.'/.vim/temp'
+let g:yankround_max_history = 30
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap gp <Plug>(yankround-gp)
+nmap gP <Plug>(yankround-gP)
+nmap <C-p> <Plug>(yankround-prev)
+nmap <C-n> <Plug>(yankround-next)
 
 
 "========================================
 "    sequence
 "----------------------------------------
-vnoremap [seq] <Nop>
-vmap     ,s [seq]
 "# 連番をふる
-vmap <silent> [seq]u <plug>SequenceV_Increment
-vmap <silent> [seq]d <plug>SequenceV_Decrement
+vmap <silent> <M-u> <plug>SequenceV_Increment
+vmap <silent> <M-d> <plug>SequenceV_Decrement
+nmap <silent> <M-u> <plug>SequenceN_Increment
+nmap <silent> <M-d> <plug>SequenceN_Decrement
 "# 値を足す
-vmap <silent> [seq]a <plug>SequenceAdd
-vmap <silent> [seq]s <plug>SequenceSubtract
-
-
-"========================================
-"    bufexplorer
-"----------------------------------------
-"# Helpを常に表示
-let bufExplorerDetailedHelp=1
-
-
-"========================================
-"    DumbBuf
-"----------------------------------------
-"# <Leader>b<Space>でBufferList
-let dumbbuf_hotkey = '<Leader>b<Space>'
-let dumbbuf_mappings = {
-	\ 'n': {
-	\ 	'<Esc>': { 'opt': '<silent>', 'mapto': ':<C-u>close<CR>' }
-	\ }
-	\ }
-let dumbbuf_single_key  = 1
-let dumbbuf_updatetime  = 1    " &updatetimeの最小値
-let dumbbuf_wrap_cursor = 0
-let dumbbuf_remove_marked_when_close = 1
-
-
-"========================================
-"    taglist
-"----------------------------------------
-nnoremap <F4> :<C-u>Tlist<CR>
+vmap <silent> <M-a> <plug>SequenceAdd
+vmap <silent> <M-s> <plug>SequenceSubtract
 
 
 "========================================
@@ -213,48 +168,6 @@ xmap <Space>j <Plug>(quickhl-match)
 
 
 "========================================
-"    unite
-"----------------------------------------
-"# uniteバッファを常にインサートモードで起動する
-"let g:unite_enable_start_insert=1
-"# uniteのウィンドウを生成する際、画面分割の位置ルールを指定する。
-"# "topleft" or "botright"
-let g:unite_split_rule='botright'
-"# uniteのウィンドウを垂直分割にするかどうかを制御する。1ならば垂直分割にする。
-let g:unite_enable_split_vertically=0
-
-"------------------------------
-"    unite-sources
-"------------------------------
-" [unite-ack]
-let g:unite_source_ack_command = "ack"
-
-nnoremap [unite] <Nop>
-nmap     ,u [unite]
-nnoremap <silent> [unite]*  :<C-u>Unite source -buffer-name=sources<CR>
-nnoremap <silent> [unite]f  :<C-u>Unite file file_mru -buffer-name=files<CR>
-nnoremap <silent> [unite]b  :<C-u>Unite buffer -buffer-name=buffers<CR>
-nnoremap <silent> [unite]"  :<C-u>Unite register -buffer-name=registers<CR>
-nnoremap <silent> [unite]c  :<C-u>Unite command -buffer-name=commands<CR>
-nnoremap <silent> [unite]hc :<C-u>Unite history/command -buffer-name=commands_history<CR>
-nnoremap <silent> [unite]hs :<C-u>Unite history/search -buffer-name=searchs_history<CR>
-nnoremap <silent> [unite]s  :<C-u>Unite snippet -buffer-name=snippets<CR>
-nnoremap <silent> [unite]t  :<C-u>Unite tab -buffer-name=tabs<CR>
-nnoremap <silent> [unite]o  :<C-u>Unite outline -buffer-name=outline<CR>
-nnoremap <silent> [unite]t  :<C-u>Unite tag -buffer-name=tags<CR>
-nnoremap <silent> [unite]l  :<C-u>Unite line -buffer-name=lines<CR>
-nnoremap <silent> [unite]r  :<C-u>Unite launch -buffer-name=launch<CR>
-nnoremap <silent> [unite]'  :<C-u>Unite mark -buffer-name=mark<CR>
-nnoremap <silent> [unite]m  :<C-u>Unite bookmark -buffer-name=bookmark<CR>
-nnoremap <silent> [unite]M  :<C-u>UniteBookmarkAdd<CR>
-nnoremap <silent> [unite]a  :<C-u>Unite ack -buffer-name=ack -no-quit<CR>
-nnoremap <silent> [unite]g  :<C-u>Unite grep -buffer-name=grep -no-quit<CR>
-nnoremap <silent> [unite]j  :<C-u>Unite jump -buffer-name=jumps<CR>
-nnoremap <silent> [unite]q  :<C-u>Unite qf -buffer-name=quickfix -no-quit<CR>
-nnoremap <silent> [unite]z  :<C-u>UniteResume
-
-
-"========================================
 "    Gist
 "----------------------------------------
 let g:gist_detect_filetype=1
@@ -276,18 +189,6 @@ nnoremap <silent> [git]b :<C-u>Gblame<CR>
 
 
 "========================================
-"    easymotion
-"----------------------------------------
-"# キーバインドの先頭キーの設定
-"# デフォルトだと、'<Leader>'(\) が設定されている
-"# <Space>w の様な呼び出しを行いたいなら下記の設定になる
-"# let g:EasyMotion_leader_key = '<Leader>'
-"# Custom HighLight
-highlight EasyMotionTarget ctermbg=none ctermfg=green
-"highlight EasyMotionShade  ctermbg=none ctermfg=blue
-
-
-"========================================
 "    poslist
 "----------------------------------------
 let g:poslist_histsize=200
@@ -298,9 +199,30 @@ nmap <C-i> <Plug>(poslist-next-pos)
 "========================================
 "    ctrlp
 "----------------------------------------
-let g:ctrlp_map='<C-x>'
+let g:ctrlp_map='<Space><Space>'
 let g:ctrlp_use_migemo=1
-let g:ctrlp_cache_dir = $HOME.'/.vim/temp/.ctrlp_cache'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_use_caching = 1
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_cache_dip = $HOME.'/.vim/temp/.ctrlp_cache'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_open_new_file = 'r'
+let g:ctrlp_mruf_max = 500
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
+let g:ctrlp_extensions = ['line', 'undo', 'changes', 'yankround', 'tag', 'buffertag', 'quickfix', 'dir']
+" ['rtscript', 'mixed', 'bookmarkdir']
+nnoremap [ctrlp] <Nop>
+nmap     ,p [ctrlp]
+nnoremap [ctrlp]p :<C-u>CtrlP<Space>
+nnoremap <silent> [ctrlp]b :<C-u>CtrlPBuffer<CR>
+nnoremap <silent> [ctrlp]m :<C-u>CtrlPMRU<CR>
+nnoremap <silent> [ctrlp]t :<C-u>CtrlPTag<CR>
+nnoremap <silent> [ctrlp]q :<C-u>CtrlPQuickfix<CR>
+nnoremap <silent> [ctrlp]d :<C-u>CtrlPDir<Space>
+nnoremap <silent> [ctrlp]u :<C-u>CtrlPUndo<CR>
+nnoremap <silent> [ctrlp]l :<C-u>CtrlPLine<CR>
+nnoremap <silent> [ctrlp]c :<C-u>CtrlPChangeAll<CR>
+nnoremap <silent> [ctrlp]y :<C-u>CtrlPYankRound<CR>
 
 
 "========================================
@@ -314,29 +236,6 @@ set encoding=utf-8
 
 
 "========================================
-"    colorscheme:solarized
-"----------------------------------------
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_bold=1
-let g:solarized_underline=1
-let g:solarized_italic=1
-let g:solarized_hitrail=0
-let g:solarized_menu=1
-let g:solarized_contrast="high"
-let g:solarized_visibility="low"
-
-
-"========================================
-"    cmigemo
-"----------------------------------------
-if has ('migemo')
-	set migemo
-	set migemodict=~/.vim/opt/cmigemo/dict/utf-8.d/migemo-dict
-endif
-
-
-"========================================
 "    fitpaste
 "----------------------------------------
 vnoremap [fitpaste] <Nop>
@@ -345,30 +244,4 @@ vmap <silent> [fitpaste]i <Plug>(fitpaste-insert)
 vmap <silent> [fitpaste]a <Plug>(fitpaste-append)
 vmap <silent> [fitpaste]p <Plug>(fitpaste-replace)
 
-
-"========================================
-"    rsense
-"----------------------------------------
-let g:rsenseUseOmniFunc = 1
-let g:rsenseHome = expand('~/.vim/opt/rsense-0.3')
-
-function! SetUpRubySetting()
-	setlocal completefunc=RSenseCompleteFunction
-	nmap <buffer>tj :RSenseJumpToDefinition<CR>
-	nmap <buffer>tk :RSenseWhereIs<CR>
-	nmap <buffer>td :RSenseTypeHelp<CR>
-endfunction
-autocmd FileType ruby,eruby,ruby.rspec call SetUpRubySetting()
-
-" rubyの設定
-if !exists('g:neocomplcache_omni_functions')
-	let g:neocomplcache_omni_functions = {}
-endif
-let g:neocomplcache_omni_functions.ruby = 'RSenseCompleteFunction'
-
-" Enable heavy omni completion.
-if !exists('g:neocomplcache_omni_patterns')
-	let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 

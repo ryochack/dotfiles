@@ -49,6 +49,10 @@ noremap ; :
 " Spaceは何もしない
 nmap <silent> <Space> <Nop>
 xmap <silent> <Space> <Nop>
+nmap <silent> <C-a> <Nop>
+xmap <silent> <C-a> <Nop>
+nmap <silent> <C-e> <Nop>
+xmap <silent> <C-e> <Nop>
 
 " ファイルタイプ判定をon
 filetype plugin on
@@ -57,7 +61,6 @@ filetype plugin on
 "**********************************************************
 "     Tags設定 Tags
 "**********************************************************
-
 " 複数候補がある場合に選択してからタグジャンプ
 noremap <C-]> g<C-]>
 
@@ -114,21 +117,6 @@ noremap <C-a> <Home>
 noremap <C-e> <End>
 lnoremap <C-a> <Home>
 lnoremap <C-e> <End>
-
-" ()[]までの選択を効率的にする
-vnoremap ( t(
-vnoremap ) t)
-vnoremap [ t[
-vnoremap ] t]
-
-onoremap ( t(
-onoremap ) t)
-onoremap [ t[
-onoremap ] t]
-
-" Tab移動
-noremap <silent> <C-F11> :<C-u>tabp<CR>
-noremap <silent> <C-F12> :<C-u>tabn<CR>
 
 
 "**********************************************************

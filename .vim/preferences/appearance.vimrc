@@ -169,7 +169,7 @@ set foldlevel=100
 " ハイライト on
 syntax enable
 
-colorscheme solarized
+colorscheme hybrid
 set background=dark
 
 set t_Co=256

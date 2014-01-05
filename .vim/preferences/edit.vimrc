@@ -7,12 +7,6 @@ set iminsert=0 imsearch=0
 set noimcmdline
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
-" Insert mode中で単語単位/行単位の削除をアンドゥ可能にする
-inoremap <C-u> <C-g>u<C-u>
-inoremap <C-w> <C-g>u<C-w>
-" インサートモード中に<C-o>でyankした内容をputする
-inoremap <C-o> <ESC>:<C-U>YRPaste 'p'<CR>i
-
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
 " 保存時にtabをスペースに変換する
@@ -25,8 +19,6 @@ noremap gP "*P
 
 " Return有効
 nnoremap <CR> i<CR><ESC>
-" 明示的にTABを入力(補完が動いてしまうときに)
-inoremap <S-TAB> <C-i>
 
 " 選択範囲のインデントを連続して変更する
 vnoremap < <gv
@@ -84,6 +76,5 @@ autocmd FileType ruby set omnifunc=rubycomplete#Complete
 
 filetype plugin indent on
 syntax enable
-
 
 

@@ -65,14 +65,14 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
-noremap <C-a> <Home>
-noremap <C-e> <End>
-lnoremap <C-a> <Home>
-lnoremap <C-e> <End>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
+"noremap <C-a> <Home>
+"noremap <C-e> <End>
+"lnoremap <C-a> <Home>
+"lnoremap <C-e> <End>
+"inoremap <C-j> <Down>
+"inoremap <C-k> <Up>
+"inoremap <C-h> <Left>
+"inoremap <C-l> <Right>
 
 filetype plugin indent on
 syntax enable
