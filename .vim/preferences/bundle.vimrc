@@ -203,6 +203,9 @@ let g:neobundle_default_git_protocol='git'
 
 " ColorScheme {{{
 	" colorscheme-hybrid : 目に優しいカラースキーマ
+	NeoBundle "vim-scripts/twilight.git"
+	NeoBundle "nanotech/jellybeans.vim.git"
+	NeoBundle "vim-scripts/Wombat.git"
 	NeoBundle 'w0ng/vim-hybrid.git'
 " }}}
 

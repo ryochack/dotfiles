@@ -175,6 +175,8 @@ set background=dark
 set t_Co=256
 "set t_Sf=[3%dm
 "set t_Sb=[4%dm
+" tmuxで背景色がおかしくなる対応
+set t_ut=
 
 " Tabと空白の色設定
 highlight SpecialKey cterm=NONE ctermfg=DarkRed ctermbg=NONE guifg=Brown guibg=bg
