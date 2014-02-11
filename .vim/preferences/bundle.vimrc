@@ -135,7 +135,7 @@ let g:neobundle_default_git_protocol='git'
 	" vimdoc-ja : vim日本語ドキュメント
 	NeoBundle 'vim-jp/vimdoc-ja.git'
 	" lightline : リッチなステータスラインにする
-	NeoBundle 'itchyny/lightline.vim.git'
+	"NeoBundle 'itchyny/lightline.vim.git'
 	" junkfile : 一時ファイル作成
 	NeoBundle 'junkfile', {'type':'nosync','base':'~/.vim/bundle'}
 " }}}

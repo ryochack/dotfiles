@@ -11,7 +11,7 @@ set cmdheight=1
 " 対応する()を表示
 set showmatch
 " 行番号を表示
-set number
+set nonumber
 " 不可視文字表示
 set list
 " 不可視文字の表示形式設定
@@ -76,9 +76,9 @@ function! GetEFstatus()
 	unlet fenc
 	return str
 endfunction
-"set statusline=\ %-f%-5(\ %r%m\ %)%=%{GetEFstatus()}\ %(%4c,\ %4l/%4L\ %)
+set statusline=\ %-f%-5(\ %r%m\ %)%=%{GetEFstatus()}\ %(%4c,\ %4l/%4L\ %)
 " ステータスライン色設定
-"highlight StatusLine ctermfg=white ctermbg=red
+highlight StatusLine ctermfg=white ctermbg=red
 
 " コマンドをステータスラインに表示
 set showcmd
@@ -179,9 +179,9 @@ set t_Co=256
 set t_ut=
 
 " Tabと空白の色設定
-highlight SpecialKey cterm=NONE ctermfg=DarkRed ctermbg=NONE guifg=Brown guibg=bg
+highlight SpecialKey cterm=NONE ctermfg=DarkGray ctermbg=NONE guifg=Brown guibg=bg
 " 行末の色設定
-highlight NonText cterm=NONE ctermfg=DarkRed ctermbg=NONE guifg=Brown guibg=bg
+highlight NonText cterm=NONE ctermfg=DarkGray ctermbg=NONE guifg=Brown guibg=bg
 " 行番号の色設定
 highlight LineNr ctermfg=DarkGray
 " カレント行の色設定。下線のみを引く。

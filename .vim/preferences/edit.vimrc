@@ -50,7 +50,7 @@ set wildchar=<TAB>
 " 補完動作設定:最長マッチ
 set wildmode=list:longest
 " コマンド・検索パターンの履歴数
-set history=1000
+set history=100
 " 補完候補の検索場所
 set complete=.,w,b,u,k,t,i
 " 挿入モード補完設定

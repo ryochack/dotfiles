@@ -21,7 +21,7 @@ set listchars=tab:^\ ,trail:-,extends:@,eol:<
 set wildmenu
 set wildchar=<TAB>
 set wildmode=list:longest
-set history=1000
+set history=100
 set complete=.,w,b,u,k,t,i
 set completeopt=menu,menuone,preview
 
