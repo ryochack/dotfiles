@@ -7,4 +7,5 @@ ln -is ~/.dotfiles/.vim ~/.vim
 ln -is ~/.dotfiles/.gitconfig ~/.gitconfig
 ln -is ~/.dotfiles/.gitignore ~/.gitignore
 ln -is ~/.dotfiles/.tmux.conf ~/.tmux.conf
+ln -is ~/.dotfiles/.tigrc ~/.tigrc
 

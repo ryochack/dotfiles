@@ -97,7 +97,7 @@ let g:neobundle_default_git_protocol='git'
 	" smartword : 単語移動を拡張
 	NeoBundle 'kana/vim-smartword.git'
 	" poslist : <C-o>,<C-i>拡張。同じ行内での移動に対応
-	NeoBundle 'thinca/vim-poslist.git'
+	"NeoBundle 'thinca/vim-poslist.git'
 " }}}
 
 

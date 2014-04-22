@@ -241,7 +241,7 @@ alias tmux='tmux -2'
 alias -g L="| lv"
 alias -g H="| head"
 alias -g T="| tail"
-alias -g G="| ag"
+alias -g G="| egrep"
 alias -g V="| vim -"
 alias -g R="| vim -R -"
 
