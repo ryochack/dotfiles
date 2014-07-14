@@ -120,7 +120,7 @@ endif
 	" "{register}_{motion}  <Plug>(operator-replace)
 	" -> Replace text that {motion} moves over with register x.
 if neobundle#is_installed("vim-operator-replace")
-	noremap _ <Plug>(operator-replace)
+	map _ <Plug>(operator-replace)
 endif
 
 " [surround] テキストオブジェクトに対する括弧編集
