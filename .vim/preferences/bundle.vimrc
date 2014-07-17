@@ -4,14 +4,16 @@
 
 if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim
-	call neobundle#rc(expand('~/.vim/bundle'))
 endif
 
+call neobundle#begin(expand('~/.vim/bundle'))
+
 " Git Protocol
-let g:neobundle_default_git_protocol='git'
+let g:neobundle_default_git_protocol='https'
+
 
 " Bundle {{{
-	NeoBundle 'Shougo/neobundle.vim'
+	NeoBundleFetch 'Shougo/neobundle.vim'
 " }}}
 
 
@@ -224,5 +226,7 @@ endfunction
 command! LoadLazyPluginUtility :call LoadLazyPluginUtility()
 
 
-filetype plugin indent on
+call neobundle#end()
+
+NeoBundleCheck
 
