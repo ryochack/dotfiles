@@ -5,19 +5,19 @@
 " $VIMRUNTIME/filetype.vimで定義されていないものを追加定義する
 augroup DefineFileType
 	autocmd!
-	autocmd BufNewFile,BufRead *.go set filetype=go
-	autocmd BufNewFile,BufRead *.md set filetype=markdown
+	autocmd BufNewFile,BufRead *.go setlocal filetype=go
+	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 augroup END
 
 
 augroup FileTypeC
 	autocmd!
 	" 辞書設定
-	autocmd FileType c,cc,cpp,h set cindent
-	autocmd FileType c,h set dictionary+=~/.vim/dict/c.dict
-	autocmd FileType cc,cpp,h set dictionary+=~/.vim/dict/cpp.dict
+	autocmd FileType c,cc,cpp,h setlocal cindent
+	autocmd FileType c,h setlocal dictionary+=~/.vim/dict/c.dict
+	autocmd FileType cc,cpp,h setlocal dictionary+=~/.vim/dict/cpp.dict
 	" FileType毎のOmni補完を設定
-	autocmd FileType c set omnifunc=ccomplete#Complete
+	autocmd FileType c setlocal omnifunc=ccomplete#Complete
 	"そのファイルタイプにあわせたインデントを利用する
 	"autocmd FileType c   setlocal shiftwidth=4 softtabstop=4 tabstop=4 noexpandtab
 augroup END
@@ -25,57 +25,57 @@ augroup END
 
 augroup FileTypeGo
 	autocmd!
-	autocmd FileType go set dictionary+=~/.vim/dict/go.dict
+	autocmd FileType go setlocal dictionary+=~/.vim/dict/go.dict
 augroup END
 
 
 augroup FileTypeRuby
 	autocmd!
-	autocmd FileType ruby set omnifunc=rubycomplete#Complete
+	autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 augroup END
 
 
 augroup FileTypePython
 	autocmd!
-	autocmd FileType python set omnifunc=pythoncomplete#Complete
+	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 augroup END
 
 
 augroup FileTypeJavaScript
 	autocmd!
-	autocmd FileType javascript set dictionary+=~/.vim/dict/javascript.dict
-	autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType javascript setlocal dictionary+=~/.vim/dict/javascript.dict
+	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 augroup END
 
 
 augroup FileTypeCss
 	autocmd!
-	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 augroup END
 
 
 augroup FileTypeHtml
 	autocmd!
-	autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 augroup END
 
 
 augroup FileTypeXml
 	autocmd!
-	autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
 
 
 augroup FileTypePhp
 	autocmd!
-	autocmd FileType php set dictionary+=~/.vim/dict/php.dict
-	autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+	autocmd FileType php setlocal dictionary+=~/.vim/dict/php.dict
+	autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 augroup END
 
 
 augroup FileTypeVerilog
 	autocmd!
-	autocmd FileType verilog set dictionary+=~/.vim/dict/php.dict
-	autocmd FileType verilog set omnifunc=phpcomplete#CompletePHP
+	autocmd FileType verilog setlocal dictionary+=~/.vim/dict/php.dict
+	autocmd FileType verilog setlocal omnifunc=phpcomplete#CompletePHP
 augroup END
 
