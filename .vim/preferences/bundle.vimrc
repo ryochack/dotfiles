@@ -170,8 +170,8 @@ let g:neobundle_default_git_protocol='https'
 
 " FileType {{{
 	" vim-go : Go development plugin for Vim
-	NeoBundle 'fatih/vim-go'
-"	autocmd FileType go NeoBundleSource vim-go.git
+	NeoBundleLazy 'fatih/vim-go'
+	autocmd FileType go NeoBundleSource vim-go
 
 	" python-mode : Python設定。docの呼び出し,補完,文法チェック,リファクタリング,Scriptの実行
 	NeoBundleLazy 'klen/python-mode'

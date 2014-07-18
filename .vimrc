@@ -3,6 +3,7 @@ highlight clear
 syntax clear
 mapclear
 mapclear!
+autocmd!
 "vim機能を有効にする
 set nocompatible
 
