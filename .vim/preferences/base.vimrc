@@ -18,7 +18,7 @@ set backspace=indent,eol,start
 " テキスト整形オプション
 set formatoptions=roqlm
 " ビープ音を鳴らさない
-set vb t_vb =
+set visualbell t_vb=
 " Explorerの初期ディレクトリ(:browse)
 set browsedir=buffer
 " カーソルを行頭・行末で止まらないようにする
