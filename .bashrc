@@ -103,7 +103,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 #use zsh
-if [ -f /bin/zsh ]; then
+if [ -x /usr/local/bin/zsh ]; then
+    exec /usr/local/bin/zsh
+elif [ -x /bin/zsh ]; then
     exec /bin/zsh
 fi
 
