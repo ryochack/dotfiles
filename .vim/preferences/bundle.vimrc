@@ -184,6 +184,10 @@ let g:neobundle_default_git_protocol='https'
 	" verilog
 	NeoBundleLazy 'vim-scripts/verilog.vim'
 	autocmd FileType verilog NeoBundleSource verilog.vim
+
+	" scheme
+	NeoBundleLazy 'aharisu/vim_goshrepl'
+	autocmd FileType scheme NeoBundleSource vim_goshrepl
 " }}}
 
 
