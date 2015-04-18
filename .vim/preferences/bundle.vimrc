@@ -132,13 +132,14 @@ let g:neobundle_default_git_protocol='https'
 	NeoBundle 'junkfile', {'type':'nosync','base':'~/.vim/bundle'}
 	" vimproc : vimから非同期実行
 	NeoBundle 'Shougo/vimproc', {
-	      \ 'build' : {
-	      \     'windows' : 'make -f make_mingw32.mak',
-	      \     'cygwin' : 'make -f make_cygwin.mak',
-	      \     'mac' : 'make -f make_mac.mak',
-	      \     'unix' : 'make -f make_unix.mak',
-	      \    },
-	      \ }
+		\ 'build' : {
+		\     'windows' : 'tools\\update-dll-mingw',
+		\     'cygwin' : 'make -f make_cygwin.mak',
+		\     'mac' : 'make -f make_mac.mak',
+		\     'linux' : 'make',
+		\     'unix' : 'gmake',
+		\    },
+		\ }
 	" webapi : vim Interface to Web API (gistで必要)
 	NeoBundle 'mattn/webapi-vim'
 	" open-browser : カーソル下のURLを開くor単語を検索エンジンで検索
