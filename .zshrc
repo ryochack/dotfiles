@@ -238,6 +238,7 @@ alias egrep='egrep --color=auto'
 alias tmux='tmux -2'
 
 # Global Alias
+alias -g C="| cat"
 alias -g L="| lv"
 alias -g H="| head"
 alias -g T="| tail"
