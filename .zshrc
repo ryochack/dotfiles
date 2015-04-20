@@ -177,7 +177,7 @@ case ${UID} in
 0)  # rootだと強調表示
 PROMPT="
 %B%{$fg[green]%}%~%{$reset_color%}
-[%n@%M]$%b "
+[%n@%m]$%b "
 PROMPT2="%B%_>%b "
 SPROMPT="%B%r is correct? [n,y,a,e]:%b "
 RPROMPT="%B%{$fg[cyan]%}%D %*%{$reset_color%}%b"
@@ -185,7 +185,7 @@ RPROMPT="%B%{$fg[cyan]%}%D %*%{$reset_color%}%b"
 *)
 PROMPT="
 %{$fg[green]%}%~%{$reset_color%}
-[%n@%M]$ "
+[%n@%m]$ "
 PROMPT2="%_> "
 SPROMPT="%r is correct? [n,y,a,e]: "
 RPROMPT="%{$fg[cyan]%}%D %*%{$reset_color%}"
