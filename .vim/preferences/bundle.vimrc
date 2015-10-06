@@ -108,6 +108,10 @@ let g:neobundle_default_git_protocol='https'
 
 
 " Filer {{{
+	" dirvish : 小さく高速なファイラ
+	NeoBundle 'justinmk/vim-dirvish'
+	" NerdTree : ツリー型ファイラ
+	NeoBundle 'scrooloose/nerdtree.git'
 	" vimfiler : 高機能ファイラ
 	NeoBundle 'Shougo/vimfiler'
 " }}}
@@ -120,6 +124,8 @@ let g:neobundle_default_git_protocol='https'
 
 
 " Utility {{{
+	" localrc : 各ディレクトリのlocal vimrcファイルを置けるようにする
+	NeoBundle 'thinca/vim-localrc'
 	" quickrun : 編集中のファイルを簡単に実行
 	NeoBundle 'thinca/vim-quickrun'
 	" vinarise : バイナリエディタ

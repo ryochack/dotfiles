@@ -212,7 +212,7 @@ alias -s xml=lv
 
 case "${OSTYPE}" in
 	freebsd*|darwin*)
-		alias ls="ls -F -G"
+		alias ls="ls -F"
 		;;
 	linux*)
 		alias ls="ls -F --color=auto"
