@@ -11,6 +11,10 @@ set nobackup
 set nowritebackup
 " 編集中Fileを外部から変更されたら自動的に再読込
 set autoread
+augroup vimrc-checktime
+	autocmd!
+	autocmd WinEnter * checktime
+augroup END
 " 変更中でも保存せずに別ファイル表示を許可
 set hidden
 " 挿入モードでバックスペース拡張
