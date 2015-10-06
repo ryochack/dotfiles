@@ -93,7 +93,7 @@ let g:neobundle_default_git_protocol='https'
 
 " Move {{{
 	" smartword : 単語移動を拡張
-	NeoBundle 'kana/vim-smartword'
+	"NeoBundle 'kana/vim-smartword'
 	" visualstar : VisualMode中に*,#で選択されているTextを検索
 	NeoBundle 'thinca/vim-visualstar'
 " }}}
