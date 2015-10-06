@@ -295,13 +295,13 @@ endif
 "    quickhl
 "----------------------------------------
 if neobundle#is_installed("vim-quickhl")
-	nnoremap <Space>m <Plug>(quickhl-manual-this)
-	xnoremap <Space>m <Plug>(quickhl-manual-this)
-	nnoremap <Space>t <Plug>(quickhl-manual-toggle)
-	nnoremap <Space>M <Plug>(quickhl-manual-reset)
-	xnoremap <Space>M <Plug>(quickhl-manual-reset)
-	nnoremap <Space>j <Plug>(quickhl-cword-toggle)
-	xnoremap <Space>j <Plug>(quickhl-cword-toggle)
+	nmap <Space>m <Plug>(quickhl-manual-this)
+	xmap <Space>m <Plug>(quickhl-manual-this)
+	nmap <Space>t <Plug>(quickhl-manual-toggle)
+	nmap <Space>M <Plug>(quickhl-manual-reset)
+	xmap <Space>M <Plug>(quickhl-manual-reset)
+	nmap <Space>j <Plug>(quickhl-cword-toggle)
+	xmap <Space>j <Plug>(quickhl-cword-toggle)
 endif
 
 
