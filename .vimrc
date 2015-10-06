@@ -22,12 +22,13 @@ source ~/.vim/preferences/filetype.vimrc
 " Filetype Plugins
 source ~/.vim/preferences/plugin_filetype.vimrc
 
-" Base Setting
-source ~/.vim/preferences/base.vimrc
+"pluginのcolorschemeの設定を有効にした後にbase.vimrcの設定を反映する
+syntax enable
+
 " KeyBinds
 source ~/.vim/preferences/keybind.vimrc
+" Base Setting
+source ~/.vim/preferences/base.vimrc
 
-
-syntax enable
 filetype plugin indent on
 
