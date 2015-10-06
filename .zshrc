@@ -260,4 +260,5 @@ function alc() {
 
 # === Load Additional Setting File ===
 [ -f ~/.profile ] && source ~/.profile
+[ -f ~/.dotfiles/git-flow-completion/git-flow-completion.zsh ] && source ~/.dotfiles/git-flow-completion/git-flow-completion.zsh
 
