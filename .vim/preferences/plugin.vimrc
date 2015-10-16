@@ -262,7 +262,7 @@ endif
 "    tagbar
 "----------------------------------------
 if neobundle#is_installed("tagbar")
-	let g:tagbar_left  = 0
+	let g:tagbar_left  = 1
 	let g:tagbar_width = 40
 	let g:tagbar_zoomwidth = 1
 	let g:tagbar_autoclose = 0
