@@ -1,3 +1,8 @@
+# === System ===
+setopt nobeep                   # BEEP音を鳴らさない
+setopt nolistbeep               # 曖昧な補完時にBEEP音を鳴らさない
+
+
 # === Utility ===
 setopt auto_cd                  # コマンドがディレクトリ名の時にcd
 setopt correct                  # コマンドのスペル訂正を試みる
@@ -81,7 +86,7 @@ zle -N peco-select-history
 bindkey '^r' peco-select-history
 
 # === Load Additional Setting File ===
-[ -f ~/.profile ] && source ~/.profile
+# [ -f ~/.profile ] && source ~/.profile
 [ -f ~/.dotfiles/git-flow-completion/git-flow-completion.zsh ] && source ~/.dotfiles/git-flow-completion/git-flow-completion.zsh
 
 
