@@ -160,8 +160,8 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 	Plug 'racer-rust/vim-racer', { 'for' : 'rust' }
 	Plug 'rhysd/rust-doc.vim', { 'for' : 'rust' }
 	" cmake
-	Plug 'jansenm/vim-cmake', { 'for' : 'cmake' }
 	Plug 'richq/vim-cmake-completion', { 'for' : 'cmake' }
+	Plug 'vhdirk/vim-cmake', { 'for' : 'cmake' }
 " }
 
 " ColorScheme {
