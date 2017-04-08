@@ -3,12 +3,14 @@
 "**********************************************************
 " バックスペースで何でも消せるようにする
 set backspace=indent,eol,start
-" スワップファイルを作成しない
-set noswapfile
-" バックアップファイルを作成しない
-set nobackup
-" ファイル上書き時にバックアップ作成しない
-set nowritebackup
+" スワップファイルを作成
+set swapfile
+set directory=~/.vim/temp/swapfile
+" バックアップファイルを作成
+" ファイル上書き時にバックアップ作成
+set backup
+set writebackup
+set backupdir=~/.vim/temp/backupfile
 " 編集中Fileを外部から変更されたら自動的に再読込
 set autoread
 augroup vimrc-checktime
@@ -159,8 +161,8 @@ set cmdheight=1
 
 " 対応する()を表示
 set showmatch
-" 行番号を表示
-set number
+" 行番号を表示しない
+set nonumber
 " 不可視文字表示
 set list
 " 不可視文字の表示形式設定

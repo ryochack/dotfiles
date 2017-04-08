@@ -3,8 +3,8 @@
 "**********************************************************
 " キーマップリーダー
 let mapleader = '\'
-noremap ; :
-noremap : ;
+" noremap ; :
+" noremap : ;
 
 " カーソル下のキーワードをヘルプでひく
 nnoremap <C-h> :<C-u>help<Space><C-r><C-w><CR>
@@ -58,4 +58,8 @@ inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 " <C-p>, <C-n>でコマンド履歴を辿れるようにする
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-f> <Right>
+cnoremap <C-b> <Left>
 

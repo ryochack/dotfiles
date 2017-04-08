@@ -1,503 +1,194 @@
 "**********************************************************
-"     プラグイン設定 Plugins
+"     Plugin管理 ( vim-plug )
 "**********************************************************
 
-"========================================
-"    matchit (vim embedded macro)
-"----------------------------------------
-let b:match_ignorecase = 0
-" 機能拡張用。対応させたいブレースを記述する
-let b:match_words = '\<if\>:\<endif\>,'
-			\ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'
-
-
-"========================================
-"    text object
-"----------------------------------------
-" [textobj-indent] インデントされたものをtext-object化
-	" --- key mappping ---
-	" ai  <Plug>(textobj-indent-a)
-	" ii  <Plug>(textobj-indent-i)
-	" aI  <Plug>(textobj-indent-same-a)
-	" iI  <Plug>(textobj-indent-same-i)
-
-" [textobj-syntax] シンタックスで定義されたものをtext-object化
-	" --- key mappping ---
-	" ay  <Plug>(textobj-syntax-a)
-	" iy  <Plug>(textobj-syntax-i)
-
-" [textobj-function] 関数の中身をtext-object化
-	" --- key mappping ---
-	" af  <Plug>(textobj-function-a)
-	" if  <Plug>(textobj-function-i)
-	" aF  <Plug>(textobj-function-A)
-	" iF  <Plug>(textobj-function-I)
-
-" [textobj-fold] 折り畳みをtext-object化
-	" --- key mappping ---
-	" az  <Plug>(textobj-fold-a)
-	" iz  <Plug>(textobj-fold-i)
-
-" [textobj-entire] バッファ全体をtext-object化
-	" --- key mappping ---
-	" ae  <Plug>(textobj-entire-a)
-	" ie  <Plug>(textobj-entire-i)
-
-" [textobj-line] 行をtext-object化
-	" --- key mappping ---
-	" al  <Plug>(textobj-line-a)
-	" il  <Plug>(textobj-line-i)
-
-" [textobj-jabraces] 「foo」や【bar】などのブレースをtext-object化
-	" --- key mappping ---
-	" ajb  <Plug>(textobj-jabraces-parens-a)
-	" aj(  <Plug>(textobj-jabraces-parens-a)
-	" aj)  <Plug>(textobj-jabraces-parens-a)
-	" ajB  <Plug>(textobj-jabraces-braces-a)
-	" aj{  <Plug>(textobj-jabraces-braces-a)
-	" aj}  <Plug>(textobj-jabraces-braces-a)
-	" ajr  <Plug>(textobj-jabraces-brackets-a)
-	" aj[  <Plug>(textobj-jabraces-brackets-a)
-	" aj]  <Plug>(textobj-jabraces-brackets-a)
-	" aja  <Plug>(textobj-jabraces-angles-a)
-	" aj<  <Plug>(textobj-jabraces-angles-a)
-	" aj>  <Plug>(textobj-jabraces-angles-a)
-	" ajA  <Plug>(textobj-jabraces-double-angles-a)
-	" ajk  <Plug>(textobj-jabraces-kakko-a)
-	" ajK  <Plug>(textobj-jabraces-double-kakko-a)
-	" ajy  <Plug>(textobj-jabraces-yama-kakko-a)
-	" ajY  <Plug>(textobj-jabraces-double-yama-kakko-a)
-	" ajt  <Plug>(textobj-jabraces-kikkou-kakko-a)
-	" ajs  <Plug>(textobj-jabraces-sumi-kakko-a)
-	" ijb  <Plug>(textobj-jabraces-parens-i)
-	" ij(  <Plug>(textobj-jabraces-parens-i)
-	" ij)  <Plug>(textobj-jabraces-parens-i)
-	" ijB  <Plug>(textobj-jabraces-braces-i)
-	" ij{  <Plug>(textobj-jabraces-braces-i)
-	" ij}  <Plug>(textobj-jabraces-braces-i)
-	" ijr  <Plug>(textobj-jabraces-brackets-i)
-	" ij[  <Plug>(textobj-jabraces-brackets-i)
-	" ij]  <Plug>(textobj-jabraces-brackets-i)
-	" ija  <Plug>(textobj-jabraces-angles-i)
-	" ij<  <Plug>(textobj-jabraces-angles-i)
-	" ij>  <Plug>(textobj-jabraces-angles-i)
-	" ijA  <Plug>(textobj-jabraces-double-angles-i)
-	" ijk  <Plug>(textobj-jabraces-kakko-i)
-	" ijK  <Plug>(textobj-jabraces-double-kakko-i)
-	" ijy  <Plug>(textobj-jabraces-yama-kakko-i)
-	" ijY  <Plug>(textobj-jabraces-double-yama-kakko-i)
-	" ijt  <Plug>(textobj-jabraces-kikkou-kakko-i)
-	" ijs  <Plug>(textobj-jabraces-sumi-kakko-i)
-
-" [textobj-comment] コメントをtext-object化
-	" --- key mappping ---
-	" ac  <Plug>(textobj-comment-a)
-	" ic  <Plug>(textobj-comment-i)
-
-" [textobj-between] 任意の区切り文字の間をtext-object化
-	" --- key mappping ---
-	" af  <Plug>(textobj-between-a)
-	" if  <Plug>(textobj-between-i)
-
-" [textobj-wiw] wordの中の単語をtext-object化
-	" --- key mappping ---
-	" <Space>w   <Plug>(textobj-wiw-n)
-	" <Space>b   <Plug>(textobj-wiw-p)
-	" <Space>e   <Plug>(textobj-wiw-N)
-	" <Space>ge  <Plug>(textobj-wiw-P)
-	" a<Space>w  <Plug>(textobj-wiw-a)
-	" i<Space>w  <Plug>(textobj-wiw-i)
-if neobundle#is_installed("vim-operator-replace")
-	let g:textobj_wiw_default_key_mappings_prefix='<Space>'
+if has('vim_starting')
+	set runtimepath+=~/.vim/plugged/vim-plug
+	if !isdirectory(expand('~/.vim/plugged/vim-plug'))
+		echo 'install vim-plug...'
+		call system('mkdir -p ~/.vim/plugged/vim-plug')
+		call system('git clone https://github.com/junegunn/vim-plug.git ~/.vim/plugged/vim-plug/autoload')
+	end
 endif
 
 
-"========================================
-"    operator
-"----------------------------------------
-" [operator-replace] Yankしたもので選択範囲を置換する
-	" --- key mappping ---
-	" "{register}_{motion}  <Plug>(operator-replace)
-	" -> Replace text that {motion} moves over with register x.
-if neobundle#is_installed("vim-operator-replace")
-	map _ <Plug>(operator-replace)
-endif
+call plug#begin('~/.vim/plugged')
 
-" [surround] テキストオブジェクトに対する括弧編集
-	" OldText                  Command    NewText
-	" -------------------------------------------------------------
-	" "Hello *world!"          ds"        Hello world!
-	" [123+4*56]/2             cs])       (123+456)/2
-	" "Look ma, I'm *HTML!"    cs"<q>     <q>Look ma, I'm HTML!</q>
-	" if *x>3 {                ysW(       if ( x>3 ) {
-	" my $str = *whee!;        vllllS'    my $str = 'whee!';
-	" "Hello *world!"          ds"        Hello world!
-	" (123+4*56)/2             ds)        123+456/2
-	" <div>Yo!*</div>          dst        Yo!
-	" "Hello *world!"          cs"'       'Hello world!'
-	" "Hello *world!"          cs"<q>     <q>Hello world!</q>
-	" (123+4*56)/2             cs)]       [123+456]/2
-	" (123+4*56)/2             cs)[       [ 123+456 ]/2
-	" <div>Yo!*</div>          cst<p>     <p>Yo!</p>
-	" Hello w*orld!            ysiw)      Hello (world)!
-	" Hello w*orld!            yssB       {Hello world!}
+Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 
+" Text Object {
+	" textobj-user : 簡単にテキストオブジェクトを作れる
+	Plug 'kana/vim-textobj-user'
+	" textobj-indent : インデントされたものをtext-object化
+	Plug 'kana/vim-textobj-indent'
+	" textobj-syntax : シンタックスで定義されたものをtext-object化
+	Plug 'kana/vim-textobj-syntax'
+	" textobj-function : 関数の中身をtext-object化
+	Plug 'kana/vim-textobj-function'
+	" textobj-fold : 折り畳みをtext-object化
+	Plug 'kana/vim-textobj-fold'
+	" textobj-entire : バッファ全体をtext-object化
+	Plug 'kana/vim-textobj-entire'
+	" textobj-line : 行をtext-object化
+	Plug 'kana/vim-textobj-line'
+	" textobj-jabraces : 「foo」や【bar】などのブレースをtext-object化
+	Plug 'kana/vim-textobj-jabraces'
+	" textobj-comment : コメントをtext-object化
+	Plug 'thinca/vim-textobj-comment'
+	" textobj-between : 任意の区切り文字の間をtext-object化
+	Plug 'thinca/vim-textobj-between'
+	" textobj-wiw : wordの中の単語をtext-object化
+	Plug 'h1mesuke/textobj-wiw'
+" }
 
-"========================================
-"    yankround
-"----------------------------------------
-if neobundle#is_installed("yankround.vim")
-	set viminfo+=!
-	let g:yankround_dir = $HOME.'/.cache/vim/yankround'
-	let g:yankround_max_history = 50
-	nmap p <Plug>(yankround-p)
-	xmap p <Plug>(yankround-p)
-	nmap P <Plug>(yankround-P)
-	nmap gp <Plug>(yankround-gp)
-	xmap gp <Plug>(yankround-gp)
-	nmap gP <Plug>(yankround-gP)
-	nmap <C-p> <Plug>(yankround-prev)
-	nmap <C-n> <Plug>(yankround-next)
-endif
+" Operator {
+	" operator-user : 簡単にoperatorを定義できるようにする
+	Plug 'kana/vim-operator-user'
+	" operator-replace : Yankしたもので選択範囲を置換する
+	Plug 'kana/vim-operator-replace'
+	" surround : テキストオブジェクトに対する括弧編集
+	Plug 'tpope/vim-surround'
+" }
 
+" Edit {
+	" qfreplace : QuickFixの内容を編集
+	Plug 'thinca/vim-qfreplace'
+	" alignta : マルチバイト文字対応Align
+	Plug 'h1mesuke/vim-alignta'
+	" yankround : Yank履歴を使用する
+	Plug 'LeafCage/yankround.vim'
+	" gundo : undo履歴を便利に追えるようにする
+	" Plug 'sjl/gundo.vim'
+	" commentary : コメントアウト (gc[c])
+	Plug 'tpope/vim-commentary'
+	" fitpaste : 整形して貼り付け
+	Plug 'ryochack/fitpaste-vim'
+" }
 
-"========================================
-"    fitpaste
-"----------------------------------------
-if neobundle#is_installed("fitpaste-vim")
-	vnoremap [fitpaste] <Nop>
-	vmap     . [fitpaste]
-	vmap <silent> [fitpaste]i <Plug>(fitpaste-insert)
-	vmap <silent> [fitpaste]a <Plug>(fitpaste-append)
-	vmap <silent> [fitpaste]p <Plug>(fitpaste-replace)
-endif
+" Complement {
+	" neocomplete : 補完プラグイン
+	Plug 'Shougo/neocomplete'
+	" neosnippet : スニペット補完
+	"Plug 'Shougo/neosnippet'
+	" neosnippet-snippets : スニペット集
+	"Plug 'Shougo/neosnippet-snippets'
+" }
 
+" Display {
+	" tagbar : ctagsから関数などの定義情報を表示
+	Plug 'majutsushi/tagbar'
+	" gtags : GNU Globalを使って関数の定義・使用箇所にジャンプ
+	Plug 'vim-scripts/gtags.vim'
+	" BlockDiff : 選択部分の比較
+	Plug 'ryochack/BlockDiff'
+	" quickhl : 複数ハイライト
+	Plug 't9md/vim-quickhl'
+" }
 
-"========================================
-"    neocomplete
-"----------------------------------------
-if neobundle#is_installed("neocomplete")
-	let g:neocomplete#enable_at_startup = 1
-	let g:neocomplete#max_list = 100
-	let g:neocomplete#max_keyword_width = 80
-	let g:neocomplete#auto_completion_start_length = 2
-	let g:neocomplete#manual_completion_start_length = 1
-	let g:neocomplete#min_keyword_length = 4
-	let g:neocomplete#enable_ignore_case = 1
-	let g:neocomplete#enable_smart_case = 1
-	let g:neocomplete#enable_camel_case = 0
-	let g:neocomplete#disable_auto_complete = 0
-	let g:neocomplete#enable_auto_select = 0
-	let g:neocomplete#enable_auto_delimiter = 0
-	let g:neocomplete#enable_fuzzy_completion = 1
- 	let g:neocomplete#data_directory = $HOME.'/.cache/vim/neocomplete'
-	" This dictionary records keyword patterns to completion
-	if !exists('g:neocomplete#keyword_patterns')
-		let g:neocomplete#keyword_patterns = {}
-	endif
-	let g:neocomplete#keyword_patterns._ = '\h\w*'
-	" define delimiter each filetype
-	if !exists('g:neocomplete#delimiter_patterns')
-		let g:neocomplete#delimiter_patterns= {}
-	endif
-	let g:neocomplete#delimiter_patterns.vim = ['#']
-	let g:neocomplete#delimiter_patterns.cpp = ['::']
-	" a dictionary to decide use source names
-	if !exists('g:neocomplete#sources')
-		let g:neocomplete#sources = {}
-	endif
-	let g:neocomplete#sources._   = ['buffer']
-	let g:neocomplete#sources.c   = ['buffer', 'include']
-	let g:neocomplete#sources.cpp = ['buffer', 'include']
-	let g:neocomplete#release_cache_time = 900
-	let g:neocomplete#skip_auto_completion_time = "0.3"
-	let g:neocomplete#enable_auto_close_preview = 1
-	let g:neocomplete#sources#buffer#cache_limit_size = 500000
-	let g:neocomplete#sources#buffer#max_keyword_width = 80
-	let g:neocomplete#sources#dictionary#dictionaries = {
-				\ '_'       : '',
-				\ 'c'       : $HOME.'/.vim/dict/c.dict',
-				\ 'cpp'     : $HOME.'/.vim/dict/cpp.dict',
-				\ 'go'      : $HOME.'/.vim/dict/go.dict',
-				\ 'java'    : $HOME.'/.vim/dict/java.dict',
-				\ 'ruby'    : $HOME.'/.vim/dict/ruby.dict',
-				\ 'scheme'  : $HOME.'/.vim/dict/scheme.dict',
-				\ 'python'  : $HOME.'/.vim/dict/python.dict',
-				\ 'verilog' : $HOME.'/.vim/dict/verilog.dict',
-				\ 'vim'     : $HOME.'/.vim/dict/vim.dict'
-				\ }
-	let g:neocomplete#sources#syntax#min_keyword_length = 4
-endif
+" Move {
+	" visualstar : VisualMode中に*,#で選択されているTextを検索
+	Plug 'thinca/vim-visualstar'
+" }
 
+" Filer {
+	" dirvish : 小さく高速なファイラ
+	Plug 'justinmk/vim-dirvish'
+	" NerdTree : ツリー型ファイラ
+	Plug 'scrooloose/nerdtree'
+" }
 
-"========================================
-"    neosnippet
-"----------------------------------------
-if neobundle#is_installed("neosnippet")
-	"# <C-k>でスニペット展開しパラメータ入力し<Tab>で次の入力へ
-	"# 標準のスニペットを無効にする
-	let g:neosnippet#disable_runtime_snippets = {
-				\ '_' : 1,
-				\ }
-	"# スニペットファイルを読み込むディレクトリを指定
-	let g:neosnippet#snippets_directory = $HOME.'/.vim/bundle/snipmate-snippets/snippets' .','. $HOME.'/.vim/snippet'
- 	let g:neosnippet#data_directory = $HOME.'/.cache/vim/neosnippet'
+" Encoding {
+	" recognize_charcode : 文字化け解消プラグイン
+	Plug 'banyan/recognize_charcode.vim'
+" }
 
-	"# Plugin key-mappings.
-	imap <C-k> <Plug>(neosnippet_expand_or_jump)
-	smap <C-k> <Plug>(neosnippet_expand_or_jump)
+" Utility {
+	" localrc : 各ディレクトリのlocal vimrcファイルを置けるようにする
+	Plug 'thinca/vim-localrc'
+	" quickrun : 編集中のファイルを簡単に実行
+	Plug 'thinca/vim-quickrun'
+	" vinarise : バイナリエディタ
+	"Plug 'Shougo/vinarise'
+	" vimdoc-ja : vim日本語ドキュメント
+	Plug 'vim-jp/vimdoc-ja'
+	" lightline : リッチなステータスラインにする
+	Plug 'itchyny/lightline.vim'
+	" junkfile : 一時ファイル作成
+	Plug 'Shougo/junkfile.vim'
+	" vimproc : vimから非同期実行
+	Plug 'Shougo/vimproc', { 'do': 'make -f make_mac.mak' }
+		" 'windows' : 'tools\\update-dll-mingw'
+		" 'cygwin' : 'make -f make_cygwin.mak'
+		" 'mac' : 'make -f make_mac.mak'
+		" 'linux' : 'make'
+		" 'unix' : 'gmake'
+	" webapi : vim Interface to Web API (gistで必要)
+	Plug 'mattn/webapi-vim'
+	" open-browser : カーソル下のURLを開くor単語を検索エンジンで検索
+	" Plug 'tyru/open-browser.vim'
+	" cecutil : 他のプラグインのためのutility
+	Plug 'vim-scripts/cecutil'
+	" w3m : console web browser W3M
+	Plug 'yuratomo/w3m.vim'
+" }
 
-	"# SuperTab like snippets behavior.
-	imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-	smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" CtrlP {
+	" ctrlp : 正規表現を使ったファイル検索など
+	Plug 'kien/ctrlp.vim'
+" }
 
-	"# For snippet_complete marker.
-	if has('conceal')
-		set conceallevel=2 concealcursor=i
-	endif
-endif
+" Git {
+	" fugitive : VimからGitを使う
+	Plug 'tpope/vim-fugitive'
+	" gist : VimからGistを使う
+	Plug 'mattn/gist-vim'
+" }
 
+" FileType {
+	" vim-go : Go development plugin for Vim
+	Plug 'fatih/vim-go', { 'for': 'go' }
+	" python-mode : Python設定。docの呼び出し,補完,文法チェック,リファクタリング,Scriptの実行
+	" Plug 'klen/python-mode', { 'for': 'python' }
+	" pytest : pytestの呼び出し
+	" Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
+	" verilog
+	Plug 'vim-scripts/verilog.vim', { 'for': 'verilog' }
+	" scheme
+	Plug 'aharisu/vim_goshrepl', { 'for' : 'scheme' }
+	" rust
+	Plug 'rust-lang/rust.vim', { 'for' : 'rust' }
+	Plug 'racer-rust/vim-racer', { 'for' : 'rust' }
+	Plug 'rhysd/rust-doc.vim', { 'for' : 'rust' }
+	" cmake
+	Plug 'jansenm/vim-cmake', { 'for' : 'cmake' }
+	Plug 'richq/vim-cmake-completion', { 'for' : 'cmake' }
+" }
 
-"========================================
-"    tagbar
-"----------------------------------------
-if neobundle#is_installed("tagbar")
-	let g:tagbar_left  = 1
-	let g:tagbar_width = 40
-	let g:tagbar_zoomwidth = 1
-	let g:tagbar_autoclose = 0
-	let g:tagbar_autofocus = 1
-	let g:tagbar_sort = 0
-	let g:tagbar_compact = 0
-	let g:tagbar_indent = 2
-	let g:tagbar_show_visibility = 1
-	let g:tagbar_show_linenumbers = 0
-	let g:tagbar_hide_nonpublic = 0
-	let g:tagbar_expand = 0
-	let g:tagbar_singleclick = 0
-	let g:tagbar_foldlevel = 99
-	let g:tagbar_autoshowtag = 0
-	let g:tagbar_previewwin_pos = "topleft"
-	let g:tagbar_autopreview = 0
-endif
+" ColorScheme {
+	" colorscheme-hybrid : 目に優しいカラースキーマ
+	Plug 'vim-scripts/twilight'
+	Plug 'nanotech/jellybeans.vim'
+	Plug 'vim-scripts/Wombat'
+	Plug 'w0ng/vim-hybrid'
+" }
 
+" Vim-Development {
+	" learn-vimscript : VimScript文法ヘルプ :help learn-vimscript
+	Plug 'mattn/learn-vimscript', { 'on': 'VimDev' }
+	" headlights : 読み込んだプラグイン毎のコマンドやキーマップ定義をMENU表示
+	Plug 'vim-scripts/Headlights', { 'on': 'VimDev' }
+	" editvar : vimの変数を編集
+	Plug 'thinca/vim-editvar', { 'on': 'VimDev' }
+	" prettyprint : vimの変数を整形して出力。editvar用
+	Plug 'thinca/vim-prettyprint', { 'on': 'VimDev' }
+	" batch-source : 指定した範囲のVimScriptのコードを実行する
+	Plug 'taku-o/vim-batch-source', { 'on': 'VimDev' }
+	" benchvimrc : vimrcのどこが重いのかを調べる
+	" (vim --startuptime foo ではスクリプトファイル単位で読み込み時間を調べられる)
+	Plug 'mattn/benchvimrc-vim', { 'on': 'VimDev' }
+	" restart : vimを再起動
+	Plug 'tyru/restart.vim', { 'on': 'VimDev' }
+" }
 
-"========================================
-"    gtags
-"----------------------------------------
-if neobundle#is_installed("gtags.vim")
-	nnoremap <F5> :<C-u>Gtags <C-r><C-w><CR>
-	nnoremap <F6> :<C-u>Gtags -r <C-r><C-w><CR>
-endif
-
-
-"========================================
-"    quickhl
-"----------------------------------------
-if neobundle#is_installed("vim-quickhl")
-	nmap <Space>m <Plug>(quickhl-manual-this)
-	xmap <Space>m <Plug>(quickhl-manual-this)
-	nmap <Space>t <Plug>(quickhl-manual-toggle)
-	nmap <Space>M <Plug>(quickhl-manual-reset)
-	xmap <Space>M <Plug>(quickhl-manual-reset)
-	nmap <Space>j <Plug>(quickhl-cword-toggle)
-	xmap <Space>j <Plug>(quickhl-cword-toggle)
-endif
-
-
-"========================================
-"    smartword
-"----------------------------------------
-if neobundle#is_installed("vim-smartword")
-	map w  <Plug>(smartword-w)
-	map b  <Plug>(smartword-b)
-	map e  <Plug>(smartword-e)
-	map ge <Plug>(smartword-ge)
-endif
-
-
-"========================================
-"    ag
-"----------------------------------------
-if neobundle#is_installed("ag.vim")
-	let g:aghighlight = 1
-endif
-
-
-"========================================
-"    vimfiler
-"----------------------------------------
-if neobundle#is_installed("vimfiler")
-	let g:vimfiler_as_default_explorer = 1
-	let g:vimfiler_data_directory = $HOME.'/.cache/vim/vimfiler'
-endif
-
-
-"========================================
-"    quickrun
-"----------------------------------------
-if neobundle#is_installed("vim-quickrun")
-	" launch quickrun : <Leader>r
-	"# build成功時にはBuffer / 失敗時にはQuickFixで開く
-	"# vimprocで非同期実行
-	let g:quickrun_config = {
-				\	'_': {
-				\		'outputter' : 'error',
-				\		'outputter/buffer/split' : ':botright 8sp',
-				\		'outputter/buffer/close_on_empty' : 1,
-				\		'outputter/error/success' : 'buffer',
-				\		'outputter/error/error' : 'quickfix',
-				\		'runner' : 'vimproc',
-				\		'runner/vimproc/updatetime' : 60,
-				\		'runner/vimproc/sleep' : 10,
-				\		'hook/time/enable' : 1,
-				\	},
-				\}
-	"# <C-c> で実行を強制終了させる
-	"# quickrun.vim が実行していない場合には <C-c> を呼び出す
-	nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-endif
-
-
-"========================================
-"    vinarise
-"----------------------------------------
-if neobundle#is_installed("vinarise")
-endif
-
-
-"========================================
-"    lightline
-"----------------------------------------
-if neobundle#is_installed("lightline.vim")
-	let g:lightline = {
-				\ 'colorscheme': 'wombat',
-				\ 'mode_map': {'c': 'NORMAL'},
-				\ 'active': {
-				\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
-				\ },
-				\ 'component_function': {
-				\   'modified': 'MyModified',
-				\   'readonly': 'MyReadonly',
-				\   'fugitive': 'MyFugitive',
-				\   'filename': 'MyFilename',
-				\   'fileformat': 'MyFileformat',
-				\   'filetype': 'MyFiletype',
-				\   'fileencoding': 'MyFileencoding',
-				\   'mode': 'MyMode'
-				\ }
-				\ }
-
-	function! MyModified()
-		return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
-	endfunction
-
-	function! MyReadonly()
-		return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
-	endfunction
-
-	function! MyFilename()
-		return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-					\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-					\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-					\ ('' != MyModified() ? ' ' . MyModified() : '')
-	endfunction
-
-	function! MyFugitive()
-		try
-			if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
-				return fugitive#head()
-			endif
-		catch
-		endtry
-		return ''
-	endfunction
-
-	function! MyFileformat()
-		return winwidth(0) > 70 ? &fileformat : ''
-	endfunction
-
-	function! MyFiletype()
-		return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-	endfunction
-
-	function! MyFileencoding()
-		return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
-	endfunction
-
-	function! MyMode()
-		return winwidth(0) > 60 ? lightline#mode() : ''
-	endfunction
-	set t_Co=256
-	set encoding=utf-8
-endif
-
-
-"========================================
-"    ctrlp
-"----------------------------------------
-if neobundle#is_installed("ctrlp.vim")
-	let g:ctrlp_map = '<Nop>'
-	let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
-	"let g:ctrlp_switch_buffer = 't'
-	let g:ctrlp_working_path_mode = 'ra'
-	let g:ctrlp_use_caching = 1
-	let g:ctrlp_clear_cache_on_exit = 0
-	let g:ctrlp_cache_dir = $HOME.'/.cache/vim/ctrlp'
-	let g:ctrlp_show_hidden = 0
-	let g:ctrlp_custom_ignore = {
-				\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-				\ 'file': '\v\.(exe|so|dll)$',
-				\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-				\ }
-	let g:ctrlp_max_files = 10000
-	let g:ctrlp_max_depth = 40
-	let g:ctrlp_open_new_file = 'r'
-	let g:ctrlp_follow_symlinks = 0
-	let g:ctrlp_use_migemo = 1
-	let g:ctrlp_mruf_max = 200
-	let g:ctrlp_mruf_relative = 0
-	let g:ctrlp_extensions = [
-				\ 'line', 'undo', 'changes', 'yankround',
-				\ 'tag', 'buffertag', 'quickfix', 'dir'
-				\ ]
-	" ['rtscript', 'mixed', 'bookmarkdir']
-endif
-
-
-"========================================
-"    Unite
-"----------------------------------------
-if neobundle#is_installed("unite.vim")
-	" uniteバッファを常にインサートモードで起動する
-	"let g:unite_enable_start_insert = 1
-	"# uniteのウィンドウを生成する際、画面分割の位置ルールを指定する。
-	"# "topleft" or "botright"
-	let g:unite_split_rule = 'botright'
-	"# uniteのウィンドウを垂直分割にするかどうかを制御する。1ならば垂直分割にする。
-	let g:unite_enable_split_vertically  =0
-endif
-
-
-"========================================
-"    Fugitive
-"----------------------------------------
-if neobundle#is_installed("vim-fugitive")
-endif
-
-
-"========================================
-"    Gist
-"----------------------------------------
-if neobundle#is_installed("gist-vim")
-	let g:gist_detect_filetype = 1
-endif
-
-
-"========================================
-"    Hybrid
-"----------------------------------------
-if neobundle#is_installed("vim-hybrid")
-	colorscheme hybrid
-endif
+call plug#end()
 

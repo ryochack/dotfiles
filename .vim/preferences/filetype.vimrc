@@ -7,6 +7,8 @@ augroup DefineFileType
 	autocmd!
 	autocmd BufNewFile,BufRead *.go setlocal filetype=go
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+	autocmd BufNewFile,BufRead *.rs setlocal filetype=rust
+	autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
 
