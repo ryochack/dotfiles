@@ -3,7 +3,7 @@
 "**********************************************************
 
 " vim-plugでPluginがインストールされているかどうかを判定する
-function s:has_plugged(name)
+function s:is_plugged(name)
 	if exists('g:plugs') && has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
 		return 1
 	else
@@ -117,7 +117,7 @@ let b:match_words = '\<if\>:\<endif\>,'
 	" <Space>ge  <Plug>(textobj-wiw-P)
 	" a<Space>w  <Plug>(textobj-wiw-a)
 	" i<Space>w  <Plug>(textobj-wiw-i)
-if s:has_plugged("vim-operator-replace")
+if s:is_plugged("vim-operator-replace")
 	let g:textobj_wiw_default_key_mappings_prefix='<Space>'
 endif
 
@@ -129,7 +129,7 @@ endif
 	" --- key mappping ---
 	" "{register}_{motion}  <Plug>(operator-replace)
 	" -> Replace text that {motion} moves over with register x.
-if s:has_plugged("vim-operator-replace")
+if s:is_plugged("vim-operator-replace")
 	map _ <Plug>(operator-replace)
 endif
 
@@ -156,7 +156,7 @@ endif
 "========================================
 "    yankround
 "----------------------------------------
-if s:has_plugged("yankround.vim")
+if s:is_plugged("yankround.vim")
 	set viminfo+=!
 	let g:yankround_dir = $HOME.'/.cache/vim/yankround'
 	let g:yankround_max_history = 50
@@ -174,7 +174,7 @@ endif
 "========================================
 "    fitpaste
 "----------------------------------------
-if s:has_plugged("fitpaste-vim")
+if s:is_plugged("fitpaste-vim")
 	vnoremap [fitpaste] <Nop>
 	vmap     . [fitpaste]
 	vmap <silent> [fitpaste]i <Plug>(fitpaste-insert)
@@ -186,7 +186,7 @@ endif
 "========================================
 "    neocomplete
 "----------------------------------------
-if s:has_plugged("neocomplete")
+if s:is_plugged("neocomplete")
 	let g:neocomplete#enable_at_startup = 1
 	let g:neocomplete#max_list = 100
 	let g:neocomplete#max_keyword_width = 80
@@ -243,7 +243,7 @@ endif
 "========================================
 "    neosnippet
 "----------------------------------------
-if s:has_plugged("neosnippet")
+if s:is_plugged("neosnippet")
 	"# <C-k>でスニペット展開しパラメータ入力し<Tab>で次の入力へ
 	"# 標準のスニペットを無効にする
 	let g:neosnippet#disable_runtime_snippets = {
@@ -271,7 +271,7 @@ endif
 "========================================
 "    tagbar
 "----------------------------------------
-if s:has_plugged("tagbar")
+if s:is_plugged("tagbar")
 	let g:tagbar_left  = 1
 	let g:tagbar_width = 40
 	let g:tagbar_zoomwidth = 1
@@ -295,7 +295,7 @@ endif
 "========================================
 "    gtags
 "----------------------------------------
-if s:has_plugged("gtags.vim")
+if s:is_plugged("gtags.vim")
 	nnoremap <F5> :<C-u>Gtags <C-r><C-w><CR>
 	nnoremap <F6> :<C-u>Gtags -r <C-r><C-w><CR>
 endif
@@ -304,7 +304,7 @@ endif
 "========================================
 "    quickhl
 "----------------------------------------
-if s:has_plugged("vim-quickhl")
+if s:is_plugged("vim-quickhl")
 	nmap <Space>m <Plug>(quickhl-manual-this)
 	xmap <Space>m <Plug>(quickhl-manual-this)
 	nmap <Space>t <Plug>(quickhl-manual-toggle)
@@ -318,7 +318,7 @@ endif
 "========================================
 "    quickrun
 "----------------------------------------
-if s:has_plugged("vim-quickrun")
+if s:is_plugged("vim-quickrun")
 	" launch quickrun : <Leader>r
 	"# build成功時にはBuffer / 失敗時にはQuickFixで開く
 	"# vimprocで非同期実行
@@ -344,7 +344,7 @@ endif
 "========================================
 "    lightline
 "----------------------------------------
-if s:has_plugged("lightline.vim")
+if s:is_plugged("lightline.vim")
 	let g:lightline = {
 				\ 'colorscheme': 'wombat',
 				\ 'mode_map': {'c': 'NORMAL'},
@@ -411,7 +411,7 @@ endif
 "========================================
 "    ctrlp
 "----------------------------------------
-if s:has_plugged("ctrlp.vim")
+if s:is_plugged("ctrlp.vim")
 	let g:ctrlp_map = '<Nop>'
 	let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
 	"let g:ctrlp_switch_buffer = 't'
@@ -443,7 +443,7 @@ endif
 "========================================
 "    Gist
 "----------------------------------------
-if s:has_plugged("gist-vim")
+if s:is_plugged("gist-vim")
 	let g:gist_detect_filetype = 1
 endif
 
@@ -451,7 +451,7 @@ endif
 "========================================
 "    Hybrid
 "----------------------------------------
-if s:has_plugged("vim-hybrid")
+if s:is_plugged("vim-hybrid")
 	colorscheme hybrid
 endif
 
@@ -459,7 +459,7 @@ endif
 "========================================
 "    w3m
 "----------------------------------------
-if s:has_plugged("w3m.vim")
+if s:is_plugged("w3m.vim")
 	let g:w3m#external_browser = 'open'
 	" let g:w3m#lang = 'en_US'
 	let g:w3m#download_ext = [ 'zip', 'lzh', 'cab', 'tar', 'gz', 'z', 'exe' ]
@@ -472,7 +472,7 @@ endif
 "========================================
 "    vim-go
 "----------------------------------------
-if s:has_plugged("vim-go")
+if s:is_plugged("vim-go")
 	let g:go_bin_path = expand("~/.vim-go")
 	let g:go_snippet_engine = "neosnippet"
 	autocmd FileType go nnoremap gd <Plug>(go-def)
@@ -481,7 +481,7 @@ endif
 "========================================
 "    vim_goshrepl
 "----------------------------------------
-if s:has_plugged("vim_goshrepl")
+if s:is_plugged("vim_goshrepl")
 	vmap <CR> <Plug>(gosh_repl_send_block)
 endif
 
@@ -489,7 +489,7 @@ endif
 "========================================
 "    rust.vim
 "----------------------------------------
-if s:has_plugged("rust.vim")
+if s:is_plugged("rust.vim")
 	let g:rustfmt_autosave = 0
 	let g:rustfmt_command = $HOME.'/.cargo/bin/rustfmt'
 endif
@@ -497,7 +497,7 @@ endif
 "========================================
 "    vim-racer
 "----------------------------------------
-if s:has_plugged("vim-racer")
+if s:is_plugged("vim-racer")
 	set hidden
 	let g:racer_cmd = $HOME.'/.cargo/bin/racer'
 	let $RUST_SRC_PATH = $HOME.'/Packages/rust/src'
@@ -506,7 +506,7 @@ endif
 "========================================
 "    rust-doc.vim
 "----------------------------------------
-if s:has_plugged("rust-doc.vim")
+if s:is_plugged("rust-doc.vim")
 	let g:rust_doc#downloaded_rust_doc_dir = '~/Documents/rust-docs'
 endif
 
