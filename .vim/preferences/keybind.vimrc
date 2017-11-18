@@ -42,9 +42,9 @@ autocmd FileType qf nnoremap <buffer> <ESC> :ccl<CR>
 autocmd FileType qf nnoremap <buffer> <CR> :.cc<CR>
 
 " 無名レジスタのコピー・ペースト
-noremap gy "*y
-noremap gp "*p
-noremap gP "*P
+noremap gy "+y
+noremap gp "+p
+noremap gP "+P
 
 " Return有効
 nnoremap <CR> i<CR><ESC>

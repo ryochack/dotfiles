@@ -116,7 +116,7 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 	" junkfile : 一時ファイル作成
 	Plug 'Shougo/junkfile.vim'
 	" vimproc : vimから非同期実行
-	Plug 'Shougo/vimproc', { 'do': 'make -f make_mac.mak' }
+	Plug 'Shougo/vimproc', { 'do': 'make' }
 		" 'windows' : 'tools\\update-dll-mingw'
 		" 'cygwin' : 'make -f make_cygwin.mak'
 		" 'mac' : 'make -f make_mac.mak'
@@ -162,6 +162,7 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 	" cmake
 	Plug 'richq/vim-cmake-completion', { 'for' : 'cmake' }
 	Plug 'vhdirk/vim-cmake', { 'for' : 'cmake' }
+	Plug 'shime/vim-livedown', { 'for' : 'markdown' }
 " }
 
 " ColorScheme {

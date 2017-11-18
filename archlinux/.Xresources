@@ -1,0 +1,4 @@
+URxvt.perl-ext-common: default,resize-font
+URxvt.resize-font.smaller: C-minus
+URxvt.resize-font.bigger: C-plus
+URxvt.resize-font.reset: C-equal

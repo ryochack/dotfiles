@@ -337,6 +337,7 @@ if s:is_plugged("vim-quickrun")
 				\}
 	"# <C-c> で実行を強制終了させる
 	"# quickrun.vim が実行していない場合には <C-c> を呼び出す
+	nnoremap <Leader>q :<C-u>bw! \[quickrun\ output\]<CR>
 	nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 endif
 
@@ -490,7 +491,7 @@ endif
 "    rust.vim
 "----------------------------------------
 if s:is_plugged("rust.vim")
-	let g:rustfmt_autosave = 0
+	let g:rustfmt_autosave = 1
 	let g:rustfmt_command = $HOME.'/.cargo/bin/rustfmt'
 endif
 
@@ -500,13 +501,26 @@ endif
 if s:is_plugged("vim-racer")
 	set hidden
 	let g:racer_cmd = $HOME.'/.cargo/bin/racer'
-	let $RUST_SRC_PATH = $HOME.'/Packages/rust/src'
+	let g:racer_experimental_completer = 1
+
+	au FileType rust nmap gd <Plug>(rust-def)
+	au FileType rust nmap gs <Plug>(rust-def-split)
+	au FileType rust nmap gx <Plug>(rust-def-vertical)
+	au FileType rust nmap <leader>gd <Plug>(rust-doc)
 endif
 
 "========================================
 "    rust-doc.vim
 "----------------------------------------
 if s:is_plugged("rust-doc.vim")
-	let g:rust_doc#downloaded_rust_doc_dir = '~/Documents/rust-docs'
+	let g:rust_doc#downloaded_rust_doc_dir = $HOME.'/.rustup/toolchains/stable-x86_64-unknown-linux-gnu'
+	"let g:rust_doc#downloaded_rust_doc_dir = $HOME.'/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu'
+endif
+
+"========================================
+"    vim-livedown
+"----------------------------------------
+if s:is_plugged("vim-livedown")
+	let g:livedown_browser = "firefox"
 endif
 

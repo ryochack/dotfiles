@@ -31,6 +31,12 @@ augroup FileTypeGo
 augroup END
 
 
+augroup FileTypeRust
+	autocmd!
+	autocmd FileType rust setlocal dictionary+=~/.vim/dict/rust.dict,~/.vim/dict/rust_attr.dict,~/.vim/dict/rust_macro.dict
+augroup END
+
+
 augroup FileTypeRuby
 	autocmd!
 	autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete

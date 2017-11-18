@@ -5,8 +5,8 @@ setopt nolistbeep               # 曖昧な補完時にBEEP音を鳴らさない
 
 # === Utility ===
 setopt auto_cd                  # コマンドがディレクトリ名の時にcd
-setopt correct                  # コマンドのスペル訂正を試みる
-setopt correct_all              # 全引数にスペル訂正を試みる
+setopt nocorrect                # コマンドのスペル訂正を試みる
+setopt nocorrect_all            # 全引数にスペル訂正を試みる
 setopt multios                  # 複数のリダイレクトやパイプに対応
 #setopt numeric_glob_sort        # ファイル名を数値的にソート
 # 単語として認識する
@@ -38,6 +38,7 @@ bindkey "^n" history-beginning-search-forward-end
 setopt auto_pushd               # cd時に自動的にpushd
 setopt pushd_ignore_dups        # 重複するディレクトリを無視
 
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'  # 補完時に大文字小文字を区別しない
 
 # === Alias Setting ===
 case "${OSTYPE}" in
@@ -58,10 +59,14 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias tmux='tmux -2'
+alias g='git'
+
+alias screenlock='i3lock -e -c 000000'
+alias browser='chromium'
 
 # Global Alias
 alias -g C="| cat"
-alias -g L="| lv"
+alias -g L="| less"
 alias -g H="| head"
 alias -g T="| tail"
 alias -g G="| egrep"
@@ -87,6 +92,10 @@ bindkey '^r' peco-select-history
 
 # === Load Additional Setting File ===
 # [ -f ~/.profile ] && source ~/.profile
-[ -f ~/.dotfiles/git-flow-completion/git-flow-completion.zsh ] && source ~/.dotfiles/git-flow-completion/git-flow-completion.zsh
 
+# zplug
+
+source ~/.zplugrc
+
+fpath+=~/.dotfiles/.zfunc
 

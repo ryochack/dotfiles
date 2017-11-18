@@ -49,6 +49,14 @@ set mouse=a
 set guioptions+=a
 set ttymouse=xterm2
 
+" 折り返し有効
+set wrap
+" 単語とかを考慮して折り返す
+set linebreak
+" wrapされた行のインデントを有効にする
+set breakindent
+set breakindentopt=min:20,shift:0
+set showbreak=+\ 
 
 "**********************************************************
 "     Search
@@ -63,6 +71,11 @@ set smartcase
 set incsearch
 " 検索結果をハイライト
 set hlsearch
+"augroup vimrc-incsearch-highlight
+"	autocmd!
+"	autocmd CmdlineEnter [/\?] :set hlsearch
+"	autocmd CmdlineLeave [/\?] :set nohlsearch
+"augroup END
 
 " --- grep ---
 " 外部grep設定
@@ -304,5 +317,5 @@ highlight NonText cterm=NONE ctermfg=DarkGray ctermbg=NONE guifg=Brown guibg=bg
 " 行番号の色設定
 highlight LineNr ctermfg=DarkGray
 " カレント行の色設定。下線のみを引く。
-highlight CursorLine cterm=underline ctermfg=NONE ctermbg=NONE gui=underline guifg=NONE guibg=NONE
+highlight CursorLine cterm=underline ctermfg=NONE ctermbg=Black gui=underline guifg=NONE guibg=NONE
 
