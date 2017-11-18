@@ -1,0 +1,3 @@
+#!/bin/sh
+step=3
+amixer -q sset Master $step%$1

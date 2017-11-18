@@ -1,0 +1,1 @@
+cp -rf acpi /etc/

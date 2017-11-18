@@ -1,0 +1,10 @@
+#!/bin/sh
+current_state=`amixer get Master | egrep 'Playback.*?\[o' | egrep -o '\[o.+\]'`
+
+if [[ $current_state == '[on]' ]]; then
+    amixer -q sset Master mute
+else
+    amixer -q sset Master unmute
+    amixer -q sset Speaker unmute
+    amixer -q sset Headphone unmute
+fi
