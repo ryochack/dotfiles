@@ -163,6 +163,9 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 	Plug 'richq/vim-cmake-completion', { 'for' : 'cmake' }
 	Plug 'vhdirk/vim-cmake', { 'for' : 'cmake' }
 	Plug 'shime/vim-livedown', { 'for' : 'markdown' }
+	" language server
+	Plug 'prabirshrestha/async.vim', { 'for' : 'rust' }
+	Plug 'prabirshrestha/vim-lsp', { 'for' : 'rust' }
 " }
 
 " ColorScheme {

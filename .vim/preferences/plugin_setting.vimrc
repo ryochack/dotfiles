@@ -518,6 +518,19 @@ if s:is_plugged("rust-doc.vim")
 endif
 
 "========================================
+"    vim-lsp
+"----------------------------------------
+if s:is_plugged("vim-lsp")
+	if executable('rls')
+		au User lsp_setup call lsp#register_server({
+			\ 'name': 'rls',
+			\ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+			\ 'whitelist': ['rust'],
+			\ })
+	endif
+endif
+
+"========================================
 "    vim-livedown
 "----------------------------------------
 if s:is_plugged("vim-livedown")
