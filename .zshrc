@@ -97,5 +97,6 @@ bindkey '^r' peco-select-history
 
 source ~/.zplugrc
 
-fpath+=~/.dotfiles/.zfunc
-
+fpath+=~/.zfunc
+# for docker-completion
+autoload -Uz compinit && compinit -i

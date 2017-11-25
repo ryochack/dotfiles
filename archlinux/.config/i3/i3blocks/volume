@@ -56,7 +56,7 @@ format() {
   # If dB was selected, print that instead
   perl_filter+=$([[ $STEP = *dB ]] && echo '$3' || echo '$1')
   perl_filter+='"; exit}'
-  logger $perl_filter
+  #logger $perl_filter
   perl -ne "$perl_filter"
 }
 

@@ -2,9 +2,9 @@
 
 # https://wiki.archlinuxjp.org/index.php/Xrandr#.E3.82.B9.E3.82.AF.E3.83.AA.E3.83.97.E3.83.88
 
-MAIN="LVDS-1"
-VGA="VGA-1"
-DP="HDMI-1"
+MAIN="LVDS1"
+VGA="VGA1"
+DP="HDMI1"
 
 VGA_DETECTED=false
 DP_DETECTED=false
