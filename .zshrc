@@ -2,7 +2,6 @@
 setopt nobeep                   # BEEP音を鳴らさない
 setopt nolistbeep               # 曖昧な補完時にBEEP音を鳴らさない
 
-
 # === Utility ===
 setopt auto_cd                  # コマンドがディレクトリ名の時にcd
 setopt nocorrect                # コマンドのスペル訂正を試みる
@@ -11,7 +10,7 @@ setopt multios                  # 複数のリダイレクトやパイプに対�
 #setopt numeric_glob_sort        # ファイル名を数値的にソート
 # 単語として認識する
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-
+bindkey -e                      # emacs like keybind
 
 # === History ===
 HISTFILE=~/.zsh_history
@@ -72,6 +71,7 @@ alias -g T="| tail"
 alias -g G="| egrep"
 alias -g V="| vim -"
 alias -g R="| vim -R -"
+alias -g B="| bc"
 
 # http://qiita.com/uchiko/items/f6b1528d7362c9310da0
 function peco-select-history() {
