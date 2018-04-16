@@ -9,6 +9,7 @@ augroup DefineFileType
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 	autocmd BufNewFile,BufRead *.rs setlocal filetype=rust
 	autocmd BufNewFile,BufRead *.toml setlocal filetype=toml
+	autocmd BufNewFile,BufRead *.svd setlocal filetype=xml
 	autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
