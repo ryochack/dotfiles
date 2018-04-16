@@ -8,9 +8,9 @@ augroup DefineFileType
 	autocmd BufNewFile,BufRead *.go setlocal filetype=go
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 	autocmd BufNewFile,BufRead *.rs setlocal filetype=rust
+	autocmd BufNewFile,BufRead *.toml setlocal filetype=toml
 	autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
-
 
 augroup FileTypeC
 	autocmd!
@@ -24,30 +24,25 @@ augroup FileTypeC
 	"autocmd FileType c   setlocal shiftwidth=4 softtabstop=4 tabstop=4 noexpandtab
 augroup END
 
-
 augroup FileTypeGo
 	autocmd!
 	autocmd FileType go setlocal dictionary+=~/.vim/dict/go.dict
 augroup END
-
 
 augroup FileTypeRust
 	autocmd!
 	autocmd FileType rust setlocal dictionary+=~/.vim/dict/rust.dict,~/.vim/dict/rust_attr.dict,~/.vim/dict/rust_macro.dict
 augroup END
 
-
 augroup FileTypeRuby
 	autocmd!
 	autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 augroup END
 
-
 augroup FileTypePython
 	autocmd!
 	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 augroup END
-
 
 augroup FileTypeJavaScript
 	autocmd!
@@ -55,31 +50,26 @@ augroup FileTypeJavaScript
 	autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 augroup END
 
-
 augroup FileTypeCss
 	autocmd!
 	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 augroup END
-
 
 augroup FileTypeHtml
 	autocmd!
 	autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
 augroup END
 
-
 augroup FileTypeXml
 	autocmd!
 	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 augroup END
-
 
 augroup FileTypePhp
 	autocmd!
 	autocmd FileType php setlocal dictionary+=~/.vim/dict/php.dict
 	autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 augroup END
-
 
 augroup FileTypeVerilog
 	autocmd!

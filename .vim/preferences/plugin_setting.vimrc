@@ -11,7 +11,6 @@ function s:is_plugged(name)
 	endif
 endfunction
 
-
 "========================================
 "    matchit (vim embedded macro)
 "----------------------------------------
@@ -19,7 +18,6 @@ let b:match_ignorecase = 0
 " 機能拡張用。対応させたいブレースを記述する
 let b:match_words = '\<if\>:\<endif\>,'
 			\ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'
-
 
 "========================================
 "    text object
@@ -121,7 +119,6 @@ if s:is_plugged("vim-operator-replace")
 	let g:textobj_wiw_default_key_mappings_prefix='<Space>'
 endif
 
-
 "========================================
 "    operator
 "----------------------------------------
@@ -152,7 +149,6 @@ endif
 	" Hello w*orld!            ysiw)      Hello (world)!
 	" Hello w*orld!            yssB       {Hello world!}
 
-
 "========================================
 "    yankround
 "----------------------------------------
@@ -170,6 +166,12 @@ if s:is_plugged("yankround.vim")
 	nmap <C-n> <Plug>(yankround-next)
 endif
 
+"========================================
+"    vim-commentary
+"----------------------------------------
+if s:is_plugged("vim-commentary")
+	autocmd FileType toml setlocal commentstring=#\ %s
+endif
 
 "========================================
 "    fitpaste
@@ -181,7 +183,6 @@ if s:is_plugged("fitpaste-vim")
 	vmap <silent> [fitpaste]a <Plug>(fitpaste-append)
 	vmap <silent> [fitpaste]p <Plug>(fitpaste-replace)
 endif
-
 
 "========================================
 "    neocomplete
@@ -239,7 +240,6 @@ if s:is_plugged("neocomplete")
 	let g:neocomplete#sources#syntax#min_keyword_length = 4
 endif
 
-
 "========================================
 "    neosnippet
 "----------------------------------------
@@ -267,7 +267,6 @@ if s:is_plugged("neosnippet")
 	endif
 endif
 
-
 "========================================
 "    tagbar
 "----------------------------------------
@@ -291,7 +290,6 @@ if s:is_plugged("tagbar")
 	let g:tagbar_autopreview = 0
 endif
 
-
 "========================================
 "    gtags
 "----------------------------------------
@@ -299,7 +297,6 @@ if s:is_plugged("gtags.vim")
 	nnoremap <F5> :<C-u>Gtags <C-r><C-w><CR>
 	nnoremap <F6> :<C-u>Gtags -r <C-r><C-w><CR>
 endif
-
 
 "========================================
 "    quickhl
@@ -313,7 +310,6 @@ if s:is_plugged("vim-quickhl")
 	nmap <Space>j <Plug>(quickhl-cword-toggle)
 	xmap <Space>j <Plug>(quickhl-cword-toggle)
 endif
-
 
 "========================================
 "    quickrun
@@ -340,7 +336,6 @@ if s:is_plugged("vim-quickrun")
 	nnoremap <Leader>q :<C-u>bw! \[quickrun\ output\]<CR>
 	nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 endif
-
 
 "========================================
 "    lightline
@@ -408,39 +403,6 @@ if s:is_plugged("lightline.vim")
 	set encoding=utf-8
 endif
 
-
-"========================================
-"    ctrlp
-"----------------------------------------
-if s:is_plugged("ctrlp.vim")
-	let g:ctrlp_map = '<Nop>'
-	let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
-	"let g:ctrlp_switch_buffer = 't'
-	let g:ctrlp_working_path_mode = 'ra'
-	let g:ctrlp_use_caching = 1
-	let g:ctrlp_clear_cache_on_exit = 0
-	let g:ctrlp_cache_dir = $HOME.'/.cache/vim/ctrlp'
-	let g:ctrlp_show_hidden = 0
-	let g:ctrlp_custom_ignore = {
-				\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-				\ 'file': '\v\.(exe|so|dll)$',
-				\ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-				\ }
-	let g:ctrlp_max_files = 10000
-	let g:ctrlp_max_depth = 40
-	let g:ctrlp_open_new_file = 'r'
-	let g:ctrlp_follow_symlinks = 0
-	let g:ctrlp_use_migemo = 1
-	let g:ctrlp_mruf_max = 200
-	let g:ctrlp_mruf_relative = 0
-	let g:ctrlp_extensions = [
-				\ 'line', 'undo', 'changes', 'yankround',
-				\ 'tag', 'buffertag', 'quickfix', 'dir'
-				\ ]
-	" ['rtscript', 'mixed', 'bookmarkdir']
-endif
-
-
 "========================================
 "    Gist
 "----------------------------------------
@@ -448,14 +410,12 @@ if s:is_plugged("gist-vim")
 	let g:gist_detect_filetype = 1
 endif
 
-
 "========================================
 "    Hybrid
 "----------------------------------------
 if s:is_plugged("vim-hybrid")
 	colorscheme hybrid
 endif
-
 
 "========================================
 "    w3m
@@ -468,14 +428,29 @@ if s:is_plugged("w3m.vim")
 	nmap <Space>w :W3m 
 endif
 
+"========================================
+"    investigate.vim
+"----------------------------------------
+if s:is_plugged("investigate.vim")
+	"nnoremap gd :call investigate#Investigate('n')<CR>
+	"vnoremap gd :call investigate#Investigate('v')<CR>
+endif
+
+" for zeal
+if has("unix")
+	if executable("zeal")
+		nnoremap <leader>d :call system('zeal '.&filetype.':'.expand("<cword>").'&')<CR>
+		vnoremap <leader>d :call system('zeal '.&filetype.':'.expand(@*).'&')<CR>
+	endif
+endif
 
 "##### golang #####
 "========================================
 "    vim-go
 "----------------------------------------
 if s:is_plugged("vim-go")
-	let g:go_bin_path = expand("~/.vim-go")
-	let g:go_snippet_engine = "neosnippet"
+	let g:go_bin_path = expand($GOPATH."/bin")
+	"let g:go_snippet_engine = "neosnippet"
 	autocmd FileType go nnoremap gd <Plug>(go-def)
 endif
 
@@ -491,6 +466,7 @@ endif
 "    rust.vim
 "----------------------------------------
 if s:is_plugged("rust.vim")
+	let g:rust_recommended_style = 1
 	let g:rustfmt_autosave = 1
 	let g:rustfmt_command = $HOME.'/.cargo/bin/rustfmt'
 endif
@@ -513,8 +489,8 @@ endif
 "    rust-doc.vim
 "----------------------------------------
 if s:is_plugged("rust-doc.vim")
-	let g:rust_doc#downloaded_rust_doc_dir = $HOME.'/.rustup/toolchains/stable-x86_64-unknown-linux-gnu'
-	"let g:rust_doc#downloaded_rust_doc_dir = $HOME.'/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu'
+	"let g:rust_doc#downloaded_rust_doc_dir = $HOME.'/.rustup/toolchains/stable-x86_64-unknown-linux-gnu'
+	let g:rust_doc#downloaded_rust_doc_dir = $HOME.'/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu'
 endif
 
 "========================================

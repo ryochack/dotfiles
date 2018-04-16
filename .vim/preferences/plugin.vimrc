@@ -130,6 +130,8 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 	Plug 'vim-scripts/cecutil'
 	" w3m : console web browser W3M
 	Plug 'yuratomo/w3m.vim'
+	" investigate.vim : Document browser Zeal(Linux), Dash(Mac), Velocity(Windows)
+	Plug 'keith/investigate.vim'
 " }
 
 " CtrlP {
