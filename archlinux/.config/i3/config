@@ -171,6 +171,8 @@ bar {
         status_command i3blocks -c ~/.config/i3/i3blocks/config
 }
 
+# for desktop application development
+for_window [class="dev-floating-app"] floating enable
 
 # Mod1 (usually aka "Alt" or "Meta")
 # Mod2 ("NumLock")
@@ -186,7 +188,8 @@ exec --no-startup-id compton -CGb
 # Start clipboard manager
 # exec --no-startup-id xautolock -detectsleep -time 10 -locker "i3lock -e -c 000000"
 # exec --no-startup-id xautolock -detectsleep -time 10 -locker "i3lock -e -i ~/picture/wallpaper/live_miku_tp220.png"
-exec --no-startup-id xautolock -time 10 -detectsleep -locker "i3lock-fancy -ngp" -killtime 20 -killer "systemctl suspend"
+# exec --no-startup-id xautolock -time 10 -detectsleep -locker "i3lock-fancy -ngp" -killtime 20 -killer "systemctl suspend"
+exec --no-startup-id xautolock -time 10 -resetsaver -locker "i3lock-fancy -ngp" -killtime 20 -killer "systemctl suspend"
 # ScreenLock: Meta+Alt+l
 bindsym $mod+Mod1+l exec xautolock -locknow
 

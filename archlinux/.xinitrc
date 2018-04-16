@@ -45,6 +45,7 @@ setxkbmap -layout us -option ctrl:nocaps
 
 # Auto detect external display daemon
 srandrd ~/service/display_handler_triple.sh
+dropbox &
 
 exec i3
 # Start i3 and log to ~/.i3/logfile
