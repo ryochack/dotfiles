@@ -1,0 +1,2 @@
+event=ibm/hotkey
+action=/etc/acpi/handlers/kbdled

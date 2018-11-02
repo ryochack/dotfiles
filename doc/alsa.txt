@@ -1,0 +1,15 @@
+# How to change default sound card
+
+find your sound cards.
+
+```shell
+$ cat /proc/asound/cards
+```
+
+set card 1 to default catd.
+
+```shell
+$ vim /etc/asound.conf
+>> defaults.pcm.card 1
+>> defaults.ctl.card 1
+```

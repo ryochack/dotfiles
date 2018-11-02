@@ -1,0 +1,11 @@
+#!/bin/env sh
+
+case $1 in
+  -)
+     light -U 5
+     ;;
+  +)
+     light -A 5
+     ;;
+esac
+

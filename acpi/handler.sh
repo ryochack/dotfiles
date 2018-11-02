@@ -57,10 +57,10 @@ case "$1" in
         esac
         ;;
     button/lid)
-        case "$3" in close)
+        case "$3" in
+            close)
                 logger 'LID closed'
                 /usr/bin/xautolock -locknow
-                #logger "/usr/bin/xautolock -locknow -> $?"
                 ;;
             open)
                 logger 'LID opened'

@@ -1,5 +1,5 @@
 #!/usr/bin/sh
-INTERFACE="enp0s25"
+INTERFACE="enp3s0f0"
 STATUS=$(networkctl status $INTERFACE | grep "State:" | awk '{print $2}')
 if [ "$STATUS" == "routable" ]; then
     ADDR=$(ip addr show dev $INTERFACE | grep "inet\>" | awk '{print $2}')
