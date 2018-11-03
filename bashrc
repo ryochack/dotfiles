@@ -10,6 +10,10 @@ export HISTIGNORE=ls:exit:history
 export HISTSIZE=4000
 export HISTFILESIZE=8000
 
+# erase by Ctrl-W to slash
+stty werase undef
+bind '\C-w:unix-filename-rubout'
+
 alias ls='ls --color=auto -F'
 alias ll='ls -alF'
 alias la='ls -AF'
