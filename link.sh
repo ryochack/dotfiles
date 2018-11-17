@@ -20,6 +20,7 @@ ln -is ~/.dotfiles/tmux.conf ~/.tmux.conf
 # shell
 ln -is ~/.dotfiles/bash_profile ~/.bash_profile
 ln -is ~/.dotfiles/bashrc ~/.bashrc
+ln -is ~/.dotfiles/inputrc ~/.inputrc
 #ln -is ~/.dotfiles/cshrc ~/.cshrc
 ln -is ~/.dotfiles/zshrc ~/.zshrc
 ln -is ~/.dotfiles/zplugrc ~/.zplugrc
