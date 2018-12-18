@@ -269,7 +269,7 @@ set shiftwidth=4
 " softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
 set softtabstop=0
 " TabをSpaceで置き換えない
-set noexpandtab
+set expandtab
 
 
 "**********************************************************

@@ -39,7 +39,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+d exec --no-startup-id j4-dmenu-desktop
+bindsym $mod+d exec --no-startup-id "j4-dmenu-desktop --display-binary"
 
 # change focus
 bindsym $mod+h focus left
@@ -183,7 +183,7 @@ for_window [class="dev-floating-app"] floating enable
 # Mode_Switch
 
 # Start compton as background process
-exec --no-startup-id compton -CGb
+exec --no-startup-id "compton -CGb"
 
 # Start clipboard manager
 # exec --no-startup-id xautolock -detectsleep -time 10 -locker "i3lock -e -c 000000"
@@ -191,7 +191,7 @@ exec --no-startup-id compton -CGb
 # exec --no-startup-id xautolock -time 10 -detectsleep -locker "i3lock-fancy -ngp" -killtime 20 -killer "systemctl suspend"
 exec --no-startup-id xautolock -time 10 -resetsaver -locker "i3lock-fancy -ngp" -killtime 20 -killer "systemctl suspend"
 # ScreenLock: Meta+Alt+l
-bindsym $mod+Mod1+l exec xautolock -locknow
+bindsym $mod+Mod1+l exec "xautolock -locknow"
 
 # Start terminal
 exec urxvt

@@ -7,8 +7,20 @@
 
 export HISTCONTROL=ignoreboth
 export HISTIGNORE=ls:exit:history:which
-export HISTSIZE=4000
-export HISTFILESIZE=8000
+export HISTSIZE=9999
+# share history with several terminals
+function share_history {
+	# add command executed at last to history file
+	history -a
+	# clear commnad history on memory
+	history -c
+	# load command history from history file to memory
+	history -r
+}
+# execute share_history() each time prompt is displayed
+PROMPT_COMMNAD='share_history'
+# disable history file append mode (history -a is enabled)
+shopt -u histappend
 
 # erase by Ctrl-W to slash
 stty werase undef
@@ -20,10 +32,11 @@ complete -cf sudo
 alias ls='ls --color=auto -F'
 alias ll='ls -alF'
 alias la='ls -AF'
-alias rm="rm -i"
-alias mv="mv -i"
-alias cp="cp -i"
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
 alias g='git'
+alias od='od -A x'
 
 # prompt
 ## color definitions
@@ -63,7 +76,7 @@ TXTRST='\e[0m'    # Text Reset
 ## \w setting (how many directories do you show?)
 PROMPT_DIRTRIM=2
 ## prompt setting
-PS1="${TXTGRN}\u@\h:\w\$${TXTRST} "
+PS1="\[${TXTGRN}\]\u@\h:\w\$\[${TXTRST}\] "
 
 # peco setting
 if type peco > /dev/null 2>&1; then
@@ -92,3 +105,6 @@ fi
 
 source $HOME/.profile
 
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[ -f /home/ryo/code/works/xi-electron/node_modules/tabtab/.completions/electron-forge.bash ] && . /home/ryo/code/works/xi-electron/node_modules/tabtab/.completions/electron-forge.bash

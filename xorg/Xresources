@@ -1,14 +1,14 @@
 # urxvt setting
-URxvt*depth: 24
-URxvt*background: Black
-URxvt*foreground: White
-URxvt*fading: 20
-URxvt*font: xft:Ricty:size=10:antialias=true \
-            xft:DejaVu Sans Mono:size=11
+URxvt.depth: 24
+URxvt.background: Black
+URxvt.foreground: White
+URxvt.fading: 20
+URxvt.saveLines: 3000
+URxvt.font: xft:Cica:size=10:antialias=true
 
 # URxvt*scrollBar: False
-URxvt*scrollBar_right: True
-URxvt*scrollBar_floating: True
+URxvt.scrollBar_right: True
+URxvt.scrollBar_floating: True
 
 # urxvt: Extension
 URxvt.perl-ext-common: default,resize-font
