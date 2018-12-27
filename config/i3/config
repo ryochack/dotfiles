@@ -193,6 +193,14 @@ exec --no-startup-id xautolock -time 10 -resetsaver -locker "i3lock-fancy -ngp" 
 # ScreenLock: Meta+Alt+l
 bindsym $mod+Mod1+l exec "xautolock -locknow"
 
+# Audio volume controll
+bindsym XF86AudioMute        exec --no-startup-id "pamixer --toggle-mute && pkill -SIGRTMIN+1 i3blocks"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pamixer --increase 5 && pkill -SIGRTMIN+1 i3blocks"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pamixer --decrease 5 && pkill -SIGRTMIN+1 i3blocks"
+# bindsym --release XF86AudioMute        exec --no-startup-id "pkill -SIGRTMIN+1 i3blocks"
+# bindsym --release XF86AudioRaiseVolume exec --no-startup-id "pkill -SIGRTMIN+1 i3blocks"
+# bindsym --release XF86AudioLowerVolume exec --no-startup-id "pkill -SIGRTMIN+1 i3blocks"
+
 # Start terminal
 exec urxvt
 

@@ -16,6 +16,12 @@ label=cpu:
 command=~/.config/i3/i3blocks/cpu
 interval=2
 
+## radeontop requires root privileges...
+# [gpu]
+# label=gpu:
+# command=~/.config/i3/i3blocks/amdgpu
+# interval=2
+
 [memory]
 label=mem:
 command=~/.config/i3/i3blocks/memory
@@ -24,12 +30,13 @@ interval=2
 [volume]
 label=vol:
 command=~/.config/i3/i3blocks/volume
-interval=1
+interval=once
+signal=1
 
 [battery]
 label=bat:
 command=~/.config/i3/i3blocks/battery
-interval=10
+interval=20
 
 [time]
 command=date '+%Y-%m-%d(%a) %H:%M'

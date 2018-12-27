@@ -1,10 +1,9 @@
-#!/usr/bin/sh
+#!/bin/bash
 INTERFACE="enp3s0f0"
-STATUS=$(networkctl status $INTERFACE | grep "State:" | awk '{print $2}')
-if [ "$STATUS" == "routable" ]; then
-    ADDR=$(ip addr show dev $INTERFACE | grep "inet\>" | awk '{print $2}')
-    echo -e "${ADDR}\n\n#8CFF2D"
-else
+IP4=$(ip addr show dev ${INTERFACE} | grep "inet" -m 1 | awk '{print $2}')
+if [ "$IP4" == "" ]; then
     echo -e "N/A\n\n#FE2E2E"
+else
+    echo -e "${IP4}\n\n#8CFF2D"
 fi
 
