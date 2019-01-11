@@ -58,7 +58,7 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 	" yankround : Yank履歴を使用する
 	Plug 'LeafCage/yankround.vim'
 	" gundo : undo履歴を便利に追えるようにする
-	" Plug 'sjl/gundo.vim'
+	Plug 'sjl/gundo.vim'
 	" commentary : コメントアウト (gc[c])
 	Plug 'tpope/vim-commentary'
 	" fitpaste : 整形して貼り付け
@@ -128,10 +128,6 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 	" Plug 'tyru/open-browser.vim'
 	" cecutil : 他のプラグインのためのutility
 	Plug 'vim-scripts/cecutil'
-	" w3m : console web browser W3M
-	"Plug 'yuratomo/w3m.vim'
-	" investigate.vim : Document browser Zeal(Linux), Dash(Mac), Velocity(Windows)
-	Plug 'keith/investigate.vim'
 " }
 
 " CtrlP {
@@ -159,15 +155,19 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 	Plug 'aharisu/vim_goshrepl', { 'for' : 'scheme' }
 	" rust
 	Plug 'rust-lang/rust.vim', { 'for' : 'rust' }
-	Plug 'racer-rust/vim-racer', { 'for' : 'rust' }
+	" Plug 'racer-rust/vim-racer', { 'for' : 'rust' }
 	Plug 'rhysd/rust-doc.vim', { 'for' : 'rust' }
 	" cmake
 	Plug 'richq/vim-cmake-completion', { 'for' : 'cmake' }
 	Plug 'vhdirk/vim-cmake', { 'for' : 'cmake' }
-	Plug 'shime/vim-livedown', { 'for' : 'markdown' }
+" }
+
+" Language Server Protocol {
 	" language server
-	Plug 'prabirshrestha/async.vim', { 'for' : 'rust' }
-	Plug 'prabirshrestha/vim-lsp', { 'for' : 'rust' }
+	Plug 'prabirshrestha/asyncomplete.vim'
+	Plug 'prabirshrestha/async.vim'
+	Plug 'prabirshrestha/vim-lsp'
+	Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " }
 
 " ColorScheme {

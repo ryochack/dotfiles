@@ -1,7 +1,10 @@
 #!/bin/bash
 INTERFACE="enp3s0f0"
-IP4=$(ip addr show dev ${INTERFACE} | grep "inet" -m 1 | awk '{print $2}')
-if [ "$IP4" == "" ]; then
+
+IPOUT="$(ip addr show dev ${INTERFACE})"
+STATE=$(echo "$IPOUT" | grep -m 1 -o -e "state [^ ]* " | awk '{print $2}')
+IP4=$(echo "$IPOUT" | grep "inet" -m 1 | awk '{print $2}')
+if [ "$STATE" != "UP" -o -z "$IP4" ]; then
     echo -e "N/A\n\n#FE2E2E"
 else
     echo -e "${IP4}\n\n#8CFF2D"

@@ -501,15 +501,20 @@ if s:is_plugged("vim-lsp")
 		au User lsp_setup call lsp#register_server({
 			\ 'name': 'rls',
 			\ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
+			\ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Cargo.toml'))},
 			\ 'whitelist': ['rust'],
 			\ })
 	endif
 endif
 
 "========================================
-"    vim-livedown
+"    asyncomplete.vim
 "----------------------------------------
-if s:is_plugged("vim-livedown")
-	let g:livedown_browser = "firefox"
+if s:is_plugged("asyncomplete.vim")
+	" let g:asyncomplete_auto_popup = 0
+
+	inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+	inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
 endif
 
