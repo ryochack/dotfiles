@@ -1,0 +1,14 @@
+#!/bin/bash
+GPU_USAGE=$(radeontop -d - -l 1 | grep "gpu" | awk -F '[, ]' '{printf("%5.1f\n", $3)}')
+GPU_USAGE_INT=$(printf "%.0f" ${GPU_USAGE})
+WARNING=50
+CRITICAL=80
+
+if [ $GPU_USAGE_INT -ge $CRITICAL ]; then
+    echo -e "${GPU_USAGE}%\n\n#FF0000"
+elif [ $GPU_USAGE_INT -ge $WARNING ]; then
+    echo -e "${GPU_USAGE}%\n\n#FFFC00"
+else
+    echo -e "${GPU_USAGE}%"
+fi
+
