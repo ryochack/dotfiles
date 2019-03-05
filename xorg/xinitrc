@@ -39,6 +39,9 @@ fcitx-autostart
 
 dropbox &
 
+# This setting is for ThinkPad A285
+# xrandr --dpi 105
+
 exec i3
 # Start i3 and log to ~/.i3/logfile
 #echo "Starting at $(date)" >> ~/.i3/logfile
