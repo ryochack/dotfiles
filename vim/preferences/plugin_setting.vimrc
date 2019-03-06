@@ -476,9 +476,11 @@ if s:is_plugged('vim-lsp')
 	augroup END
 
 	let g:lsp_async_completion = 1
+
+	" disable vim-lsp diagnostics. use ale.
+	let g:lsp_diagnostics_enabled = 0
 	let g:lsp_signs_enabled = 1
 	let g:lsp_diagnostics_echo_cursor = 1
-
 	let g:lsp_signs_error = {'text': '✗'}
 	let g:lsp_signs_warning = {'text': '‼'}
 endif
@@ -499,6 +501,17 @@ endif
 "    ale
 "----------------------------------------
 if s:is_plugged('ale')
+	" Printing
+	let g:ale_sign_error = '✗'
+	let g:ale_sign_warning = '‼'
+	let g:ale_echo_msg_error_str = 'E'
+	let g:ale_echo_msg_warning_str = 'W'
+	let g:ale_echo_msg_info_str = 'I'
+	let g:ale_echo_msg_format = '%linter%:%severity%| %s'
+	let g:ale_set_loclist = 0
+	let g:ale_set_quickfix = 1
+	let g:ale_open_list = 1
+	let g:ale_keep_list_window_open = 0
 	" Linting
 	let g:ale_lint_on_enter = 1
 	let g:ale_lint_on_save = 1
@@ -509,6 +522,6 @@ if s:is_plugged('ale')
 	let g:ale_completion_enabled = 1
 
 	" Rust
-    let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+	let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 endif
 
