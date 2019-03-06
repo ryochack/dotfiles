@@ -63,3 +63,11 @@ cnoremap <C-e> <End>
 cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 
+" for zeal
+if has("unix")
+	if executable("zeal")
+		nnoremap <leader>d :call system('zeal '.&filetype.':'.expand("<cword>").'&')<CR>
+		vnoremap <leader>d :call system('zeal '.&filetype.':'.expand(@*).'&')<CR>
+	endif
+endif
+

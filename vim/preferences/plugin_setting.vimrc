@@ -312,32 +312,6 @@ if s:is_plugged("vim-quickhl")
 endif
 
 "========================================
-"    quickrun
-"----------------------------------------
-if s:is_plugged("vim-quickrun")
-	" launch quickrun : <Leader>r
-	"# build成功時にはBuffer / 失敗時にはQuickFixで開く
-	"# vimprocで非同期実行
-	let g:quickrun_config = {
-				\	'_': {
-				\		'outputter' : 'error',
-				\		'outputter/buffer/split' : ':botright 8sp',
-				\		'outputter/buffer/close_on_empty' : 1,
-				\		'outputter/error/success' : 'buffer',
-				\		'outputter/error/error' : 'quickfix',
-				\		'runner' : 'vimproc',
-				\		'runner/vimproc/updatetime' : 60,
-				\		'runner/vimproc/sleep' : 10,
-				\		'hook/time/enable' : 1,
-				\	},
-				\}
-	"# <C-c> で実行を強制終了させる
-	"# quickrun.vim が実行していない場合には <C-c> を呼び出す
-	nnoremap <Leader>q :<C-u>bw! \[quickrun\ output\]<CR>
-	nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-endif
-
-"========================================
 "    lightline
 "----------------------------------------
 if s:is_plugged("lightline.vim")
@@ -418,51 +392,6 @@ if s:is_plugged("vim-hybrid")
 endif
 
 "========================================
-"    w3m
-"----------------------------------------
-if s:is_plugged("w3m.vim")
-	let g:w3m#external_browser = 'open'
-	" let g:w3m#lang = 'en_US'
-	let g:w3m#download_ext = [ 'zip', 'lzh', 'cab', 'tar', 'gz', 'z', 'exe' ]
-	let g:w3m#search_engine = 'http://www.google.co.jp/search?ie=' . &encoding . '&q=%s'
-	nmap <Space>w :W3m 
-endif
-
-"========================================
-"    investigate.vim
-"----------------------------------------
-if s:is_plugged("investigate.vim")
-	"nnoremap gd :call investigate#Investigate('n')<CR>
-	"vnoremap gd :call investigate#Investigate('v')<CR>
-endif
-
-" for zeal
-if has("unix")
-	if executable("zeal")
-		nnoremap <leader>d :call system('zeal '.&filetype.':'.expand("<cword>").'&')<CR>
-		vnoremap <leader>d :call system('zeal '.&filetype.':'.expand(@*).'&')<CR>
-	endif
-endif
-
-"##### golang #####
-"========================================
-"    vim-go
-"----------------------------------------
-if s:is_plugged("vim-go")
-	let g:go_bin_path = expand($GOPATH."/bin")
-	"let g:go_snippet_engine = "neosnippet"
-	autocmd FileType go nnoremap gd <Plug>(go-def)
-endif
-
-"========================================
-"    vim_goshrepl
-"----------------------------------------
-if s:is_plugged("vim_goshrepl")
-	vmap <CR> <Plug>(gosh_repl_send_block)
-endif
-
-"##### rust #####
-"========================================
 "    rust.vim
 "----------------------------------------
 if s:is_plugged("rust.vim")
@@ -472,49 +401,105 @@ if s:is_plugged("rust.vim")
 endif
 
 "========================================
-"    vim-racer
-"----------------------------------------
-if s:is_plugged("vim-racer")
-	set hidden
-	let g:racer_cmd = $HOME.'/.cargo/bin/racer'
-	let g:racer_experimental_completer = 1
-
-	au FileType rust nmap gd <Plug>(rust-def)
-	au FileType rust nmap gs <Plug>(rust-def-split)
-	au FileType rust nmap gx <Plug>(rust-def-vertical)
-	au FileType rust nmap <leader>gd <Plug>(rust-doc)
-endif
-
-"========================================
-"    rust-doc.vim
-"----------------------------------------
-if s:is_plugged("rust-doc.vim")
-	"let g:rust_doc#downloaded_rust_doc_dir = $HOME.'/.rustup/toolchains/stable-x86_64-unknown-linux-gnu'
-	let g:rust_doc#downloaded_rust_doc_dir = $HOME.'/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu'
-endif
-
-"========================================
 "    vim-lsp
 "----------------------------------------
 if s:is_plugged("vim-lsp")
+	" [ C/C++ ]
+	if executable('clangd')
+		au User lsp_setup call lsp#register_server({
+			\ 'name': 'clangd',
+			\ 'cmd': {server_info->['clangd']},
+			\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+			\ })
+	endif
+
+	" [ Go ]
+	"if executable('gopls')
+	"	au User lsp_setup call lsp#register_server({
+	"		\ 'name': 'gopls',
+	"		\ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+	"		\ 'whitelist': ['go'],
+	"		\ })
+	"endif
+	if executable('go-langserver')
+		au User lsp_setup call lsp#register_server({
+			\ 'name': 'go-langserver',
+			\ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+			\ 'whitelist': ['go'],
+			\ })
+	endif
+
+	" [ Rust ]
 	if executable('rls')
 		au User lsp_setup call lsp#register_server({
 			\ 'name': 'rls',
-			\ 'cmd': {server_info->['rustup', 'run', 'nightly', 'rls']},
-			\ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'Cargo.toml'))},
+			\ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
 			\ 'whitelist': ['rust'],
 			\ })
 	endif
+
+	" [ Python ] : python-language-server
+	if executable('pyls')
+		au User lsp_setup call lsp#register_server({
+			\ 'name': 'pyls',
+			\ 'cmd': {server_info->['pyls']},
+			\ 'whitelist': ['python'],
+			"\ 'workspace_config': {'pyls': {'plugins': {'pydocstyle': {'enabled': v:true}}}}
+			\ })
+	endif
+
+	" [ Bash ]
+	if executable('bash-language-server')
+		au User lsp_setup call lsp#register_server({
+			\ 'name': 'bash-language-server',
+			\ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+			\ 'whitelist': ['sh'],
+			\ })
+	endif
+
+	" [ Haskell ] : haskell-ide-engine
+	if executable('hie-wrapper')
+		au User lsp_setup call lsp#register_server({
+			\ 'name': 'hie',
+			\ 'cmd': {server_info->['hie-wrapper']},
+			\ 'whitelist': ['haskell'],
+			\ })
+	endif
+
+	let g:lsp_async_completion = 1
+	let g:lsp_signs_enabled = 1
+	let g:lsp_diagnostics_echo_cursor = 1
+
+	let g:lsp_signs_error = {'text': '✗'}
+	let g:lsp_signs_warning = {'text': '‼'}
 endif
 
 "========================================
 "    asyncomplete.vim
 "----------------------------------------
 if s:is_plugged("asyncomplete.vim")
-	" let g:asyncomplete_auto_popup = 0
+	let g:asyncomplete_remove_duplicates = 1
+	let g:asyncomplete_auto_popup = 1
 
 	inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 	inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+endif
+
+"========================================
+"    ale
+"----------------------------------------
+if s:is_plugged("ale")
+	" Linting
+	let g:ale_lint_on_enter = 1
+	let g:ale_lint_on_save = 1
+	let g:ale_lint_on_text_changed = 'never'
+	" Fixing
+	let g:ale_fix_on_save = 0
+	" Completion
+	let g:ale_completion_enabled = 1
+
+	" Rust
+    let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 endif
 

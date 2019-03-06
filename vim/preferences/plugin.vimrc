@@ -11,7 +11,6 @@ if has('vim_starting')
 	end
 endif
 
-
 call plug#begin('~/.vim/plugged')
 
 Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
@@ -67,18 +66,21 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 
 " Complement {
 	" neocomplete : 補完プラグイン
-	Plug 'Shougo/neocomplete'
+	"Plug 'Shougo/neocomplete'
 	" neosnippet : スニペット補完
 	"Plug 'Shougo/neosnippet'
 	" neosnippet-snippets : スニペット集
 	"Plug 'Shougo/neosnippet-snippets'
 " }
 
-" Display {
+" Tag {
 	" tagbar : ctagsから関数などの定義情報を表示
 	Plug 'majutsushi/tagbar'
 	" gtags : GNU Globalを使って関数の定義・使用箇所にジャンプ
 	Plug 'vim-scripts/gtags.vim'
+" }
+
+" Display {
 	" BlockDiff : 選択部分の比較
 	Plug 'ryochack/BlockDiff'
 	" quickhl : 複数ハイライト
@@ -105,8 +107,6 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 " Utility {
 	" localrc : 各ディレクトリのlocal vimrcファイルを置けるようにする
 	Plug 'thinca/vim-localrc'
-	" quickrun : 編集中のファイルを簡単に実行
-	Plug 'thinca/vim-quickrun'
 	" vinarise : バイナリエディタ
 	"Plug 'Shougo/vinarise'
 	" vimdoc-ja : vim日本語ドキュメント
@@ -142,32 +142,19 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 	Plug 'mattn/gist-vim'
 " }
 
-" FileType {
-	" vim-go : Go development plugin for Vim
-	Plug 'fatih/vim-go', { 'for': 'go' }
-	" python-mode : Python設定。docの呼び出し,補完,文法チェック,リファクタリング,Scriptの実行
-	" Plug 'klen/python-mode', { 'for': 'python' }
-	" pytest : pytestの呼び出し
-	" Plug 'alfredodeza/pytest.vim', { 'for': 'python' }
-	" verilog
-	Plug 'vim-scripts/verilog.vim', { 'for': 'verilog' }
-	" scheme
-	Plug 'aharisu/vim_goshrepl', { 'for' : 'scheme' }
-	" rust
-	Plug 'rust-lang/rust.vim', { 'for' : 'rust' }
-	" Plug 'racer-rust/vim-racer', { 'for' : 'rust' }
-	Plug 'rhysd/rust-doc.vim', { 'for' : 'rust' }
-	" cmake
-	Plug 'richq/vim-cmake-completion', { 'for' : 'cmake' }
-	Plug 'vhdirk/vim-cmake', { 'for' : 'cmake' }
-" }
-
 " Language Server Protocol {
 	" language server
 	Plug 'prabirshrestha/asyncomplete.vim'
 	Plug 'prabirshrestha/async.vim'
 	Plug 'prabirshrestha/vim-lsp'
 	Plug 'prabirshrestha/asyncomplete-lsp.vim'
+	" ale : Lint
+	Plug 'w0rp/ale'
+" }
+
+" FileType {
+	" rust
+	Plug 'rust-lang/rust.vim', { 'for' : 'rust' }
 " }
 
 " ColorScheme {
