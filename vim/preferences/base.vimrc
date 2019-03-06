@@ -1,3 +1,8 @@
+" default encoding
+set encoding=utf-8
+" this file encoding
+scriptencoding utf-8
+
 "**********************************************************
 "     Basic
 "**********************************************************
@@ -114,14 +119,14 @@ set noimcmdline
 
 " 保存時に対象ディレクトリが存在しなければ作成する
 augroup AutoMkdir
-  autocmd!
-  autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
-  function! s:auto_mkdir(dir, force)
-    if !isdirectory(a:dir) && (a:force ||
-    \    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
-      call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
-    endif
-  endfunction
+	autocmd!
+	autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
+	function! s:auto_mkdir(dir, force)
+		if !isdirectory(a:dir) && (a:force ||
+			\    input(printf('"%s" does not exist. Create? [y/N]', a:dir)) =~? '^y\%[es]$')
+			call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+		endif
+	endfunction
 augroup END
 
 
@@ -147,8 +152,6 @@ set completeopt=menu,menuone,preview
 "**********************************************************
 " 改行文字
 set fileformats=unix,dos,mac
-" デフォルトエンコーディング
-set encoding=utf-8
 
 " ワイルドカードで表示するときに優先度を低くする拡張子
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
@@ -193,9 +196,9 @@ set cursorline
 "set cursorcolumn
 " カレントウィンドウのみに罫線を引く
 augroup DrawLineAtCurrentWindow
-    autocmd!
-    autocmd WinLeave * set nocursorline
-    autocmd WinEnter,BufRead * set cursorline
+	autocmd!
+	autocmd WinLeave * set nocursorline
+	autocmd WinEnter,BufRead * set cursorline
 augroup END
 
 " DiffでSpaceの数の違いを無視する
@@ -216,17 +219,17 @@ set laststatus=2
 function! GetEFstatus()
 	let str = ''
 	let fenc = ''
-	if &fileformat == 'unix'
+	if &fileformat ==# 'unix'
 		let str = '[uni]'
 	else
 		let str = '[' . &fileformat . ']'
 	endif
-	if &fileencoding != ''
+	if &fileencoding !=# ''
 		if &fileencoding =~# 'iso-2022-jp'
 			let fenc = 'J'
-		elseif &fileencoding == 'utf-8'
+		elseif &fileencoding ==# 'utf-8'
 			let fenc = 'U'
-		elseif &fileencoding == 'cp932'
+		elseif &fileencoding ==# 'cp932'
 			let fenc = 'S'
 		elseif &fileencoding =~# 'euc-jp'
 			let fenc = 'E'
@@ -248,8 +251,11 @@ highlight StatusLine ctermfg=white ctermbg=red
 set showcmd
 
 "自動的に QuickFix リストを表示する
-autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin
-autocmd QuickfixCmdPost lmake,lgrep,lgrepadd,lvimgrep,lvimgrepadd lwin
+augroup AutoQuickFixList
+	autocmd!
+	autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin
+	autocmd QuickfixCmdPost lmake,lgrep,lgrepadd,lvimgrep,lvimgrepadd lwin
+augroup END
 
 
 "**********************************************************

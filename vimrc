@@ -1,11 +1,12 @@
+" this file encoding
+scriptencoding utf-8
+
 "設定のリセット
 highlight clear
 syntax clear
 mapclear
 mapclear!
 autocmd!
-"vim機能を有効にする
-set nocompatible
 
 syntax off
 filetype off

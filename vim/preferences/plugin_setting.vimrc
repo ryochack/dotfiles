@@ -1,3 +1,6 @@
+" this file encoding
+scriptencoding utf-8
+
 "**********************************************************
 "     プラグイン設定 Plugins
 "**********************************************************
@@ -115,7 +118,7 @@ let b:match_words = '\<if\>:\<endif\>,'
 	" <Space>ge  <Plug>(textobj-wiw-P)
 	" a<Space>w  <Plug>(textobj-wiw-a)
 	" i<Space>w  <Plug>(textobj-wiw-i)
-if s:is_plugged("vim-operator-replace")
+if s:is_plugged('vim-operator-replace')
 	let g:textobj_wiw_default_key_mappings_prefix='<Space>'
 endif
 
@@ -126,7 +129,7 @@ endif
 	" --- key mappping ---
 	" "{register}_{motion}  <Plug>(operator-replace)
 	" -> Replace text that {motion} moves over with register x.
-if s:is_plugged("vim-operator-replace")
+if s:is_plugged('vim-operator-replace')
 	map _ <Plug>(operator-replace)
 endif
 
@@ -152,7 +155,7 @@ endif
 "========================================
 "    yankround
 "----------------------------------------
-if s:is_plugged("yankround.vim")
+if s:is_plugged('yankround.vim')
 	set viminfo+=!
 	let g:yankround_dir = $HOME.'/.cache/vim/yankround'
 	let g:yankround_max_history = 50
@@ -169,14 +172,16 @@ endif
 "========================================
 "    vim-commentary
 "----------------------------------------
-if s:is_plugged("vim-commentary")
-	autocmd FileType toml setlocal commentstring=#\ %s
+if s:is_plugged('vim-commentary')
+	augroup VimCommentaryFileTypes
+		autocmd FileType toml setlocal commentstring=#\ %s
+	augroup END
 endif
 
 "========================================
 "    fitpaste
 "----------------------------------------
-if s:is_plugged("fitpaste-vim")
+if s:is_plugged('fitpaste-vim')
 	vnoremap [fitpaste] <Nop>
 	vmap     . [fitpaste]
 	vmap <silent> [fitpaste]i <Plug>(fitpaste-insert)
@@ -187,7 +192,7 @@ endif
 "========================================
 "    neocomplete
 "----------------------------------------
-if s:is_plugged("neocomplete")
+if s:is_plugged('neocomplete')
 	let g:neocomplete#enable_at_startup = 1
 	let g:neocomplete#max_list = 100
 	let g:neocomplete#max_keyword_width = 80
@@ -221,7 +226,7 @@ if s:is_plugged("neocomplete")
 	let g:neocomplete#sources.c   = ['buffer', 'include']
 	let g:neocomplete#sources.cpp = ['buffer', 'include']
 	let g:neocomplete#release_cache_time = 900
-	let g:neocomplete#skip_auto_completion_time = "0.3"
+	let g:neocomplete#skip_auto_completion_time = '0.3'
 	let g:neocomplete#enable_auto_close_preview = 1
 	let g:neocomplete#sources#buffer#cache_limit_size = 500000
 	let g:neocomplete#sources#buffer#max_keyword_width = 80
@@ -243,7 +248,7 @@ endif
 "========================================
 "    neosnippet
 "----------------------------------------
-if s:is_plugged("neosnippet")
+if s:is_plugged('neosnippet')
 	"# <C-k>でスニペット展開しパラメータ入力し<Tab>で次の入力へ
 	"# 標準のスニペットを無効にする
 	let g:neosnippet#disable_runtime_snippets = {
@@ -270,7 +275,7 @@ endif
 "========================================
 "    tagbar
 "----------------------------------------
-if s:is_plugged("tagbar")
+if s:is_plugged('tagbar')
 	let g:tagbar_left  = 1
 	let g:tagbar_width = 40
 	let g:tagbar_zoomwidth = 1
@@ -286,14 +291,14 @@ if s:is_plugged("tagbar")
 	let g:tagbar_singleclick = 0
 	let g:tagbar_foldlevel = 99
 	let g:tagbar_autoshowtag = 0
-	let g:tagbar_previewwin_pos = "topleft"
+	let g:tagbar_previewwin_pos = 'topleft'
 	let g:tagbar_autopreview = 0
 endif
 
 "========================================
 "    gtags
 "----------------------------------------
-if s:is_plugged("gtags.vim")
+if s:is_plugged('gtags.vim')
 	nnoremap <F5> :<C-u>Gtags <C-r><C-w><CR>
 	nnoremap <F6> :<C-u>Gtags -r <C-r><C-w><CR>
 endif
@@ -301,7 +306,7 @@ endif
 "========================================
 "    quickhl
 "----------------------------------------
-if s:is_plugged("vim-quickhl")
+if s:is_plugged('vim-quickhl')
 	nmap <Space>m <Plug>(quickhl-manual-this)
 	xmap <Space>m <Plug>(quickhl-manual-this)
 	nmap <Space>t <Plug>(quickhl-manual-toggle)
@@ -314,7 +319,7 @@ endif
 "========================================
 "    lightline
 "----------------------------------------
-if s:is_plugged("lightline.vim")
+if s:is_plugged('lightline.vim')
 	let g:lightline = {
 				\ 'colorscheme': 'wombat',
 				\ 'mode_map': {'c': 'NORMAL'},
@@ -334,23 +339,23 @@ if s:is_plugged("lightline.vim")
 				\ }
 
 	function! MyModified()
-		return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+		return &filetype =~# 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
 	endfunction
 
 	function! MyReadonly()
-		return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+		return &filetype !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
 	endfunction
 
 	function! MyFilename()
-		return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
-					\ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
-					\ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
-					\ ('' != MyModified() ? ' ' . MyModified() : '')
+		return ('' !=# MyReadonly() ? MyReadonly() . ' ' : '') .
+					\ (&filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
+					\ '' !=# expand('%:t') ? expand('%:t') : '[No Name]') .
+					\ ('' !=# MyModified() ? ' ' . MyModified() : '')
 	endfunction
 
 	function! MyFugitive()
 		try
-			if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+			if &filetype !~? 'vimfiler\|gundo' && exists('*fugitive#head')
 				return fugitive#head()
 			endif
 		catch
@@ -367,34 +372,34 @@ if s:is_plugged("lightline.vim")
 	endfunction
 
 	function! MyFileencoding()
-		return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+		return winwidth(0) > 70 ? (strlen(&fileencoding) ? &fileencoding : &encoding) : ''
 	endfunction
 
 	function! MyMode()
 		return winwidth(0) > 60 ? lightline#mode() : ''
 	endfunction
 	set t_Co=256
-	set encoding=utf-8
+	"set encoding=utf-8
 endif
 
 "========================================
 "    Gist
 "----------------------------------------
-if s:is_plugged("gist-vim")
+if s:is_plugged('gist-vim')
 	let g:gist_detect_filetype = 1
 endif
 
 "========================================
 "    Hybrid
 "----------------------------------------
-if s:is_plugged("vim-hybrid")
+if s:is_plugged('vim-hybrid')
 	colorscheme hybrid
 endif
 
 "========================================
 "    rust.vim
 "----------------------------------------
-if s:is_plugged("rust.vim")
+if s:is_plugged('rust.vim')
 	let g:rust_recommended_style = 1
 	let g:rustfmt_autosave = 1
 	let g:rustfmt_command = $HOME.'/.cargo/bin/rustfmt'
@@ -403,68 +408,72 @@ endif
 "========================================
 "    vim-lsp
 "----------------------------------------
-if s:is_plugged("vim-lsp")
-	" [ C/C++ ]
-	if executable('clangd')
-		au User lsp_setup call lsp#register_server({
-			\ 'name': 'clangd',
-			\ 'cmd': {server_info->['clangd']},
-			\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
-			\ })
-	endif
+if s:is_plugged('vim-lsp')
+	augroup VimLsps
+		autocmd!
 
-	" [ Go ]
-	"if executable('gopls')
-	"	au User lsp_setup call lsp#register_server({
-	"		\ 'name': 'gopls',
-	"		\ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
-	"		\ 'whitelist': ['go'],
-	"		\ })
-	"endif
-	if executable('go-langserver')
-		au User lsp_setup call lsp#register_server({
-			\ 'name': 'go-langserver',
-			\ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
-			\ 'whitelist': ['go'],
-			\ })
-	endif
+		" [ C/C++ ]
+		if executable('clangd')
+			au User lsp_setup call lsp#register_server({
+						\ 'name': 'clangd',
+						\ 'cmd': {server_info->['clangd']},
+						\ 'whitelist': ['c', 'cpp', 'objc', 'objcpp'],
+						\ })
+		endif
 
-	" [ Rust ]
-	if executable('rls')
-		au User lsp_setup call lsp#register_server({
-			\ 'name': 'rls',
-			\ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
-			\ 'whitelist': ['rust'],
-			\ })
-	endif
+		" [ Go ]
+		"if executable('gopls')
+		"	au User lsp_setup call lsp#register_server({
+		"		\ 'name': 'gopls',
+		"		\ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+		"		\ 'whitelist': ['go'],
+		"		\ })
+		"endif
+		if executable('go-langserver')
+			au User lsp_setup call lsp#register_server({
+						\ 'name': 'go-langserver',
+						\ 'cmd': {server_info->['go-langserver', '-gocodecompletion']},
+						\ 'whitelist': ['go'],
+						\ })
+		endif
 
-	" [ Python ] : python-language-server
-	if executable('pyls')
-		au User lsp_setup call lsp#register_server({
-			\ 'name': 'pyls',
-			\ 'cmd': {server_info->['pyls']},
-			\ 'whitelist': ['python'],
+		" [ Rust ]
+		if executable('rls')
+			au User lsp_setup call lsp#register_server({
+						\ 'name': 'rls',
+						\ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+						\ 'whitelist': ['rust'],
+						\ })
+		endif
+
+		" [ Python ] : python-language-server
+		if executable('pyls')
+			au User lsp_setup call lsp#register_server({
+						\ 'name': 'pyls',
+						\ 'cmd': {server_info->['pyls']},
+						\ 'whitelist': ['python'],
 			"\ 'workspace_config': {'pyls': {'plugins': {'pydocstyle': {'enabled': v:true}}}}
-			\ })
-	endif
+						\ })
+		endif
 
-	" [ Bash ]
-	if executable('bash-language-server')
-		au User lsp_setup call lsp#register_server({
-			\ 'name': 'bash-language-server',
-			\ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
-			\ 'whitelist': ['sh'],
-			\ })
-	endif
+		" [ Bash ]
+		if executable('bash-language-server')
+			au User lsp_setup call lsp#register_server({
+						\ 'name': 'bash-language-server',
+						\ 'cmd': {server_info->[&shell, &shellcmdflag, 'bash-language-server start']},
+						\ 'whitelist': ['sh'],
+						\ })
+		endif
 
-	" [ Haskell ] : haskell-ide-engine
-	if executable('hie-wrapper')
-		au User lsp_setup call lsp#register_server({
-			\ 'name': 'hie',
-			\ 'cmd': {server_info->['hie-wrapper']},
-			\ 'whitelist': ['haskell'],
-			\ })
-	endif
+		" [ Haskell ] : haskell-ide-engine
+		if executable('hie-wrapper')
+			au User lsp_setup call lsp#register_server({
+						\ 'name': 'hie',
+						\ 'cmd': {server_info->['hie-wrapper']},
+						\ 'whitelist': ['haskell'],
+						\ })
+		endif
+	augroup END
 
 	let g:lsp_async_completion = 1
 	let g:lsp_signs_enabled = 1
@@ -477,7 +486,7 @@ endif
 "========================================
 "    asyncomplete.vim
 "----------------------------------------
-if s:is_plugged("asyncomplete.vim")
+if s:is_plugged('asyncomplete.vim')
 	let g:asyncomplete_remove_duplicates = 1
 	let g:asyncomplete_auto_popup = 1
 
@@ -489,7 +498,7 @@ endif
 "========================================
 "    ale
 "----------------------------------------
-if s:is_plugged("ale")
+if s:is_plugged('ale')
 	" Linting
 	let g:ale_lint_on_enter = 1
 	let g:ale_lint_on_save = 1

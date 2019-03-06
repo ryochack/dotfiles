@@ -1,3 +1,8 @@
+" default encoding
+set encoding=utf-8
+" this file encoding
+scriptencoding utf-8
+
 "**********************************************************
 "     最小設定
 "**********************************************************
@@ -7,7 +12,7 @@ filetype plugin indent off
 "----------[ Basics ]----------
 set showcmd
 set hidden
-set vb t_vb=
+set visualbell t_vb=
 noremap ; :
 
 "----------[ Appearance ]----------
@@ -32,11 +37,13 @@ set t_Co=256
 "----------[ Edit ]----------
 nnoremap <CR> i<CR><ESC>
 cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
-autocmd BufWritePre * :%s/\s\+$//ge
+augroup EditBufWritePre
+	autocmd!
+	autocmd BufWritePre * :%s/\s\+$//ge
+augroup END
 
 "----------[ Encoding ]----------
 set fileformats=unix,dos,mac
-set encoding=utf-8
 
 "----------[ Fold ]----------
 set nofoldenable

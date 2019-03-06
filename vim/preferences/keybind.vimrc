@@ -1,3 +1,6 @@
+" this file encoding
+scriptencoding utf-8
+
 "**********************************************************
 "     KeyBinding設定
 "**********************************************************
@@ -35,11 +38,14 @@ lnoremap <C-a> <Home>
 lnoremap <C-e> <End>
 
 " --- QuickFix設定 ---
-" QuickFixをq/ESCで閉じる
-autocmd FileType qf nnoremap <buffer> q :ccl<CR>
-autocmd FileType qf nnoremap <buffer> <ESC> :ccl<CR>
-" QuickFixリストからEnterで飛ぶ
-autocmd FileType qf nnoremap <buffer> <CR> :.cc<CR>
+augroup QuickFixSetting
+	autocmd!
+	" QuickFixをq/ESCで閉じる
+	autocmd FileType qf nnoremap <buffer> q :ccl<CR>
+	autocmd FileType qf nnoremap <buffer> <ESC> :ccl<CR>
+	" QuickFixリストからEnterで飛ぶ
+	autocmd FileType qf nnoremap <buffer> <CR> :.cc<CR>
+augroup END
 
 " 無名レジスタのコピー・ペースト
 noremap gy "+y
@@ -64,8 +70,8 @@ cnoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 
 " for zeal
-if has("unix")
-	if executable("zeal")
+if has('unix')
+	if executable('zeal')
 		nnoremap <leader>d :call system('zeal '.&filetype.':'.expand("<cword>").'&')<CR>
 		vnoremap <leader>d :call system('zeal '.&filetype.':'.expand(@*).'&')<CR>
 	endif
