@@ -401,7 +401,7 @@ endif
 "----------------------------------------
 if s:is_plugged('rust.vim')
 	let g:rust_recommended_style = 1
-	let g:rustfmt_autosave = 1
+	let g:rustfmt_autosave = 0
 	let g:rustfmt_command = $HOME.'/.cargo/bin/rustfmt'
 endif
 
@@ -507,7 +507,7 @@ if s:is_plugged('ale')
 	let g:ale_echo_msg_error_str = 'E'
 	let g:ale_echo_msg_warning_str = 'W'
 	let g:ale_echo_msg_info_str = 'I'
-	let g:ale_echo_msg_format = '%linter%:%severity%| %s'
+	let g:ale_echo_msg_format = '%linter%(%severity%): %s'
 	let g:ale_set_loclist = 0
 	let g:ale_set_quickfix = 1
 	let g:ale_open_list = 1
@@ -518,6 +518,17 @@ if s:is_plugged('ale')
 	let g:ale_lint_on_text_changed = 'never'
 	" Fixing
 	let g:ale_fix_on_save = 0
+	let g:ale_fixers = {
+		\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+		\   'c': ['clang-format'],
+		\   'cpp': ['clang-format'],
+		\   'd': ['uncrustify'],
+		\   'rust': ['rustfmt'],
+		\   'sh': ['shfmt'],
+		\   'python': ['black'],
+		\   'go': ['gofmt'],
+		\   'haskell': ['hfmt'],
+		\}
 	" Completion
 	let g:ale_completion_enabled = 1
 
