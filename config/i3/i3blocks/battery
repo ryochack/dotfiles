@@ -22,11 +22,12 @@ my $percent;
 my $ac_adapt;
 my $full_text;
 my $short_text;
-my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
+# my $bat_number = $ENV{BLOCK_INSTANCE} || 0;
 my $status_mark = "";
 
 # read the first line of the "acpi" command output
-open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
+# open (ACPI, "acpi -b | grep 'Battery $bat_number' |") or die;
+open (ACPI, "acpi -b | grep -v 'rate information unavailable' |") or die;
 $acpi = <ACPI>;
 close(ACPI);
 
