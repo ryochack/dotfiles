@@ -96,14 +96,14 @@ fi
 
 # rustup completion
 if type rustup > /dev/null 2>&1; then
-	if [ ! -f $HOME/.config/bash/rustup-completion.bash ]; then
-		install -d $HOME/.config/bash
-		rustup completions bash > $HOME/.config/bash/rustup-completion.bash
+	if [ ! -f "$HOME"/.config/bash/rustup-completion.bash ]; then
+		install -d "$HOME"/.config/bash
+		rustup completions bash > "$HOME"/.config/bash/rustup-completion.bash
 	fi
-	source $HOME/.config/bash/rustup-completion.bash
+	. "$HOME"/.config/bash/rustup-completion.bash
 fi
 
-source $HOME/.profile
+. "$HOME"/.profile
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
