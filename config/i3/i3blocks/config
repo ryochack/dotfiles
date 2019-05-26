@@ -38,6 +38,11 @@ label=bat:
 command=~/.config/i3/i3blocks/battery
 interval=20
 
+[temperature]
+label=temp:
+command=~/.config/i3/i3blocks/temperature
+interval=20
+
 [time]
 command=date '+%Y-%m-%d(%a) %H:%M'
 interval=1

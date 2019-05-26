@@ -1,0 +1,7 @@
+#!/bin/sh
+# requires lm_sensors and jq package
+
+TEMPERATURE=$(sensors -j 2>/dev/null | jq '."amdgpu-pci-0400"."temp1"."temp1_input"')
+
+echo "${TEMPERATURE}℃"
+
