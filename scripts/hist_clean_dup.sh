@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -eu
 
 tac ~/.bash_history | awk '!a[$0]++' | tac > ~/.bash_history.tmp

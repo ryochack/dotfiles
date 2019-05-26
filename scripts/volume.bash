@@ -37,7 +37,7 @@ function fn_set_volume() {
         echo "set requires volume[%] value"
         exit
     fi
-	pamixer --set-volume $1
+	pamixer --set-volume "$1"
 }
 
 if [ $# -eq 0 ]; then
@@ -49,7 +49,7 @@ case $1 in
 	"mute" ) fn_mute ;;
 	"unmute" ) fn_unmute ;;
 	"get" ) fn_get_volume ;;
-	"set" ) fn_set_volume ${@:2} ;;
+	"set" ) fn_set_volume "${@:2}" ;;
 	"help" ) fn_help ;;
 	* ) echo "Invalid command: $1"
 		fn_help
