@@ -1,0 +1,5 @@
+set incremental-search true
+set show-directories true
+set selection-clipboard clipboard
+set guioptions 'v'
+
