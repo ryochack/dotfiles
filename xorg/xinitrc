@@ -37,7 +37,7 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 fcitx-autostart
 
-dropbox &
+pcloud &
 
 # This setting is for ThinkPad A285
 # xrandr --dpi 105
