@@ -104,7 +104,7 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 
 " Encoding {
 	" recognize_charcode : 文字化け解消プラグイン
-	Plug 'banyan/recognize_charcode.vim'
+	" Plug 'banyan/recognize_charcode.vim'
 " }
 
 " Utility {
@@ -158,6 +158,8 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 " FileType {
 	" rust
 	Plug 'rust-lang/rust.vim', { 'for' : 'rust' }
+	" toml
+	Plug 'cespare/vim-toml', { 'for' : 'toml' }
 " }
 
 " ColorScheme {

@@ -8,6 +8,7 @@ scriptencoding utf-8
 " $VIMRUNTIME/filetype.vimで定義されていないものを追加定義する
 augroup DefineFileType
 	autocmd!
+	autocmd BufNewFile,BufRead *.bash setlocal filetype=bash
 	autocmd BufNewFile,BufRead *.go setlocal filetype=go
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
 	autocmd BufNewFile,BufRead *.rs setlocal filetype=rust

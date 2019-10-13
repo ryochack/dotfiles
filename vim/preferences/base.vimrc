@@ -182,7 +182,10 @@ set nonumber
 " 不可視文字表示
 set list
 " 不可視文字の表示形式設定
-set listchars=tab:^\ ,trail:-,extends:@,eol:<
+" set ambiwidth=single
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:-,eol:↲
+" set listchars=tab:»-,extends:›,precedes:‹,nbsp:·,trail:-,eol:↲
+" set listchars=tab:^\ ,trail:-,extends:@,eol:<
 " 印字不可能文字を16進数で表示
 set display=uhex
 
