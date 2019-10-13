@@ -1,9 +1,22 @@
 #!/usr/bin/env sh
 
-kbdbl=`expr $(cat /sys/class/leds/tpacpi::kbd_backlight/brightness)`
-max_kbdbl=`expr $(cat /sys/class/leds/tpacpi::kbd_backlight/max_brightness)`
-if [ $kbdbl -lt $max_kbdbl ]; then
-	echo `expr $kbdbl + 1` > /sys/class/leds/tpacpi::kbd_backlight/brightness
-else
-	echo 0 > /sys/class/leds/tpacpi::kbd_backlight/brightness
-fi
+step_kbdbl() {
+    kbdbl=`expr $(cat /sys/class/leds/tpacpi::kbd_backlight/brightness)`
+    max_kbdbl=`expr $(cat /sys/class/leds/tpacpi::kbd_backlight/max_brightness)`
+    if [ $kbdbl -lt $max_kbdbl ]; then
+        echo `expr $kbdbl + 1` > /sys/class/leds/tpacpi::kbd_backlight/brightness
+    else
+        echo 0 > /sys/class/leds/tpacpi::kbd_backlight/brightness
+    fi
+}
+
+toggle_kbdbl() {
+    kbdbl=`expr $(cat /sys/class/leds/tpacpi::kbd_backlight/brightness)`
+    if [ $kbdbl -eq 0 ]; then
+        echo 1 > /sys/class/leds/tpacpi::kbd_backlight/brightness
+    else
+        echo 0 > /sys/class/leds/tpacpi::kbd_backlight/brightness
+    fi
+}
+
+toggle_kbdbl
