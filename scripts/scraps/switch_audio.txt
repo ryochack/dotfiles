@@ -1,0 +1,9 @@
+$ pacmd list-sinks | grep -e "index" -e "name:"
+  * index: 0
+	name: <alsa_output.usb-Generic_ThinkPad_Dock_USB_Audio-00.analog-stereo>
+    index: 1
+	name: <alsa_output.pci-0000_04_00.6.analog-stereo>
+$ pacmd set-default-sink alsa_output.pci-0000_04_00.6.analog-stereo
+
+pavucontrol
+
