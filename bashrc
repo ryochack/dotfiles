@@ -5,8 +5,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export HISTCONTROL=ignoreboth
-export HISTIGNORE=ls:exit:history:which
+export HISTCONTROL=ignoreboth:erasedups
+export HISTIGNORE=ls:exit:history:which:rm:cd
 export HISTSIZE=9999
 # share history with several terminals
 function share_history {
