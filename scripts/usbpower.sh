@@ -110,7 +110,8 @@ fn_control() {
 	do
 		USB_POW_PATH="/sys/bus/usb/devices/usb${USB_MINOR_NUMBER}/power"
 		USB_POW_CONTROL_DEV="${USB_POW_PATH}/control"
-		echo "${USB_POW_CONTROL}" > "${USB_POW_CONTROL_DEV}"
+		# echo "${USB_POW_CONTROL}" > "${USB_POW_CONTROL_DEV}"
+		echo "${USB_POW_CONTROL}" | sudo tee "${USB_POW_CONTROL_DEV}" > /dev/null
 	done
 }
 
