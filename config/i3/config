@@ -186,11 +186,15 @@ for_window [class="dev-floating-app"] floating enable
 exec --no-startup-id "compton -CGb"
 
 # Start clipboard manager
+
+# Start locker
 # exec --no-startup-id xautolock -detectsleep -time 10 -locker "i3lock -e -c 000000"
-# exec --no-startup-id xautolock -detectsleep -time 10 -locker "i3lock -e -i ~/picture/wallpaper/live_miku_tp220.png"
+# exec --no-startup-id xautolock -detectsleep -time 10 -locker "i3lock -e -c 000000 -i $HOME/pic/wallpaper/undertale-the-annoying-dog.png"
+exec --no-startup-id xautolock -detectsleep -time 10 -locker $HOME/.dotfiles/scripts/screenlock.sh -killtime 30 -killer "systemctl suspend"
 # exec --no-startup-id xautolock -time 10 -detectsleep -locker "i3lock-fancy -ngp" -killtime 20 -killer "systemctl suspend"
-exec --no-startup-id xautolock -time 10 -resetsaver -locker "i3lock-fancy -ngp" -killtime 20 -killer "systemctl suspend"
+# exec --no-startup-id xautolock -time 10 -resetsaver -locker "i3lock-fancy -ngp" -killtime 20 -killer "systemctl suspend"
 # ScreenLock: Meta+Alt+l
+exec --no-startup-id xss-lock -- $HOME/.dotfiles/scripts/screenlock.sh
 bindsym $mod+Mod1+l exec "xautolock -locknow"
 
 # Audio volume controll
