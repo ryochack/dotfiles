@@ -4,7 +4,7 @@ set -eu
 # https://www.kernel.org/doc/Documentation/usb/power-management.txt
 #
 
-USB_DEVICE_COUNTS=5
+USB_DEVICE_COUNTS=$(lsusb -t | grep -oe "Bus [0-9]\+" | wc -l)
 
 fn_help() {
 	cat << __EOS__
