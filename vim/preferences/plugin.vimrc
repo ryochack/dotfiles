@@ -68,12 +68,10 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 " }
 
 " Complement {
-	" neocomplete : 補完プラグイン
-	"Plug 'Shougo/neocomplete'
-	" neosnippet : スニペット補完
-	"Plug 'Shougo/neosnippet'
-	" neosnippet-snippets : スニペット集
-	"Plug 'Shougo/neosnippet-snippets'
+	" UltiSnips : 補完プラグイン
+	Plug 'SirVer/ultisnips'
+	" vim-snippets : スニペット集
+	Plug 'honza/vim-snippets'
 " }
 
 " Tag {

@@ -246,30 +246,14 @@ if s:is_plugged('neocomplete')
 endif
 
 "========================================
-"    neosnippet
+"    UltiSnips
 "----------------------------------------
-if s:is_plugged('neosnippet')
-	"# <C-k>でスニペット展開しパラメータ入力し<Tab>で次の入力へ
-	"# 標準のスニペットを無効にする
-	let g:neosnippet#disable_runtime_snippets = {
-				\ '_' : 1,
-				\ }
-	"# スニペットファイルを読み込むディレクトリを指定
-	let g:neosnippet#snippets_directory = $HOME.'/.vim/bundle/snipmate-snippets/snippets' .','. $HOME.'/.vim/snippet'
- 	let g:neosnippet#data_directory = $HOME.'/.cache/vim/neosnippet'
-
-	"# Plugin key-mappings.
-	imap <C-k> <Plug>(neosnippet_expand_or_jump)
-	smap <C-k> <Plug>(neosnippet_expand_or_jump)
-
-	"# SuperTab like snippets behavior.
-	imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-	smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-	"# For snippet_complete marker.
-	if has('conceal')
-		set conceallevel=2 concealcursor=i
-	endif
+if s:is_plugged('ultisnips')
+	let g:UltiSnipsExpandTrigger="<C-k>"
+	let g:UltiSnipsJumpForwardTrigger="<C-l>"
+	let g:UltiSnipsJumpBackwardTrigger="<C-h>"
+	" If you want :UltiSnipsEdit to split your window.
+	let g:UltiSnipsEditSplit="vertical"
 endif
 
 "========================================
