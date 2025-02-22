@@ -1,11 +1,10 @@
 " this file encoding
 scriptencoding utf-8
 
-"**********************************************************
-"     filetype
-"**********************************************************
-" filetype定義
-" $VIMRUNTIME/filetype.vimで定義されていないものを追加定義する
+"==========================================================
+"  Filetype
+"==========================================================
+" filetype definitions
 augroup DefineFileType
 	autocmd!
 	autocmd BufNewFile,BufRead *.bash setlocal filetype=bash
@@ -19,13 +18,12 @@ augroup END
 
 augroup FileTypeC
 	autocmd!
-	" 辞書設定
 	autocmd FileType c,cc,cpp,h setlocal cindent
 	autocmd FileType c,h setlocal dictionary+=~/.vim/dict/c.dict
 	autocmd FileType cc,cpp,h setlocal dictionary+=~/.vim/dict/cpp.dict
-	" FileType毎のOmni補完を設定
+	" Set omni completion for each filetypes
 	autocmd FileType c setlocal omnifunc=ccomplete#Complete
-	"そのファイルタイプにあわせたインデントを利用する
+	" Set indent for each filetypes
 	"autocmd FileType c   setlocal shiftwidth=4 softtabstop=4 tabstop=4 noexpandtab
 augroup END
 

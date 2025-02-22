@@ -1,7 +1,7 @@
 " this file encoding
 scriptencoding utf-8
 
-"設定のリセット
+" reset settings
 highlight clear
 syntax clear
 mapclear
@@ -12,7 +12,6 @@ syntax off
 filetype off
 filetype plugin indent off
 
-
 " Plugins
 source ~/.vim/preferences/plugin.vimrc
 " Plugin-settings
@@ -21,7 +20,7 @@ source ~/.vim/preferences/plugin_setting.vimrc
 " Filetypes
 source ~/.vim/preferences/filetype.vimrc
 
-"pluginのcolorschemeの設定を有効にした後にbase.vimrcの設定を反映する
+" apply base.vimrc after enabling colorscheme settings on plugin
 syntax enable
 
 " KeyBinds

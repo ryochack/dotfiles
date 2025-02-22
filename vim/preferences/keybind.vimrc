@@ -1,35 +1,35 @@
 " this file encoding
 scriptencoding utf-8
 
-"**********************************************************
-"     KeyBinding設定
-"**********************************************************
-" キーマップリーダー
+"==============
+"  KeyBinding
+"==============
+" Key map leader
 let mapleader = '\'
 " noremap ; :
 " noremap : ;
 
-" カーソル下のキーワードをヘルプでひく
+" Show help document for the keyword under the cursor
 nnoremap <C-h> :<C-u>help<Space><C-r><C-w><CR>
 
-" ZZ(保存して閉じる)とZQ(保存せずに閉じる)を無効化
+" Disable ZZ and ZQ keymaps
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
-" Spaceは何もしない
+" Space do nothing
 nmap <silent> <Space> <Nop>
 xmap <silent> <Space> <Nop>
 
-" 複数候補がある場合に選択してからタグジャンプ
+" If there are multiple candidates, select on before tag jumping
 noremap <C-]> g<C-]>
 
-" ESC2回押しでハイライトを消す
+" Erase highlight on pushing ESC twice
 nnoremap <ESC><ESC> :<C-u>nohlsearch<CR>
 
-" 表示行移動
+" Move the display lines
 nnoremap j gj
 nnoremap k gk
-" 論理行移動
+" Move the actually lines
 nnoremap gj j
 nnoremap gk k
 
@@ -37,31 +37,31 @@ nnoremap gk k
 lnoremap <C-a> <Home>
 lnoremap <C-e> <End>
 
-" --- QuickFix設定 ---
+" QuickFix setting
 augroup QuickFixSetting
 	autocmd!
-	" QuickFixをq/ESCで閉じる
+	" Close QuickFix by 'q' or ESC
 	autocmd FileType qf nnoremap <buffer> q :ccl<CR>
 	autocmd FileType qf nnoremap <buffer> <ESC> :ccl<CR>
-	" QuickFixリストからEnterで飛ぶ
+	" Jump by Enter on QuickFix list
 	autocmd FileType qf nnoremap <buffer> <CR> :.cc<CR>
 augroup END
 
-" 無名レジスタのコピー・ペースト
+" Copy/Paset using unnamed register
 noremap gy "+y
 noremap gp "+p
 noremap gP "+P
 
-" Return有効
+" Enable Return
 nnoremap <CR> i<CR><ESC>
 
-" カレントディレクトリまでのパスを取得
+" Get path to current directory
 cnoremap <C-x> <C-r>=expand("%:p:h")<CR>/
 
-" insertモードを抜けるとIMEオフ
+" Turn off IME when exiting insert mode
 inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 
-" <C-p>, <C-n>でコマンド履歴を辿れるようにする
+" Trace command history by <C-p>, <C-n>
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 cnoremap <C-a> <Home>

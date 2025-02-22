@@ -3,9 +3,9 @@ set encoding=utf-8
 " this file encoding
 scriptencoding utf-8
 
-"**********************************************************
-"     最小設定
-"**********************************************************
+"====================
+"  Minimal settings
+"====================
 filetype off
 filetype plugin indent off
 

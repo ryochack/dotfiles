@@ -1,11 +1,11 @@
 " this file encoding
 scriptencoding utf-8
 
-"**********************************************************
-"     プラグイン設定 Plugins
-"**********************************************************
+"===================
+"  Plugin settings
+"===================
 
-" vim-plugでPluginがインストールされているかどうかを判定する
+" Check the plugin is installed or not by vim-plug
 function s:is_plugged(name)
 	if exists('g:plugs') && has_key(g:plugs, a:name) && isdirectory(g:plugs[a:name].dir)
 		return 1
@@ -14,126 +14,25 @@ function s:is_plugged(name)
 	endif
 endfunction
 
-"========================================
-"    matchit (vim embedded macro)
-"----------------------------------------
+"--------------------------------
+"  matchit (vim embedded macro)
+"--------------------------------
 let b:match_ignorecase = 0
-" 機能拡張用。対応させたいブレースを記述する
+" For function enhancement. Describe the braces to be supported.
 let b:match_words = '\<if\>:\<endif\>,'
 			\ . '\<while\>:\<continue\>:\<break\>:\<endwhile\>'
 
-"========================================
-"    text object
-"----------------------------------------
-" [textobj-indent] インデントされたものをtext-object化
-	" --- key mappping ---
-	" ai  <Plug>(textobj-indent-a)
-	" ii  <Plug>(textobj-indent-i)
-	" aI  <Plug>(textobj-indent-same-a)
-	" iI  <Plug>(textobj-indent-same-i)
-
-" [textobj-syntax] シンタックスで定義されたものをtext-object化
-	" --- key mappping ---
-	" ay  <Plug>(textobj-syntax-a)
-	" iy  <Plug>(textobj-syntax-i)
-
-" [textobj-function] 関数の中身をtext-object化
-	" --- key mappping ---
-	" af  <Plug>(textobj-function-a)
-	" if  <Plug>(textobj-function-i)
-	" aF  <Plug>(textobj-function-A)
-	" iF  <Plug>(textobj-function-I)
-
-" [textobj-fold] 折り畳みをtext-object化
-	" --- key mappping ---
-	" az  <Plug>(textobj-fold-a)
-	" iz  <Plug>(textobj-fold-i)
-
-" [textobj-entire] バッファ全体をtext-object化
-	" --- key mappping ---
-	" ae  <Plug>(textobj-entire-a)
-	" ie  <Plug>(textobj-entire-i)
-
-" [textobj-line] 行をtext-object化
-	" --- key mappping ---
-	" al  <Plug>(textobj-line-a)
-	" il  <Plug>(textobj-line-i)
-
-" [textobj-jabraces] 「foo」や【bar】などのブレースをtext-object化
-	" --- key mappping ---
-	" ajb  <Plug>(textobj-jabraces-parens-a)
-	" aj(  <Plug>(textobj-jabraces-parens-a)
-	" aj)  <Plug>(textobj-jabraces-parens-a)
-	" ajB  <Plug>(textobj-jabraces-braces-a)
-	" aj{  <Plug>(textobj-jabraces-braces-a)
-	" aj}  <Plug>(textobj-jabraces-braces-a)
-	" ajr  <Plug>(textobj-jabraces-brackets-a)
-	" aj[  <Plug>(textobj-jabraces-brackets-a)
-	" aj]  <Plug>(textobj-jabraces-brackets-a)
-	" aja  <Plug>(textobj-jabraces-angles-a)
-	" aj<  <Plug>(textobj-jabraces-angles-a)
-	" aj>  <Plug>(textobj-jabraces-angles-a)
-	" ajA  <Plug>(textobj-jabraces-double-angles-a)
-	" ajk  <Plug>(textobj-jabraces-kakko-a)
-	" ajK  <Plug>(textobj-jabraces-double-kakko-a)
-	" ajy  <Plug>(textobj-jabraces-yama-kakko-a)
-	" ajY  <Plug>(textobj-jabraces-double-yama-kakko-a)
-	" ajt  <Plug>(textobj-jabraces-kikkou-kakko-a)
-	" ajs  <Plug>(textobj-jabraces-sumi-kakko-a)
-	" ijb  <Plug>(textobj-jabraces-parens-i)
-	" ij(  <Plug>(textobj-jabraces-parens-i)
-	" ij)  <Plug>(textobj-jabraces-parens-i)
-	" ijB  <Plug>(textobj-jabraces-braces-i)
-	" ij{  <Plug>(textobj-jabraces-braces-i)
-	" ij}  <Plug>(textobj-jabraces-braces-i)
-	" ijr  <Plug>(textobj-jabraces-brackets-i)
-	" ij[  <Plug>(textobj-jabraces-brackets-i)
-	" ij]  <Plug>(textobj-jabraces-brackets-i)
-	" ija  <Plug>(textobj-jabraces-angles-i)
-	" ij<  <Plug>(textobj-jabraces-angles-i)
-	" ij>  <Plug>(textobj-jabraces-angles-i)
-	" ijA  <Plug>(textobj-jabraces-double-angles-i)
-	" ijk  <Plug>(textobj-jabraces-kakko-i)
-	" ijK  <Plug>(textobj-jabraces-double-kakko-i)
-	" ijy  <Plug>(textobj-jabraces-yama-kakko-i)
-	" ijY  <Plug>(textobj-jabraces-double-yama-kakko-i)
-	" ijt  <Plug>(textobj-jabraces-kikkou-kakko-i)
-	" ijs  <Plug>(textobj-jabraces-sumi-kakko-i)
-
-" [textobj-comment] コメントをtext-object化
-	" --- key mappping ---
-	" ac  <Plug>(textobj-comment-a)
-	" ic  <Plug>(textobj-comment-i)
-
-" [textobj-between] 任意の区切り文字の間をtext-object化
-	" --- key mappping ---
-	" af  <Plug>(textobj-between-a)
-	" if  <Plug>(textobj-between-i)
-
-" [textobj-wiw] wordの中の単語をtext-object化
-	" --- key mappping ---
-	" <Space>w   <Plug>(textobj-wiw-n)
-	" <Space>b   <Plug>(textobj-wiw-p)
-	" <Space>e   <Plug>(textobj-wiw-N)
-	" <Space>ge  <Plug>(textobj-wiw-P)
-	" a<Space>w  <Plug>(textobj-wiw-a)
-	" i<Space>w  <Plug>(textobj-wiw-i)
+"------------
+"  Operator
+"------------
 if s:is_plugged('vim-operator-replace')
-	let g:textobj_wiw_default_key_mappings_prefix='<Space>'
-endif
-
-"========================================
-"    operator
-"----------------------------------------
-" [operator-replace] Yankしたもので選択範囲を置換する
 	" --- key mappping ---
 	" "{register}_{motion}  <Plug>(operator-replace)
 	" -> Replace text that {motion} moves over with register x.
-if s:is_plugged('vim-operator-replace')
 	map _ <Plug>(operator-replace)
 endif
 
-" [surround] テキストオブジェクトに対する括弧編集
+" [surround]
 	" OldText                  Command    NewText
 	" -------------------------------------------------------------
 	" "Hello *world!"          ds"        Hello world!
@@ -152,35 +51,15 @@ endif
 	" Hello w*orld!            ysiw)      Hello (world)!
 	" Hello w*orld!            yssB       {Hello world!}
 
-"========================================
-"    yankround
-"----------------------------------------
-if s:is_plugged('yankround.vim')
-	set viminfo+=!
-	let g:yankround_dir = $HOME.'/.cache/vim/yankround'
-	let g:yankround_max_history = 50
-	nmap p <Plug>(yankround-p)
-	xmap p <Plug>(yankround-p)
-	nmap P <Plug>(yankround-P)
-	nmap gp <Plug>(yankround-gp)
-	xmap gp <Plug>(yankround-gp)
-	nmap gP <Plug>(yankround-gP)
-	nmap <C-p> <Plug>(yankround-prev)
-	nmap <C-n> <Plug>(yankround-next)
-endif
-
-"========================================
-"    vim-commentary
-"----------------------------------------
+"--------
+"  Edit
+"--------
 if s:is_plugged('vim-commentary')
 	augroup VimCommentaryFileTypes
 		autocmd FileType toml setlocal commentstring=#\ %s
 	augroup END
 endif
 
-"========================================
-"    fitpaste
-"----------------------------------------
 if s:is_plugged('fitpaste-vim')
 	vnoremap [fitpaste] <Nop>
 	vmap     . [fitpaste]
@@ -189,76 +68,9 @@ if s:is_plugged('fitpaste-vim')
 	vmap <silent> [fitpaste]p <Plug>(fitpaste-replace)
 endif
 
-"========================================
-"    neocomplete
-"----------------------------------------
-if s:is_plugged('neocomplete')
-	let g:neocomplete#enable_at_startup = 1
-	let g:neocomplete#max_list = 100
-	let g:neocomplete#max_keyword_width = 80
-	let g:neocomplete#auto_completion_start_length = 2
-	let g:neocomplete#manual_completion_start_length = 1
-	let g:neocomplete#min_keyword_length = 4
-	let g:neocomplete#enable_ignore_case = 1
-	let g:neocomplete#enable_smart_case = 1
-	let g:neocomplete#enable_camel_case = 0
-	let g:neocomplete#disable_auto_complete = 0
-	let g:neocomplete#enable_auto_select = 0
-	let g:neocomplete#enable_auto_delimiter = 0
-	let g:neocomplete#enable_fuzzy_completion = 1
- 	let g:neocomplete#data_directory = $HOME.'/.cache/vim/neocomplete'
-	" This dictionary records keyword patterns to completion
-	if !exists('g:neocomplete#keyword_patterns')
-		let g:neocomplete#keyword_patterns = {}
-	endif
-	let g:neocomplete#keyword_patterns._ = '\h\w*'
-	" define delimiter each filetype
-	if !exists('g:neocomplete#delimiter_patterns')
-		let g:neocomplete#delimiter_patterns= {}
-	endif
-	let g:neocomplete#delimiter_patterns.vim = ['#']
-	let g:neocomplete#delimiter_patterns.cpp = ['::']
-	" a dictionary to decide use source names
-	if !exists('g:neocomplete#sources')
-		let g:neocomplete#sources = {}
-	endif
-	let g:neocomplete#sources._   = ['buffer', 'dictionary', 'file', 'tag']
-	let g:neocomplete#sources.c   = ['buffer', 'include']
-	let g:neocomplete#sources.cpp = ['buffer', 'include']
-	let g:neocomplete#release_cache_time = 900
-	let g:neocomplete#skip_auto_completion_time = '0.3'
-	let g:neocomplete#enable_auto_close_preview = 1
-	let g:neocomplete#sources#buffer#cache_limit_size = 500000
-	let g:neocomplete#sources#buffer#max_keyword_width = 80
-	let g:neocomplete#sources#dictionary#dictionaries = {
-				\ '_'       : '',
-				\ 'c'       : $HOME.'/.vim/dict/c.dict',
-				\ 'cpp'     : $HOME.'/.vim/dict/cpp.dict',
-				\ 'go'      : $HOME.'/.vim/dict/go.dict',
-				\ 'java'    : $HOME.'/.vim/dict/java.dict',
-				\ 'ruby'    : $HOME.'/.vim/dict/ruby.dict',
-				\ 'scheme'  : $HOME.'/.vim/dict/scheme.dict',
-				\ 'python'  : $HOME.'/.vim/dict/python.dict',
-				\ 'verilog' : $HOME.'/.vim/dict/verilog.dict',
-				\ 'vim'     : $HOME.'/.vim/dict/vim.dict'
-				\ }
-	let g:neocomplete#sources#syntax#min_keyword_length = 4
-endif
-
-"========================================
-"    UltiSnips
-"----------------------------------------
-if s:is_plugged('ultisnips')
-	let g:UltiSnipsExpandTrigger="<C-k>"
-	let g:UltiSnipsJumpForwardTrigger="<C-l>"
-	let g:UltiSnipsJumpBackwardTrigger="<C-h>"
-	" If you want :UltiSnipsEdit to split your window.
-	let g:UltiSnipsEditSplit="vertical"
-endif
-
-"========================================
-"    tagbar
-"----------------------------------------
+"-------
+"  Tag
+"-------
 if s:is_plugged('tagbar')
 	let g:tagbar_left  = 1
 	let g:tagbar_width = 40
@@ -279,17 +91,14 @@ if s:is_plugged('tagbar')
 	let g:tagbar_autopreview = 0
 endif
 
-"========================================
-"    gtags
-"----------------------------------------
 if s:is_plugged('gtags.vim')
 	nnoremap <F5> :<C-u>Gtags <C-r><C-w><CR>
 	nnoremap <F6> :<C-u>Gtags -r <C-r><C-w><CR>
 endif
 
-"========================================
-"    quickhl
-"----------------------------------------
+"-----------
+"  Display
+"-----------
 if s:is_plugged('vim-quickhl')
 	nmap <Space>m <Plug>(quickhl-manual-this)
 	xmap <Space>m <Plug>(quickhl-manual-this)
@@ -300,9 +109,6 @@ if s:is_plugged('vim-quickhl')
 	xmap <Space>j <Plug>(quickhl-cword-toggle)
 endif
 
-"========================================
-"    lightline
-"----------------------------------------
 if s:is_plugged('lightline.vim')
 	let g:lightline = {
 				\ 'colorscheme': 'wombat',
@@ -366,32 +172,29 @@ if s:is_plugged('lightline.vim')
 	"set encoding=utf-8
 endif
 
-"========================================
-"    Gist
-"----------------------------------------
-if s:is_plugged('gist-vim')
-	let g:gist_detect_filetype = 1
-endif
-
-"========================================
-"    Hybrid
-"----------------------------------------
 if s:is_plugged('vim-hybrid')
 	colorscheme hybrid
 endif
 
-"========================================
-"    rust.vim
-"----------------------------------------
+"-------
+"  Git
+"-------
+if s:is_plugged('gist-vim')
+	let g:gist_detect_filetype = 1
+endif
+
+"------------
+"  FileType
+"------------
 if s:is_plugged('rust.vim')
 	let g:rust_recommended_style = 1
 	let g:rustfmt_autosave = 0
 	let g:rustfmt_command = $HOME.'/.cargo/bin/rustfmt'
 endif
 
-"========================================
-"    vim-lsp
-"----------------------------------------
+"----------------------------
+"  Language Server Protocol
+"----------------------------
 if s:is_plugged('vim-lsp')
 	augroup VimLsps
 		autocmd!
@@ -479,9 +282,6 @@ if s:is_plugged('vim-lsp')
 	let g:lsp_signs_warning = {'text': '‼'}
 endif
 
-"========================================
-"    asyncomplete.vim
-"----------------------------------------
 if s:is_plugged('asyncomplete.vim')
 	let g:asyncomplete_remove_duplicates = 1
 	let g:asyncomplete_auto_popup = 1
@@ -489,54 +289,5 @@ if s:is_plugged('asyncomplete.vim')
 	inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 	inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 	inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
-endif
-
-"========================================
-"    ale
-"----------------------------------------
-if s:is_plugged('ale')
-	" Printing
-	let g:ale_sign_error = '✗'
-	let g:ale_sign_warning = '‼'
-	let g:ale_echo_msg_error_str = 'E'
-	let g:ale_echo_msg_warning_str = 'W'
-	let g:ale_echo_msg_info_str = 'I'
-	let g:ale_echo_msg_format = '%linter%(%severity%): %s'
-	let g:ale_set_loclist = 0
-	let g:ale_set_quickfix = 0
-	let g:ale_open_list = 1
-	let g:ale_keep_list_window_open = 0
-	" Linting
-	let g:ale_lint_on_enter = 1
-	let g:ale_lint_on_save = 1
-	let g:ale_lint_on_text_changed = 'never'
-	" Only run linters named in ale_linters settings.
-	"let g:ale_linters_explicit = 1
-	let g:ale_linters = {
-		\   'ada': ['gcc'],
-		\   'awk': ['gawk'],
-		\   'c': ['clangd', 'cppcheck', 'clang-tidy'],
-		\   'cpp': ['clangd', 'cppcheck', 'clang-tidy'],
-		\   'd': ['dls'],
-		\   'sh': ['shellcheck', 'bash-language-server'],
-		\}
-	" Fixing
-	let g:ale_fix_on_save = 0
-	let g:ale_fixers = {
-		\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-		\   'c': ['clang-format'],
-		\   'cpp': ['clang-format'],
-		\   'd': ['uncrustify'],
-		\   'rust': ['rustfmt'],
-		\   'sh': ['shfmt'],
-		\   'python': ['black'],
-		\   'go': ['gofmt'],
-		\   'haskell': ['hfmt'],
-		\}
-	" Completion
-	let g:ale_completion_enabled = 1
-
-	" Rust
-	let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 endif
 

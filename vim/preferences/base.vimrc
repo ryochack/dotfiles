@@ -3,87 +3,75 @@ set encoding=utf-8
 " this file encoding
 scriptencoding utf-8
 
-"**********************************************************
-"     Basic
-"**********************************************************
-" バックスペースで何でも消せるようにする
+"=========
+"  Basic
+"=========
+" Set targets that can be erased with BackSpace
 set backspace=indent,eol,start
-" スワップファイルを作成
+" Create swapfiles
 set swapfile
 set directory=~/.vim/temp/swapfile
-" バックアップファイルを作成
-" ファイル上書き時にバックアップ作成
+" Create backup files, and Create it when overwriting files
 set backup
 set writebackup
 set backupdir=~/.vim/temp/backupfile
-" 編集中Fileを外部から変更されたら自動的に再読込
+" Auto-Read when updated from outside
 set autoread
 augroup vimrc-checktime
 	autocmd!
 	autocmd WinEnter * checktime
 augroup END
-" 変更中でも保存せずに別ファイル表示を許可
+" Allow showing other files without saving
 set hidden
-" 挿入モードでバックスペース拡張
-set backspace=indent,eol,start
-" テキスト整形オプション
+" Text format option
 set formatoptions=roqlm
-" ビープ音を鳴らさない
+" Don't beep
 set visualbell t_vb=
-" Explorerの初期ディレクトリ(:browse)
+" Default directory for Explorer (:browse)
 set browsedir=buffer
-" カーソルを行頭・行末で止まらないようにする
+" Ensure that the cursor does not stop at the beginning or end of a line
 set whichwrap=b,s,h,l,<,>,[,]
-" コマンドをステータスラインに表示
-set showcmd
-" 現在のモードを表示
+" Show current mode
 set showmode
-" viminfoファイル設定
+" viminfo file setting
 set viminfo='50,<1000,s100,/100,n~/.vim/temp/viminfo
-" モードライン無効
+" Disable mode lines
 set modelines=0
 
-" クリップモード設定
-" - unnamed:    無名レジスタに入るデータを*レジスタに入れる(ClipBoard共有)
-"               unnamedをsetすると、BlockDiffが動作しなくなるので、とりあえずOFF
-" - autoselect: VisualModeで選択したテキストがクリップボードに入るようにする(CUI版のみ)
+" Clip mode setting
+" - unnamed:    data to be put into the unnamed register is also put into
+"               the * register (sharing clipboard)
+"               (If this value is set, BlockDiff will not work)
+" - autoselect: The text selected on Visual mode goes into the clipboard.
 set clipboard+=autoselect
 
-" マウスを使用できるようにする
+" Use mouse
 set mouse=a
 set guioptions+=a
 set ttymouse=xterm2
 
-" 折り返し有効
+" Enable wrapping
 set wrap
-" 単語とかを考慮して折り返す
+" Break lines so that words are not broken
 set linebreak
-" wrapされた行のインデントを有効にする
+" Enable indent for wrapped lines
 set breakindent
 set breakindentopt=min:20,shift:0
 set showbreak=+\ 
 
-"**********************************************************
-"     Search
-"**********************************************************
-" 検索をループしない
+"==========
+"  Search
+"==========
+" Don't loop search
 set nowrapscan
-" 大文字小文字を区別しない
+
 set ignorecase
-" 小文字なら大文字と区別しない、大文字なら区別する
 set smartcase
-" インクリメンタルサーチ有効
 set incsearch
-" 検索結果をハイライト
 set hlsearch
-"augroup vimrc-incsearch-highlight
-"	autocmd!
-"	autocmd CmdlineEnter [/\?] :set hlsearch
-"	autocmd CmdlineLeave [/\?] :set nohlsearch
-"augroup END
 
 " --- grep ---
-" 外部grep設定
+" External grep setting
 set grepformat=%f:%l:%m,%f:%l:%m,%f\ \ %l%m,%f
 set grepprg=grep\ -nH
 "----------------------------------
@@ -92,32 +80,25 @@ set grepprg=grep\ -nH
 " :grep -r searchword --include='*.txt'   /* recursive search */
 "----------------------------------
 
-
-"**********************************************************
-"     Move
-"**********************************************************
-" 上下最低3行を残してスクロール
+"========
+"  Move
+"========
+" Leave at least 3 lines up and down when scroling
 set scrolloff=3
-" 左右最低3文字を残してスクロール
+" Leave at least 3 chars left and right when scroling
 set sidescrolloff=3
-" 矩形選択で自由に移動する
+" Move freely when rectangle selecting
 set virtualedit+=block
 
-
-"**********************************************************
-"     Edit
-"**********************************************************
-" insertモードを抜けるとIMEオフ
+"========
+"  Edit
+"========
+" Turn off IME when exiting insert mode
 set noimdisable
 set iminsert=0 imsearch=0
 set noimcmdline
 
-" 保存時に行末の空白を除去する
-"autocmd BufWritePre * :%s/\s\+$//ge
-" 保存時にtabをスペースに変換する
-"autocmd BufWritePre * :%s/\t/  /ge
-
-" 保存時に対象ディレクトリが存在しなければ作成する
+" Auto create target directory if it is not exists
 augroup AutoMkdir
 	autocmd!
 	autocmd BufWritePre * call s:auto_mkdir(expand('<afile>:p:h'), v:cmdbang)
@@ -129,34 +110,32 @@ augroup AutoMkdir
 	endfunction
 augroup END
 
-
-"**********************************************************
-"     Complement
-"**********************************************************
-" 補完候補表示を有効
+"==============
+"  Complement
+"==============
+" Display complemention list
 set wildmenu
-" コマンドライン補完候補検索開始キー
+" Command line complemention candidate search start key
 set wildchar=<TAB>
-" 補完動作設定:最長マッチ
+" Complemention setting: longest match
 set wildmode=list:longest
-" コマンド・検索パターンの履歴数
+" History size of commands and search patterns
 set history=100
-" 補完候補の検索場所
+" Search locatoin of complemention candidates
 set complete=.,w,b,u,k,t,i
-" 挿入モード補完設定
+" Complementions setting on insert mode
 set completeopt=menu,menuone,preview
 
-
-"**********************************************************
-"     Encoding
-"**********************************************************
-" 改行文字
+"============
+"  Encoding
+"============
+" Newline caracter
 set fileformats=unix,dos,mac
 
-" ワイルドカードで表示するときに優先度を低くする拡張子
+" Low priority extensions when displaying wildcards
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 
-" 指定文字コードで強制的にファイルを開く
+" Forces a file to open in the specified character set
 command! Cp932 edit ++enc=cp932
 command! Eucjp edit ++enc=euc-jp
 command! Iso2022jp edit ++enc=iso-2022-jp
@@ -164,61 +143,51 @@ command! Utf8 edit ++enc=utf-8
 command! Jis Iso2022jp
 command! Sjis Cp932
 
-
-"**********************************************************
-"     Appearance
-"**********************************************************
-" タイトル表示しない
+"==============
+"  Appearance
+"==============
+" Don't show title
 set notitle
-" 行間設定
+
 set linespace=1
-" CommandLineの行数
+" Line size of CommandLine
 set cmdheight=1
 
-" 対応する()を表示
 set showmatch
-" 行番号を表示しない
 set nonumber
-" 不可視文字表示
+" Display unvisible character
 set list
-" 不可視文字の表示形式設定
+" Display format for unvisible characters
 " set ambiwidth=single
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:-,eol:↲
+set listchars=tab:^\ ,trail:-,extends:@,eol:<
+" set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:-,eol:↲
 " set listchars=tab:»-,extends:›,precedes:‹,nbsp:·,trail:-,eol:↲
-" set listchars=tab:^\ ,trail:-,extends:@,eol:<
-" 印字不可能文字を16進数で表示
+" Display unprintable characters in hexadecimal.
 set display=uhex
 
-" 全角スペースの表示
+" Display ZenkakuSpace
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=darkgray
 match ZenkakuSpace /　/
 
-" カレント行ハイライト
 set cursorline
-" カレント列ハイライト
-"set cursorcolumn
-" カレントウィンドウのみに罫線を引く
 augroup DrawLineAtCurrentWindow
 	autocmd!
 	autocmd WinLeave * set nocursorline
 	autocmd WinEnter,BufRead * set cursorline
 augroup END
 
-" DiffでSpaceの数の違いを無視する
+" Ignore white spaces on Diff
 set diffopt=filler,iwhite
 
-" ポップアップMENUの最大高さ設定
+" Max height of popup menu
 set pumheight=15
 
-
-"**********************************************************
-"     StatusLine
-"**********************************************************
-" plugin設定でPowerline有効にしている
-
-" 常にステータスライン表示
+"==============
+"  StatusLine
+"==============
+" Display status line always
 set laststatus=2
-" ステータスライン表示設定
+" Status line display setting
 function! GetEFstatus()
 	let str = ''
 	let fenc = ''
@@ -247,84 +216,80 @@ function! GetEFstatus()
 	return str
 endfunction
 set statusline=\ %-f%-5(\ %r%m\ %)%=%{GetEFstatus()}\ %(%4c,\ %4l/%4L\ %)
-" ステータスライン色設定
+" Status line color setting
 highlight StatusLine ctermfg=white ctermbg=red
 
-" コマンドをステータスラインに表示
+" Show command on status line
 set showcmd
 
-"自動的に QuickFix リストを表示する
+" Show QuickFix list automatically
 augroup AutoQuickFixList
 	autocmd!
 	autocmd QuickfixCmdPost make,grep,grepadd,vimgrep,vimgrepadd cwin
 	autocmd QuickfixCmdPost lmake,lgrep,lgrepadd,lvimgrep,lvimgrepadd lwin
 augroup END
 
-
-"**********************************************************
-"     Indent
-"**********************************************************
-" 新しい行を挿入時に自動インデント
+"==========
+"  Indent
+"==========
+" Auto indent new line when inserting
 set autoindent
-" 新しい行を挿入時に高度な自動インデント
+" Auto smart indent new line when inserting
 set smartindent
 
-" 高度なTab挿入
 set smarttab
-" Tabの幅
+" Width of tab
 set tabstop=4
-" インデント幅
+" Width of indent
 set shiftwidth=4
-" softtabstopはTabキー押し下げ時の挿入される空白の量，0の場合はtabstopと同じ，BSにも影響する
+" Number of spaces by pushing Tab key. 0 means same as tabstop.
 set softtabstop=0
-" TabをSpaceで置き換えない
+" Replace tabs with spaces
 set expandtab
 
-
-"**********************************************************
-"     Fold
-"**********************************************************
-" 折り畳み有効/無効
+"========
+"  Fold
+"========
+" Folding setting
 set nofoldenable
 
 "----------------------------------
-" 折り畳み対象設定 (foldmethod)
-" manual  手動で折畳を定義する
-" indent  インデントの数を折畳のレベル(深さ)とする
-" expr    折畳を定義する式を指定する
-" syntax  構文強調により折畳を定義する
-" diff    変更されていないテキストを折畳対象とする
-" marker  テキスト中の印で折畳を定義する
+" Folding methods
+"   manual  Define the folding manualy
+"   indent  The number of indent should be at the level of the fold
+"   expr    Specify expression that defines the folding
+"   syntax  Define the folding by syntax
+"   diff    Make unchanged text the target of fold
+"   marker  Define the folding by markers in text
 "----------------------------------
 set foldmethod=manual
-" 折り畳みカラム幅
+" Folding column width
 set foldcolumn=2
-" 折り畳むネストの最大値
+" Folding max nest
 set foldnestmax=3
-" 折り畳み最小行数
+" Folding min lines
 set foldminlines=1
-" FileOpen時は全ての折り畳みを展開
+" Expand all foldings when opening file
 set foldlevel=100
 
-
-"**********************************************************
-"     Colors
-"**********************************************************
+"==========
+"  Colors
+"==========
 "colorscheme pablo
 set background=dark
 
 set t_Co=256
 "set t_Sf=[3%dm
 "set t_Sb=[4%dm
-" tmuxで背景色がおかしくなる対応
+" Workaound: Problem with backgound color going wrong on tmux
 set t_ut=
 
-" Tabと空白の色設定
+" Color setting of Tab and space
 highlight SpecialKey cterm=NONE ctermfg=DarkGray ctermbg=NONE guifg=Brown guibg=bg
-" 行末の色設定
+" Color setting of end line
 highlight NonText cterm=NONE ctermfg=DarkGray ctermbg=NONE guifg=Brown guibg=bg
-" 行番号の色設定
+" Color setting of line number
 highlight LineNr ctermfg=DarkGray
-" カレント行の色設定。下線のみを引く。
+" Color setting of current line. Draw underline only.
 highlight CursorLine cterm=underline ctermfg=NONE ctermbg=Black gui=underline guifg=NONE guibg=NONE
 
