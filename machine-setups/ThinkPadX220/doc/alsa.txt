@@ -6,7 +6,7 @@ find your sound cards.
 $ cat /proc/asound/cards
 ```
 
-set card 1 to default catd.
+set card 1 to default card.
 
 ```shell
 $ vim /etc/asound.conf

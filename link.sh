@@ -1,39 +1,22 @@
 #!/bin/sh
-
 set -eu
 
+SCRIPT_DIR="$(cd $(dirname $0); pwd)"
+
 # vim
-ln -is ~/.dotfiles/vimrc ~/.vimrc
-ln -is ~/.dotfiles/vim ~/.vim
-#ln -is ~/.dotfiles/gvimrc ~/.gvimrc
+ln -is ${SCRIPT_DIR}/vimrc ~/.vimrc
+ln -is ${SCRIPT_DIR}/vim ~/.vim
 install -d vim/temp/backupfile
 install -d vim/temp/swapfile
 
 # git
-ln -is ~/.dotfiles/gitconfig ~/.gitconfig
-ln -is ~/.dotfiles/gitignore ~/.gitignore
-ln -is ~/.dotfiles/tigrc ~/.tigrc
+ln -is ${SCRIPT_DIR}/gitconfig ~/.gitconfig
+ln -is ${SCRIPT_DIR}/gitignore ~/.gitignore
 
 # tmux
-ln -is ~/.dotfiles/tmux.conf ~/.tmux.conf
+ln -is ${SCRIPT_DIR}/tmux.conf ~/.tmux.conf
 
 # shell
-ln -is ~/.dotfiles/bash_profile ~/.bash_profile
-ln -is ~/.dotfiles/bashrc ~/.bashrc
-ln -is ~/.dotfiles/inputrc ~/.inputrc
-#ln -is ~/.dotfiles/cshrc ~/.cshrc
-ln -is ~/.dotfiles/zshrc ~/.zshrc
-ln -is ~/.dotfiles/zplugrc ~/.zplugrc
-ln -is ~/.dotfiles/zfunc ~/.zfunc
-#ln -is ~/.dotfiles/zshrc.custom ~/.zshrc.custom
+ln -is ${SCRIPT_DIR}/bashrc ~/.bashrc
+ln -is ${SCRIPT_DIR}/inputrc ~/.inputrc
 
-# xorg
-ln -is ~/.dotfiles/xorg/xinitrc ~/.xinitrc
-ln -is ~/.dotfiles/xorg/Xresources ~/.Xresources
-ln -is ~/.dotfiles/xorg/Xmodmap ~/.Xmodmap
-
-# config
-sh config/link.sh
-
-# service
-ln -is ~/.dotfiles/archlinux/service ~/service
