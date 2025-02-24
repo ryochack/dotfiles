@@ -29,27 +29,54 @@ if s:is_plugged('vim-operator-replace')
 	" --- key mappping ---
 	" "{register}_{motion}  <Plug>(operator-replace)
 	" -> Replace text that {motion} moves over with register x.
-	map _ <Plug>(operator-replace)
+	nmap s <Plug>(operator-replace)
 endif
 
-" [surround]
-	" OldText                  Command    NewText
-	" -------------------------------------------------------------
-	" "Hello *world!"          ds"        Hello world!
-	" [123+4*56]/2             cs])       (123+456)/2
-	" "Look ma, I'm *HTML!"    cs"<q>     <q>Look ma, I'm HTML!</q>
-	" if *x>3 {                ysW(       if ( x>3 ) {
-	" my $str = *whee!;        vllllS'    my $str = 'whee!';
-	" "Hello *world!"          ds"        Hello world!
-	" (123+4*56)/2             ds)        123+456/2
-	" <div>Yo!*</div>          dst        Yo!
-	" "Hello *world!"          cs"'       'Hello world!'
-	" "Hello *world!"          cs"<q>     <q>Hello world!</q>
-	" (123+4*56)/2             cs)]       [123+456]/2
-	" (123+4*56)/2             cs)[       [ 123+456 ]/2
-	" <div>Yo!*</div>          cst<p>     <p>Yo!</p>
-	" Hello w*orld!            ysiw)      Hello (world)!
-	" Hello w*orld!            yssB       {Hello world!}
+"---------------
+"  Text Object
+"---------------
+if s:is_plugged('vim-sandwich')
+    " Use surround keymaps
+	"
+	"  Command    Old Text                    New Text
+	" --------------------------------------------------------------
+	"  ds"        "Hello *world!"        ->  Hello world!
+	"  cs])       [123+4*56]/2           ->  (123+456)/2
+	"  cs"<q      "Look ma, I'm *HTML!"  ->  <q>Look ma, I'm HTML!</q>
+	"  ysW(       if *x>3 {              ->  if ( x>3 ) {
+	"  vllllS'    my $str = *whee!;      ->  my $str = 'whee!';
+	"  ds"        "Hello *world!"        ->  Hello world!
+	"  ds)        (123+4*56)/2           ->  123+456/2
+	"  dst        <div>Yo!*</div>        ->  Yo!
+	"  cs"'       "Hello *world!"        ->  'Hello world!'
+	"  cs"<q      "Hello *world!"        ->  <q>Hello world!</q>
+	"  cs)]       (123+4*56)/2           ->  [123+456]/2
+	"  cs)[       (123+4*56)/2           ->  [ 123+456 ]/2
+	"  cstp       <div>Yo!*</div>        ->  <p>Yo!</p>
+	"  ysiw)      Hello w*orld!          ->  Hello (world)!
+	"  yssB       Hello w*orld!          ->  {Hello world!}
+	runtime macros/sandwich/keymap/surround.vim
+
+	"  Text object
+	" ----------------
+	"  Text objects to select a text surrounded by brackets or user-specified characters.
+	"    |<----- is[ ----->|
+	"  {[(a_surrounded_text)]}
+	"   |<------ as[ ------>|
+	xmap is <Plug>(textobj-sandwich-query-i)
+	xmap as <Plug>(textobj-sandwich-query-a)
+	omap is <Plug>(textobj-sandwich-query-i)
+	omap as <Plug>(textobj-sandwich-query-a)
+
+	"  Text objects to select the nearest surrounded text automatically.
+	"     |<---- iss ---->|
+	"  {[(a_surrounded_text)]}
+	"    |<----- ass ----->|
+	xmap iss <Plug>(textobj-sandwich-auto-i)
+	xmap ass <Plug>(textobj-sandwich-auto-a)
+	omap iss <Plug>(textobj-sandwich-auto-i)
+	omap ass <Plug>(textobj-sandwich-auto-a)
+endif
 
 "--------
 "  Edit
@@ -181,6 +208,10 @@ endif
 "-------
 if s:is_plugged('gist-vim')
 	let g:gist_detect_filetype = 1
+endif
+
+if s:is_plugged('git-messenger.vim')
+	let g:git_messenger_always_into_popup = v:true
 endif
 
 "------------

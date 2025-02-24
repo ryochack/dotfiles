@@ -19,8 +19,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 
 " Text Object {
-	" surround: edit 'surroundings'
-	Plug 'tpope/vim-surround'
+	" vim-sandwich: edit 'surroundings'
+	Plug 'machakann/vim-sandwich'
 " }
 
 " Operator {
@@ -88,6 +88,8 @@ Plug 'junegunn/vim-plug', {'dir': '~/.vim/plugged/vim-plug/autoload'}
 " Git {
 	" fugitive: git plugin
 	Plug 'tpope/vim-fugitive'
+	" git-messenger: shows the history of commits under the cursor
+	Plug 'rhysd/git-messenger.vim'
 	" webapi: vim Interface to Web API (required by gist)
 	Plug 'mattn/webapi-vim'
 	" gist: gist plugin
